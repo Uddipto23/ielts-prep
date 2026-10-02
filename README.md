@@ -4,7 +4,30 @@ A free, single-page IELTS preparation tracker. 30 days, 90 tasks, covering Readi
 
 Progress is saved in the visitor's own browser via `localStorage` — there is no backend, no account, and nothing is uploaded anywhere. Every visitor tracks their own progress independently.
 
+## Publish it on GitHub Pages
 
+1. Create a new public repository on GitHub (e.g. `ielts-30`).
+2. Upload `index.html` to the root of the repository. (`README.md` is optional.)
+3. Go to **Settings → Pages**.
+4. Under **Source**, choose **Deploy from a branch**, select branch `main` and folder `/ (root)`, then click **Save**.
+5. Wait about a minute. Your site will be live at:
+
+   `https://<your-username>.github.io/<repo-name>/`
+
+Share that link with anyone — it works on phones and desktops, and each person keeps their own progress.
+
+## Via the command line
+
+```bash
+git init
+git add index.html README.md
+git commit -m "IELTS 30-day study tracker"
+git branch -M main
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+git push -u origin main
+```
+
+Then enable Pages in Settings as described above.
 
 ## Editing the content
 
