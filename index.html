@@ -213,11 +213,12 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
   <div class="wrap">
     <div class="eyebrow">30 Days · 4 Skills · 90 Tasks</div>
     <h1 class="big">IELTS in a<br><em>month.</em></h1>
-    <p class="lede">A complete day-by-day training plan with Reading, Writing, Listening and Speaking from the basics to our target (band-8). Tick off tasks as you go & your progress saves automatically in this browser.</p>
+    <p class="lede">A complete day-by-day training plan with Reading, Writing, Listening and Speaking. From the basics to band-8 technique. Tick off tasks as you go; your progress saves automatically in this browser.</p>
     <div class="hero-meta">
       <span class="chip">Basic → Advanced</span>
       <span class="chip">Examiner tricks</span>
       <span class="chip">Progress saved locally</span>
+      <span class="chip">Computer-delivered format</span>
       <span class="chip">Free &amp; open</span>
     </div>
   </div>
@@ -275,10 +276,19 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
         </ul>
       </div>
       <div class="rcard">
+        <h3>Practise on screen</h3>
+        <ul>
+          <li>IELTS is computer-delivered everywhere now</li>
+          <li>No answer transfer time in Listening</li>
+          <li>Type your essays; handwriting practice no longer matches test day</li>
+          <li>One Skill Retake lets you resit a single section</li>
+        </ul>
+      </div>
+      <div class="rcard">
         <h3>Know the band descriptors</h3>
         <ul>
           <li>Writing and Speaking are scored on 4 equal criteria</li>
-          <li>Reading/Listening band 7 ≈ 30 of 40 correct</li>
+          <li>Band 7 ≈ 30 of 40; band 8 ≈ 35 of 40</li>
           <li>Score your own work against official descriptors</li>
           <li>Target your lowest criterion, not your favourite skill</li>
         </ul>
@@ -296,10 +306,11 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
 
 <script>
 const PLAN=[
-{d:1,w:1,f:"all",p:"basic",t:"Orientation",tip:"Band 7 in Reading and Listening means roughly 30 of 40 correct. You are allowed to get 10 wrong — stop chasing perfection and start chasing pace.",k:[
-["Learn the test format","Listening 30 min + 10 min transfer, Reading 60 min, Writing 60 min, Speaking 11–14 min. Know the Academic vs General differences for Reading and Task 1.","foundation"],
+{d:1,w:1,f:"all",p:"basic",t:"Orientation",tip:"Band 7 in Reading and Listening is roughly 30 of 40 correct; band 8 is roughly 35 of 40. Know your target number before you start — it decides whether you play for pace or for precision.",k:[
+["Learn the test format","Listening ~30 min (answers typed live, about 2 min to review at the end), Reading 60 min, Writing 60 min, Speaking 11–14 min face to face. IELTS is now computer-delivered everywhere — there is no 10-minute answer transfer any more.","foundation"],
 ["Study the band scale","Read how bands 4–9 are awarded. Each section is scored separately then averaged and rounded to the nearest half band.","foundation"],
-["Diagnostic mini-test","Do 10 sample questions from each of the four sections. Score them. Write down which skill is weakest — that becomes your priority skill all month.","practice"]]},
+["Diagnostic mini-test","Do 10 sample questions from each of the four sections. Score them. Write down which skill is weakest — that becomes your priority skill all month.","practice"],
+["Test your typing speed","Writing is now typed. Run a one-minute typing test. Below 35 wpm and typing itself will cost you marks — add 10 minutes of typing practice to every day of this plan.","foundation"]]},
 {d:2,w:1,f:"reading",p:"basic",t:"Skimming",tip:"'Not Given' means the passage simply does not mention it. If you find yourself reasoning 'well, logically it must be…' — that is Not Given, not False.",k:[
 ["Learn to skim","Read only the title, subheadings and the first sentence of each paragraph. Target: understand the shape of a 700-word passage in 2 minutes.","technique"],
 ["Paragraph mapping","Skim one passage and write a single word beside each paragraph capturing its topic. This map is what you scan with later.","practice"],
@@ -352,10 +363,10 @@ const PLAN=[
 ["Full reading section","3 passages, 40 questions, 60 minutes, no stopping. Score it and calculate your band.","practice"],
 ["Classify your errors","Sort every mistake into: vocabulary gap, misread question, time pressure, or fell for a trap. The biggest category is your week-3 focus.","review"],
 ["Ten-minute speaking recording","Speak continuously on any IELTS topic. Count your pauses and filler words.","practice"]]},
-{d:15,w:3,f:"listening",p:"advanced",t:"Sections 3 and 4",tip:"You get 10 minutes at the end to transfer answers. Use every second of it — check singular/plural and spelling on all 40.",k:[
+{d:15,w:3,f:"listening",p:"advanced",t:"Sections 3 and 4",tip:"On computer there is no 10-minute transfer window, only about two minutes of review. Accuracy has to happen live — type the answer correctly the first time, singular/plural and spelling included.",k:[
 ["Section 3 tactics","An academic discussion between two to four people. Speakers often disagree; the answer reflects the position they finally settle on.","technique"],
 ["Section 4 note-taking","A single academic lecture with no break. Write key nouns and numbers only — skip adjectives entirely. Speed beats completeness here.","technique"],
-["Full listening test","All 40 questions, strictly timed, including the transfer period.","practice"]]},
+["Full listening test","All 40 questions, strictly timed, typed on screen. Practise on a computer-delivered format test, not on paper.","practice"]]},
 {d:16,w:3,f:"writing",p:"advanced",t:"Coherence",tip:"Repeating 'moreover, additionally, furthermore' in consecutive sentences actively lowers your Coherence score. Mechanical linking is worse than no linking.",k:[
 ["Three tiers of linkers","Addition: furthermore, in addition. Contrast: however, nevertheless, conversely. Result: consequently, as a result, therefore.","vocabulary"],
 ["Paragraph unity","Each body paragraph: topic sentence, explanation, example, mini-conclusion. One central idea per paragraph, no exceptions.","practice"],
@@ -399,10 +410,10 @@ const PLAN=[
 {d:26,w:4,f:"listening",p:"advanced",t:"Traps",tip:"Never leave a blank. A guess might be right; a blank never is.",k:[
 ["Trap recognition","Corrections, contradictions and changes of mind are deliberately planted. Train your ear for the moment a speaker reverses.","trick"],
 ["Numbers and letters","Phone numbers, postcodes, reference codes and spelt-out names. Practise writing them at speed from dictation.","practice"],
-["Third full listening test","Target zero blanks and all 40 answers transferred correctly.","practice"]]},
+["Third full listening test","Target zero blanks and zero typing slips. Use the two-minute review window to check spelling and word limits.","practice"]]},
 {d:27,w:4,f:"reading",p:"advanced",t:"Reading mock",tip:"Transfer errors — writing the right answer in the wrong box — are the cruellest way to lose a band. Check your numbering twice.",k:[
 ["Full mock under exam conditions","3 passages, 40 questions, 60 minutes. No dictionary, no pausing, no looking back after the time ends.","practice"],
-["Answer sheet check","Verify every answer is transferred, numbered correctly and within the stated word limit.","technique"],
+["On-screen review","Use the review tool to check every question is answered, matched to the right number and within the stated word limit. Flagged questions are easy to lose track of.","technique"],
 ["Score and analyse","Calculate your band, then classify every single mistake one final time.","review"]]},
 {d:28,w:4,f:"speaking",p:"advanced",t:"Speaking mock",tip:"The four speaking criteria carry equal weight. A 9 and a 5 average to a 7 — your lowest criterion is where the easy marks are.",k:[
 ["Full three-part mock","Real timing throughout. Get a friend to ask the questions if you can; otherwise use a timer and recorded prompts.","practice"],
