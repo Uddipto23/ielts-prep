@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 1 Practice — True / False / Not Given</title>
+<meta name="description" content="Free IELTS Reading practice: 12 quick-fire True/False/Not Given drills plus a full passage, with instant feedback and explanations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EEE5;--paper-2:#EAE4D7;--card:#FBF9F4;
+  --ink:#191813;--ink-2:#55513F;--ink-3:#8A8471;--line:#D9D2C1;
+  --rust:#BE4D26;--rust-soft:#F3DDD2;--moss:#4A6B3A;--moss-soft:#DFE7D5;
+  --sea:#1F5E6B;--gold:#A87518;--gold-soft:#F5E6C8;--plum:#5B3A72;--plum-soft:#E7DCEF;
+  --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.65;
+background-image:radial-gradient(circle at 1px 1px,rgba(25,24,19,.045) 1px,transparent 0);background-size:22px 22px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--rust)}
+header.hero{padding:46px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:12px}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,7vw,68px);line-height:.98;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--rust)}
+.lede{max-width:580px;margin-top:16px;font-size:17px;color:var(--ink-2)}
+.backlink{display:inline-block;margin-top:18px;font-size:14px}
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(26px,4.5vw,38px);margin-bottom:6px;letter-spacing:-.01em}
+.sec{padding:40px 0 10px;border-top:1px solid var(--line);margin-top:34px}
+.sec:first-of-type{border-top:none;margin-top:0}
+.sec-lede{color:var(--ink-2);margin-bottom:8px;max-width:620px}
+.rule{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:12px;transition:border-color .3s ease,box-shadow .3s ease}
+.q.right{border-color:var(--moss);box-shadow:0 0 0 1px var(--moss) inset}
+.q.wrong{border-color:var(--rust);box-shadow:0 0 0 1px var(--rust) inset}
+.qn{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink-3);margin-bottom:9px}
+.psg{font-size:15px;color:var(--ink-2);border-left:3px solid var(--line);padding:2px 0 2px 13px;margin-bottom:11px}
+.stm{font-weight:500;margin-bottom:13px}
+.opts{display:flex;flex-wrap:wrap;gap:7px}
+.opt{font-family:inherit;font-size:13.5px;padding:7px 15px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-2);cursor:pointer;transition:.15s}
+.opt:hover:not(:disabled){border-color:var(--ink-3);color:var(--ink)}
+.opt:disabled{cursor:default;opacity:.55}
+.opt.picked{opacity:1}
+.opt.ok{background:var(--moss);border-color:var(--moss);color:#fff;opacity:1}
+.opt.no{background:var(--rust);border-color:var(--rust);color:#fff;opacity:1}
+.exp{margin-top:13px;padding:13px 15px;background:var(--plum-soft);border-radius:var(--radius);font-size:14.5px;color:#3F2652;display:none}
+.exp.show{display:block}
+.exp b{color:var(--plum)}
+.passage{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin-bottom:24px}
+.passage h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:27px;margin-bottom:14px}
+.passage p{margin-bottom:13px;font-size:15.5px}
+.passage p b{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--rust);margin-right:5px}
+.gap input{font-family:inherit;font-size:15px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);width:190px;margin-right:8px}
+.gap input:focus{outline:none;border-color:var(--rust)}
+.scorebar{position:sticky;bottom:0;background:var(--ink);color:var(--paper);border-radius:999px;padding:11px 22px;margin:28px auto 0;display:flex;gap:18px;align-items:center;justify-content:center;font-size:14.5px;max-width:420px;box-shadow:0 8px 24px -8px rgba(25,24,19,.4)}
+.scorebar b{font-family:'Instrument Serif',serif;font-size:21px}
+.btn{font-family:inherit;font-size:14px;padding:9px 18px;border-radius:999px;background:var(--ink);color:var(--paper);cursor:pointer;border:none}
+.btn.alt{background:transparent;border:1px solid var(--line);color:var(--ink-2)}
+.btn:hover{opacity:.88}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hw{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-bottom:12px}
+.hw h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:22px;margin-bottom:8px}
+.hw ul{list-style:none;font-size:14.5px;color:var(--ink-2)}
+.hw li{padding-left:16px;position:relative;margin-bottom:7px}
+.hw li:before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--rust)}
+.cheat{background:var(--gold-soft);border-radius:var(--radius);padding:18px 20px;margin-top:18px}
+.cheat table{width:100%;border-collapse:collapse;font-size:14.5px}
+.cheat td{padding:6px 0;border-bottom:1px solid rgba(168,117,24,.22);vertical-align:top}
+.cheat td:first-child{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gold);width:48%;padding-right:14px}
+.cheat tr:last-child td{border-bottom:none}
+footer{margin-top:50px;padding:28px 0 46px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-3)}
+@media(max-width:600px){.passage{padding:20px 18px}.scorebar{font-size:13px;gap:12px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Day 1 · Reading · Practice set</div>
+    <h1>True, False,<br><em>Not Given.</em></h1>
+    <p class="lede">The question type that decides more IELTS Reading bands than any other. Twenty-two questions with instant feedback and an explanation on every single one.</p>
+    <a class="backlink" href="index.html">← Back to the 30-day plan</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="sec">
+  <h2>Part A — Quick-fire drills</h2>
+  <p class="sec-lede">Twelve isolated pairs. Read the extract, judge the statement. These isolate the single skill without the distraction of a long passage.</p>
+  <div class="rule">No time limit · answer before revealing · 12 questions</div>
+  <div id="partA"></div>
+</section>
+
+<section class="sec">
+  <h2>Part B — Full passage</h2>
+  <p class="sec-lede">Ten questions under exam conditions. Give yourself ten minutes and do not look anything up.</p>
+  <div class="rule">10 minutes · 10 questions · no dictionary</div>
+
+  <div class="passage">
+    <h3>The Return of the Urban Tram</h3>
+    <p><b>A</b> Trams dominated city transport across Europe and North America in the early twentieth century. By the 1960s, however, most British and American cities had torn up their networks entirely. Planners of the period were convinced that buses were cheaper to operate and far more flexible, since a bus route can be altered overnight while a tram route cannot.</p>
+    <p><b>B</b> The reversal began on the continent. From the 1980s onwards several French and German cities reintroduced trams, often as the centrepiece of wider schemes to pedestrianise city centres. British cities followed more slowly and less consistently.</p>
+    <p><b>C</b> The arguments in favour are well established. A single tram can carry several times the passengers of a bus, it runs on electricity rather than diesel, and its low floor allows step-free boarding for wheelchair users and parents with pushchairs. Contrary to the common assumption that construction cost is the decisive obstacle, the greater difficulty is usually disruption: laying track closes streets for months at a time, and nearby shops frequently lose trade during the works.</p>
+    <p><b>D</b> Opponents are not so much arguing that trams fail to move people efficiently as that they lock a city into a fixed route for decades. Should the pattern of a city shift, a tram line cannot follow it. Supporters treat that same permanence as an advantage, pointing out that developers invest near infrastructure they believe will still be there in thirty years.</p>
+    <p><b>E</b> The results have been mixed. Some systems carry far more passengers than forecast, while others have fallen well short of their projections. Analysts initially predicted that the most recent generation of schemes would be self-financing within a decade. In practice, almost all continue to require public subsidy.</p>
+  </div>
+
+  <div id="partB"></div>
+</section>
+
+<section class="sec">
+  <h2>Part C — The rest of Day 1</h2>
+  <p class="sec-lede">Reading is one skill of four. These take about 50 minutes together.</p>
+
+  <div class="hw">
+    <h3>Writing · 40 minutes</h3>
+    <ul>
+      <li><b>Prompt:</b> Some people believe university education should be free for all students, while others argue students should pay for it themselves. Discuss both views and give your own opinion.</li>
+      <li>Minimum 250 words. Type it — IELTS is computer-delivered now.</li>
+      <li>Check only five things: word count reached, four clear paragraphs, a stated position in the introduction, a topic sentence opening each body paragraph, and a conclusion that matches the introduction.</li>
+      <li>Do not grade the language yet. Structure first.</li>
+    </ul>
+  </div>
+
+  <div class="hw">
+    <h3>Speaking · 10 minutes, recorded</h3>
+    <ul>
+      <li>Part 1: Where are you from? Do you work or study? What do you do in your free time? Is your hometown a good place for young people?</li>
+      <li>Part 2 cue card, 1 minute preparation then 2 minutes speaking: <i>Describe a skill you learned that was difficult at first. Say what it was, how you learned it, why it was difficult, and how you feel about it now.</i></li>
+      <li>Listen back and count three things: pauses longer than two seconds, filler words, and whether you reached two minutes.</li>
+    </ul>
+  </div>
+
+  <div class="hw">
+    <h3>Listening · 15 minutes</h3>
+    <ul>
+      <li>Use the free official sample questions on ielts.org, or Road to IELTS if you have registered with the British Council.</li>
+      <li>Do one Part 1 and one Part 4. Score them separately.</li>
+      <li>The gap between those two numbers tells you more than the total does.</li>
+    </ul>
+  </div>
+
+  <div class="cheat">
+    <div class="rule" style="color:var(--gold);margin-bottom:12px">Day 1 cheat sheet — rejection structures</div>
+    <table>
+      <tr><td>less to do with A than with B</td><td>not A → <b>False</b></td></tr>
+      <tr><td>not so much A as B</td><td>not A → <b>False</b></td></tr>
+      <tr><td>rather than A, B</td><td>not A → <b>False</b></td></tr>
+      <tr><td>far from A, B</td><td>not A → <b>False</b></td></tr>
+      <tr><td>contrary to the assumption that A</td><td>not A → <b>False</b></td></tr>
+      <tr><td>A was predicted. In practice, B</td><td>the prediction was wrong → <b>False</b></td></tr>
+      <tr><td>the usual explanation is A</td><td>claims the view <i>exists</i>, not that it is right</td></tr>
+      <tr><td>most / some / often</td><td>never satisfies all / every / always</td></tr>
+      <tr><td>idea never mentioned at all</td><td>→ <b>Not Given</b></td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div>Free IELTS practice. Nothing is uploaded; your answers stay in this browser tab.</div>
+</footer>
+</main>
+
+<div class="scorebar"><span>Score</span><b id="score">0</b><span id="outof">/ 22</span>
+<button class="btn alt" id="resetBtn" style="margin-left:auto">Reset</button></div>
+
+<script>
+const A=[
+["The library was funded entirely by a bequest from a local merchant.","The library received government funding.","F","<b>Entirely</b> by a bequest leaves no room for any other source. The passage closes the door, so government funding is contradicted rather than simply unmentioned."],
+["The festival has been held every year since 1964, apart from 2020.","The festival has taken place annually without interruption since 1964.","F","The exception is stated outright. <b>Apart from 2020</b> is an interruption, so <i>without interruption</i> is contradicted."],
+["The report was criticised for its small sample size.","The report surveyed fewer than 100 people.","NG","We are told the sample was considered small. No number appears anywhere. <b>Small is a judgement, not a figure</b> — you are inventing the 100."],
+["Rather than expanding overseas, the company chose to consolidate its domestic operations.","The company expanded into foreign markets.","F","<b>Rather than A, B</b> means not A. Overseas expansion is named specifically in order to be rejected."],
+["It is often claimed that the castle was built in the twelfth century, though recent dating places it a hundred years later.","The castle is commonly thought to date from the twelfth century.","T","The trickiest shape in the set. The statement claims only that the twelfth-century view is <b>commonly held</b>, which the passage confirms with <i>it is often claimed</i>. The passage disagrees with that view, but the statement never said the view was correct."],
+["Most participants completed the course, although a minority withdrew for health reasons.","Every participant finished the course.","F","Quantifier trap. <b>Most is not every.</b> The passage explicitly mentions people who withdrew."],
+["The technique is widely used in Scandinavia and is now being trialled in Canada.","The technique originated in Scandinavia.","NG","Where it is <i>used</i> says nothing about where it was <i>invented</i>. The passage never discusses origin. <b>Widespread use is not evidence of origin.</b>"],
+["Far from reducing congestion, the new road appears to have increased traffic volumes.","The new road failed to reduce congestion.","T","<b>Far from A</b> means not A — so the road did not reduce congestion, which is exactly what the statement says. Here the rejection structure produces a True, because the statement is phrased negatively too. Read what is actually claimed."],
+["Early results were encouraging, but in practice the drug proved too unstable for commercial production.","The drug is manufactured commercially.","F","<b>Too unstable for commercial production</b> directly rules it out. <i>In practice</i> is your signal that what follows overrides what came before."],
+["The museum attracts around 400,000 visitors a year, a figure that has remained stable for a decade.","Visitor numbers to the museum have risen over the past ten years.","F","<b>Stable</b> contradicts <i>risen</i>. The timeframe matches exactly, so there is no escape into Not Given."],
+["Critics maintain that the policy disproportionately affects rural communities.","The policy has been shown to harm rural communities.","NG","<b>Critics maintain</b> reports an allegation. <i>Has been shown</i> claims it was demonstrated. The passage never confirms or denies whether the critics are right."],
+["The scheme was not so much abandoned as quietly allowed to lapse.","The scheme was formally cancelled.","F","<b>Not so much A as B</b> means not A. The passage specifically denies a deliberate ending in favour of a gradual one, and <i>formally cancelled</i> is the opposite of lapsing quietly."]
+];
+
+const B=[
+{t:"tfng",s:"By the 1960s most British cities had removed their tram networks.",a:"T",e:"Paragraph A: most British and American cities had <b>torn up their networks entirely</b>. Straight paraphrase of <i>removed</i>."},
+{t:"tfng",s:"Planners in the 1960s believed buses cost more to run than trams.",a:"F",e:"Paragraph A says planners were convinced buses were <b>cheaper</b> to operate. The statement reverses it."},
+{t:"tfng",s:"Construction cost is the main obstacle to building new tram lines.",a:"F",e:"<b>Contrary to the common assumption that construction cost is the decisive obstacle</b> — named and rejected. The real difficulty is disruption. This is the structure that catches most people."},
+{t:"tfng",s:"Opponents argue that trams are inefficient at carrying passengers.",a:"F",e:"Paragraph D: opponents are <b>not so much arguing that trams fail to move people efficiently as</b> that they fix a route for decades. The efficiency objection is raised in order to be set aside."},
+{t:"tfng",s:"Shops near tram construction work often suffer financially.",a:"T",e:"Paragraph C: nearby shops <b>frequently lose trade</b> during the works. <i>Frequently</i> matches <i>often</i>, and losing trade matches suffering financially."},
+{t:"tfng",s:"Trams in France carry more passengers each year than French buses do.",a:"NG",e:"No comparison between trams and buses by passenger numbers appears anywhere. Both are discussed; this particular comparison is never made. <b>Genuine Not Given.</b>"},
+{t:"tfng",s:"Recent tram schemes have mostly become self-financing as analysts expected.",a:"F",e:"Paragraph E: analysts predicted self-financing within a decade, but <b>in practice</b> almost all still need subsidy. Prediction stated, outcome contradicts it."},
+{t:"gap",s:"Trams are powered by ........................ rather than diesel.",a:["electricity"],e:"Paragraph C: <b>it runs on electricity rather than diesel</b>. Copy the word exactly as it appears — not <i>electric</i>."},
+{t:"gap",s:"Low floors on trams allow ........................ boarding for wheelchair users.",a:["step-free","step free"],e:"Paragraph C: <b>step-free boarding</b>. Hyphenated words count as one word for the limit."},
+{t:"mcq",s:"According to paragraph D, supporters view a tram's fixed route as a benefit because",o:["it reduces the cost of maintenance","it encourages development nearby","it allows routes to be changed quickly","it attracts more passengers than buses"],a:1,e:"Supporters note that <b>developers invest near infrastructure they believe will still be there</b>. Option C is the opposite of permanence; A and D are never linked to the fixed-route argument."}
+];
+
+let score=0,answered={};
+const total=A.length+B.length;
+document.getElementById("outof").textContent="/ "+total;
+
+function bump(){document.getElementById("score").textContent=score}
+
+function buildA(){
+  document.getElementById("partA").innerHTML=A.map((q,i)=>`
+    <div class="q" id="a${i}">
+      <div class="qn">A${i+1}</div>
+      <div class="psg">${q[0]}</div>
+      <div class="stm">${q[1]}</div>
+      <div class="opts">
+        ${["T","F","NG"].map(v=>`<button class="opt" data-a="${i}" data-v="${v}">${v==="T"?"True":v==="F"?"False":"Not Given"}</button>`).join("")}
+      </div>
+      <div class="exp" id="ea${i}"></div>
+    </div>`).join("");
+}
+
+function buildB(){
+  document.getElementById("partB").innerHTML=B.map((q,i)=>{
+    let body="";
+    if(q.t==="tfng"){
+      body=`<div class="opts">${["T","F","NG"].map(v=>`<button class="opt" data-b="${i}" data-v="${v}">${v==="T"?"True":v==="F"?"False":"Not Given"}</button>`).join("")}</div>`;
+    }else if(q.t==="gap"){
+      body=`<div class="gap"><input id="gi${i}" placeholder="your answer" autocomplete="off"><button class="opt" data-b="${i}" data-v="__input">Check</button></div>`;
+    }else{
+      body=`<div class="opts" style="flex-direction:column;align-items:flex-start">${q.o.map((o,j)=>`<button class="opt" data-b="${i}" data-v="${j}" style="text-align:left">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}</div>`;
+    }
+    return `<div class="q" id="b${i}">
+      <div class="qn">B${i+1} · ${q.t==="tfng"?"True / False / Not Given":q.t==="gap"?"Completion · ONE WORD ONLY":"Multiple choice"}</div>
+      <div class="stm">${q.s}</div>${body}
+      <div class="exp" id="eb${i}"></div>
+    </div>`}).join("");
+}
+
+function lock(card,ok,expEl,html){
+  card.classList.add(ok?"right":"wrong");
+  card.querySelectorAll(".opt").forEach(b=>b.disabled=true);
+  const inp=card.querySelector("input"); if(inp)inp.disabled=true;
+  expEl.innerHTML=(ok?"<b>Correct.</b> ":"<b>Not quite.</b> ")+html;
+  expEl.classList.add("show");
+  if(ok){score++;bump()}
+}
+
+document.addEventListener("click",e=>{
+  const btn=e.target.closest(".opt[data-a],.opt[data-b]");
+  if(btn){
+    if(btn.dataset.a!==undefined){
+      const i=+btn.dataset.a; if(answered["a"+i])return; answered["a"+i]=1;
+      const ok=btn.dataset.v===A[i][2];
+      btn.classList.add(ok?"ok":"no");
+      if(!ok){const c=document.querySelector(`#a${i} .opt[data-v="${A[i][2]}"]`);if(c)c.classList.add("ok")}
+      lock(document.getElementById("a"+i),ok,document.getElementById("ea"+i),A[i][3]);
+    }else{
+      const i=+btn.dataset.b, q=B[i]; if(answered["b"+i])return;
+      let ok;
+      if(q.t==="gap"){
+        const val=(document.getElementById("gi"+i).value||"").trim().toLowerCase();
+        if(!val)return;
+        ok=q.a.includes(val);
+      }else if(q.t==="mcq"){ok=+btn.dataset.v===q.a; btn.classList.add(ok?"ok":"no");
+        if(!ok){const c=document.querySelector(`#b${i} .opt[data-v="${q.a}"]`);if(c)c.classList.add("ok")}
+      }else{ok=btn.dataset.v===q.a; btn.classList.add(ok?"ok":"no");
+        if(!ok){const c=document.querySelector(`#b${i} .opt[data-v="${q.a}"]`);if(c)c.classList.add("ok")}
+      }
+      answered["b"+i]=1;
+      let extra=q.e;
+      if(q.t==="gap")extra+=` <b>Answer:</b> ${q.a[0]}.`;
+      lock(document.getElementById("b"+i),ok,document.getElementById("eb"+i),extra);
+    }
+  }
+  if(e.target.id==="resetBtn"){score=0;answered={};bump();buildA();buildB();window.scrollTo({top:0,behavior:"smooth"})}
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&e.target.matches("input[id^=gi]")){
+    const i=e.target.id.slice(2);
+    const b=document.querySelector(`.opt[data-b="${i}"][data-v="__input"]`);
+    if(b)b.click();
+  }
+});
+
+buildA();buildB();bump();
+</script>
+</body>
+</html>
