@@ -70,6 +70,22 @@ h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(26px,4.5
 .cheat td{padding:6px 0;border-bottom:1px solid rgba(168,117,24,.22);vertical-align:top}
 .cheat td:first-child{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gold);width:48%;padding-right:14px}
 .cheat tr:last-child td{border-bottom:none}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px}
+.panel.flag{border-color:var(--rust);background:var(--rust-soft)}
+.field{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.field input{font-family:inherit;font-size:15px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);min-width:200px}
+.field input:focus{outline:none;border-color:var(--rust)}
+.notice{font-size:13.5px;color:var(--ink-2);margin-top:14px;line-height:1.55}
+.bigscore{font-family:'Instrument Serif',serif;font-size:46px;line-height:1}
+.lbt{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+.lbt th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:400;padding:8px 10px 8px 0;border-bottom:1px solid var(--line)}
+.lbt td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line)}
+.lbt tr:last-child td{border-bottom:none}
+.lbt .rank{font-family:'JetBrains Mono',monospace;color:var(--ink-3);width:34px}
+.lbt .me{background:var(--gold-soft)}
+.lbt .sc{font-weight:500}
+.muted{color:var(--ink-3);font-size:14px}
+#timer{font-family:'JetBrains Mono',monospace;font-size:13px;opacity:.75}
 footer{margin-top:50px;padding:28px 0 46px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-3)}
 @media(max-width:600px){.passage{padding:20px 18px}.scorebar{font-size:13px;gap:12px}}
 </style>
@@ -159,12 +175,23 @@ footer{margin-top:50px;padding:28px 0 46px;border-top:1px solid var(--line);font
   </div>
 </section>
 
+<section class="sec" id="submitSec" hidden>
+  <h2>Your result</h2>
+  <div class="panel" id="submitPanel"></div>
+</section>
+
+<section class="sec" id="lbSec" hidden>
+  <h2>Leaderboard</h2>
+  <p class="sec-lede">Best attempt per person. Ties are broken by time taken.</p>
+  <div class="panel" id="lb"><span class="muted">Loading…</span></div>
+</section>
+
 <footer>
-  <div>Free IELTS practice. Nothing is uploaded; your answers stay in this browser tab.</div>
+  <div id="privacyNote">Free IELTS practice. Nothing is uploaded; your answers stay in this browser tab.</div>
 </footer>
 </main>
 
-<div class="scorebar"><span>Score</span><b id="score">0</b><span id="outof">/ 22</span>
+<div class="scorebar"><span>Score</span><b id="score">0</b><span id="outof">/ 22</span><span id="timer"></span>
 <button class="btn alt" id="resetBtn" style="margin-left:auto">Reset</button></div>
 
 <script>
@@ -196,7 +223,15 @@ const B=[
 {t:"mcq",s:"According to paragraph D, supporters view a tram's fixed route as a benefit because",o:["it reduces the cost of maintenance","it encourages development nearby","it allows routes to be changed quickly","it attracts more passengers than buses"],a:1,e:"Supporters note that <b>developers invest near infrastructure they believe will still be there</b>. Option C is the opposite of permanence; A and D are never linked to the fixed-route argument."}
 ];
 
-let score=0,answered={};
+/* ============================================================
+   TRACKING CONFIG
+   Paste your Apps Script /exec URL between the quotes below.
+   Leave it empty and the page stays fully offline and private.
+   ============================================================ */
+const ENDPOINT="https://script.google.com/macros/s/AKfycby3o3lpJE4f8YmIt1fUMz9CuYvxMIUsfgDu9RkiLsEKAlhRC17Z-PfEZx2jqjEg30d74w/exec";
+const SET_ID="day1";
+
+let score=0,answered={},log=[],startedAt=null,timerInt=null,submitted=false;
 const total=A.length+B.length;
 document.getElementById("outof").textContent="/ "+total;
 
@@ -232,6 +267,94 @@ function buildB(){
     </div>`}).join("");
 }
 
+function startTimer(){
+  if(startedAt)return;
+  startedAt=Date.now();
+  timerInt=setInterval(()=>{
+    const el=document.getElementById("timer");
+    if(el)el.textContent=hms(elapsed());
+  },1000);
+}
+const elapsed=()=>startedAt?Math.round((Date.now()-startedAt)/1000):0;
+const hms=s=>Math.floor(s/60)+"m "+String(s%60).padStart(2,"0")+"s";
+
+function record(id,type,mine,correct,ok){
+  log.push({id,type,mine:String(mine),correct:String(correct),ok:!!ok,t:elapsed()});
+  if(Object.keys(answered).length===total)finish();
+}
+
+function finish(){
+  if(timerInt){clearInterval(timerInt);timerInt=null}
+  const sec=elapsed();
+  const pct=Math.round(score/total*100);
+  const wrong=log.filter(x=>!x.ok).map(x=>x.id);
+  const sec_=document.getElementById("submitSec");
+  sec_.hidden=false;
+  const saved=localStorage.getItem("ielts.name")||"";
+  document.getElementById("submitPanel").innerHTML=`
+    <div class="bigscore">${score} <span style="font-size:22px;color:var(--ink-3)">/ ${total}</span></div>
+    <div class="muted" style="margin-top:6px">${pct}% · completed in ${hms(sec)}</div>
+    ${wrong.length?`<div class="notice"><b>Missed:</b> ${wrong.join(", ")} — log these in your error sheet with the reason, not just the question number.</div>`:`<div class="notice"><b>Clean sweep.</b> Re-do it in half the time next.</div>`}
+    ${ENDPOINT?`
+      <div class="field">
+        <input id="nameIn" maxlength="40" placeholder="Your name" value="${saved.replace(/"/g,"&quot;")}" autocomplete="off">
+        <button class="btn" id="sendBtn">Submit to leaderboard</button>
+      </div>
+      <div class="notice" id="sendMsg">Submitting sends your name, score, time and which questions you answered to the study group's shared sheet. Optional — skip it and nothing is sent.</div>
+    `:""}`;
+  sec_.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+async function submitResult(){
+  const nameEl=document.getElementById("nameIn"), msg=document.getElementById("sendMsg");
+  const name=(nameEl.value||"").trim();
+  if(!name){msg.innerHTML="<b>Enter a name first.</b>";nameEl.focus();return}
+  if(submitted){msg.innerHTML="<b>Already submitted.</b>";return}
+  localStorage.setItem("ielts.name",name);
+  const btn=document.getElementById("sendBtn");
+  btn.disabled=true;btn.textContent="Sending…";
+  try{
+    const res=await fetch(ENDPOINT,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({name,set:SET_ID,score,total,seconds:elapsed(),answers:log})
+    });
+    const data=await res.json();
+    if(!data.ok)throw new Error(data.error||"rejected");
+    submitted=true;
+    btn.textContent="Submitted";
+    msg.innerHTML="<b>Saved.</b> Your result is on the leaderboard below.";
+    loadBoard(name);
+  }catch(err){
+    btn.disabled=false;btn.textContent="Try again";
+    msg.innerHTML="<b>Could not send.</b> Check your connection, or that the tracking URL is deployed with access set to <i>Anyone</i>.";
+  }
+}
+
+async function loadBoard(highlight){
+  if(!ENDPOINT)return;
+  const box=document.getElementById("lb");
+  document.getElementById("lbSec").hidden=false;
+  try{
+    const res=await fetch(ENDPOINT+"?action=leaderboard&set="+encodeURIComponent(SET_ID));
+    const data=await res.json();
+    const rows=(data.rows||[]);
+    if(!rows.length){box.innerHTML='<span class="muted">No results yet. Be the first.</span>';return}
+    const me=(highlight||localStorage.getItem("ielts.name")||"").toLowerCase();
+    box.innerHTML=`<table class="lbt">
+      <tr><th class="rank">#</th><th>Name</th><th>Score</th><th>Time</th><th>Date</th></tr>
+      ${rows.map((r,i)=>`<tr class="${r.name.toLowerCase()===me?"me":""}">
+        <td class="rank">${i+1}</td><td>${esc(r.name)}</td>
+        <td class="sc">${r.score}/${r.total}</td>
+        <td>${hms(r.seconds)}</td><td class="muted">${esc(r.date)}</td></tr>`).join("")}
+    </table>`;
+  }catch(err){
+    box.innerHTML='<span class="muted">Leaderboard unavailable right now.</span>';
+  }
+}
+
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
 function lock(card,ok,expEl,html){
   card.classList.add(ok?"right":"wrong");
   card.querySelectorAll(".opt").forEach(b=>b.disabled=true);
@@ -245,30 +368,41 @@ document.addEventListener("click",e=>{
   const btn=e.target.closest(".opt[data-a],.opt[data-b]");
   if(btn){
     if(btn.dataset.a!==undefined){
-      const i=+btn.dataset.a; if(answered["a"+i])return; answered["a"+i]=1;
+      const i=+btn.dataset.a; if(answered["a"+i])return;
+      startTimer(); answered["a"+i]=1;
       const ok=btn.dataset.v===A[i][2];
       btn.classList.add(ok?"ok":"no");
       if(!ok){const c=document.querySelector(`#a${i} .opt[data-v="${A[i][2]}"]`);if(c)c.classList.add("ok")}
       lock(document.getElementById("a"+i),ok,document.getElementById("ea"+i),A[i][3]);
+      record("A"+(i+1),"tfng",btn.dataset.v,A[i][2],ok);
     }else{
       const i=+btn.dataset.b, q=B[i]; if(answered["b"+i])return;
-      let ok;
+      let ok,mine;
       if(q.t==="gap"){
         const val=(document.getElementById("gi"+i).value||"").trim().toLowerCase();
         if(!val)return;
+        startTimer(); mine=val;
         ok=q.a.includes(val);
-      }else if(q.t==="mcq"){ok=+btn.dataset.v===q.a; btn.classList.add(ok?"ok":"no");
+      }else if(q.t==="mcq"){startTimer(); mine=String.fromCharCode(65+ +btn.dataset.v); ok=+btn.dataset.v===q.a; btn.classList.add(ok?"ok":"no");
         if(!ok){const c=document.querySelector(`#b${i} .opt[data-v="${q.a}"]`);if(c)c.classList.add("ok")}
-      }else{ok=btn.dataset.v===q.a; btn.classList.add(ok?"ok":"no");
+      }else{startTimer(); mine=btn.dataset.v; ok=btn.dataset.v===q.a; btn.classList.add(ok?"ok":"no");
         if(!ok){const c=document.querySelector(`#b${i} .opt[data-v="${q.a}"]`);if(c)c.classList.add("ok")}
       }
       answered["b"+i]=1;
       let extra=q.e;
       if(q.t==="gap")extra+=` <b>Answer:</b> ${q.a[0]}.`;
       lock(document.getElementById("b"+i),ok,document.getElementById("eb"+i),extra);
+      record("B"+(i+1),q.t,mine,q.t==="mcq"?String.fromCharCode(65+q.a):(q.t==="gap"?q.a[0]:q.a),ok);
     }
   }
-  if(e.target.id==="resetBtn"){score=0;answered={};bump();buildA();buildB();window.scrollTo({top:0,behavior:"smooth"})}
+  if(e.target.id==="sendBtn"){submitResult();return}
+  if(e.target.id==="resetBtn"){
+    score=0;answered={};log=[];startedAt=null;submitted=false;
+    if(timerInt){clearInterval(timerInt);timerInt=null}
+    document.getElementById("timer").textContent="";
+    document.getElementById("submitSec").hidden=true;
+    bump();buildA();buildB();window.scrollTo({top:0,behavior:"smooth"});
+  }
 });
 
 document.addEventListener("keydown",e=>{
@@ -280,6 +414,12 @@ document.addEventListener("keydown",e=>{
 });
 
 buildA();buildB();bump();
+
+if(ENDPOINT){
+  document.getElementById("privacyNote").innerHTML=
+    "Free IELTS practice. Your answers stay in this browser unless you choose to submit at the end \u2014 submitting shares your name, score, time and answers with the study group.";
+  loadBoard();
+}
 </script>
 </body>
 </html>
