@@ -160,6 +160,13 @@ h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,4.5
 @media(prefers-reduced-motion:reduce){
   .rcard,.rcard li,.rcard li:before,.rcard::after{transition:none!important;transform:none!important}
 }
+.plink{display:flex;align-items:center;gap:12px;margin-top:20px;padding:15px 18px;border:1px solid var(--rust);border-radius:var(--radius);background:var(--rust-soft);text-decoration:none;color:#5A2410;transition:.2s}
+.plink:hover{background:#EFCEBE;transform:translateX(3px)}
+.plink .pl-t{font-weight:500;font-size:15.5px}
+.plink .pl-s{font-size:13.5px;opacity:.8}
+.plink .pl-a{margin-left:auto;font-size:19px}
+.herolink{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:10px 18px;border-radius:999px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:14.5px;transition:.2s}
+.herolink:hover{background:var(--rust)}
 footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,120%);background:var(--ink);color:var(--paper);padding:11px 20px;border-radius:999px;font-size:14px;transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:99}
 .toast.show{transform:translate(-50%,0)}
@@ -213,7 +220,7 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
   <div class="wrap">
     <div class="eyebrow">30 Days · 4 Skills · 90 Tasks</div>
     <h1 class="big">IELTS in a<br><em>month.</em></h1>
-    <p class="lede">A complete day-by-day training plan with Reading, Writing, Listening and Speaking. From the basics to band-8 technique. Tick off tasks as you go; your progress saves automatically in this browser.</p>
+    <p class="lede">A complete day-by-day training plan — Reading, Writing, Listening and Speaking — from the basics to band-8 technique. Tick off tasks as you go; your progress saves automatically in this browser.</p>
     <div class="hero-meta">
       <span class="chip">Basic → Advanced</span>
       <span class="chip">Examiner tricks</span>
@@ -221,6 +228,7 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
       <span class="chip">Computer-delivered format</span>
       <span class="chip">Free &amp; open</span>
     </div>
+    <a class="herolink" href="day1-practice.html">Start the Day 1 practice set <span>&rarr;</span></a>
   </div>
 </header>
 
@@ -297,7 +305,7 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
   </section>
 
   <footer>
-    <span>Built as a free study tool. Progress is stored only in your own browser.</span>
+    <span>Built as a free study tool. Progress is stored only in your own browser — nothing is uploaded.</span>
     <span>Share it with anyone preparing.</span>
   </footer>
 </main>
@@ -488,6 +496,8 @@ function renderGrid(){
     </button>`}).join("");
 }
 
+const PRACTICE={1:["day1-practice.html","Day 1 practice set","22 True/False/Not Given questions with instant feedback"]};
+
 function renderDetail(){
   const d=PLAN.find(x=>x.d===sel);if(!d)return;
   const prev=PLAN.find(x=>x.d===sel-1),next=PLAN.find(x=>x.d===sel+1);
@@ -501,6 +511,7 @@ function renderDetail(){
         <span><span class="tname">${t[0]}</span><span class="tdesc" style="display:block">${t[1]}</span><span class="ttag">${t[2]}</span></span>
       </button>`).join("")}</div>
     <div class="trick"><div class="lab">Examiner trick</div><p>${d.tip}</p></div>
+    ${PRACTICE[d.d]?`<a class="plink" href="${PRACTICE[d.d][0]}"><span><span class="pl-t" style="display:block">${PRACTICE[d.d][1]}</span><span class="pl-s">${PRACTICE[d.d][2]}</span></span><span class="pl-a">&rarr;</span></a>`:""}
     <div class="navrow">
       ${prev?`<button class="pill" data-day="${prev.d}" data-jump="1">← Day ${prev.d}</button>`:`<span></span>`}
       ${next?`<button class="pill" data-day="${next.d}" data-jump="1">Day ${next.d} →</button>`:`<span></span>`}
