@@ -160,6 +160,12 @@ h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,4.5
 @media(prefers-reduced-motion:reduce){
   .rcard,.rcard li,.rcard li:before,.rcard::after{transition:none!important;transform:none!important}
 }
+.btn{font-family:inherit;font-size:14.5px;padding:11px 22px;border-radius:999px;background:var(--ink);color:var(--paper);cursor:pointer;border:none;transition:.18s}
+.btn:hover:not(:disabled){background:var(--rust)}
+.btn:disabled{opacity:.6;cursor:default}
+.btn.alt{background:transparent;border:1px solid var(--line);color:var(--ink-2)}
+.btn.alt:hover{background:var(--paper-2);color:var(--ink)}
+.muted{color:var(--ink-3);font-size:14px}
 /* ---------- ASSESSMENT ---------- */
 .assess{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 28px}
 .arow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
