@@ -160,6 +160,40 @@ h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,4.5
 @media(prefers-reduced-motion:reduce){
   .rcard,.rcard li,.rcard li:before,.rcard::after{transition:none!important;transform:none!important}
 }
+/* ---------- ASSESSMENT ---------- */
+.assess{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 28px}
+.arow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.ta{width:100%;min-height:230px;font-family:inherit;font-size:15px;line-height:1.6;padding:15px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);resize:vertical}
+.ta:focus{outline:none;border-color:var(--rust)}
+.ti{font-family:inherit;font-size:15px;padding:11px 14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);width:100%}
+.ti:focus{outline:none;border-color:var(--rust)}
+.ti.sm{width:auto;min-width:170px}
+.wc{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-3);margin-top:8px}
+.wc.under{color:var(--rust)}
+.wc.ok{color:var(--moss)}
+.aout{margin-top:22px;display:none}
+.aout.show{display:block}
+.bandbig{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.bandbig b{font-family:'Instrument Serif',serif;font-size:56px;line-height:1}
+.crit{margin-top:18px}
+.critrow{padding:14px 0;border-top:1px solid var(--line)}
+.critrow h4{font-size:15px;font-weight:500;display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.critband{font-family:'JetBrains Mono',monospace;font-size:13px;padding:2px 10px;border-radius:99px;background:var(--paper-2);color:var(--ink-2)}
+.critbar{height:5px;background:var(--paper-2);border-radius:99px;margin:8px 0 10px;overflow:hidden}
+.critbar i{display:block;height:100%;border-radius:99px;background:var(--rust);transition:width .6s cubic-bezier(.22,1,.36,1)}
+.critrow p{font-size:14.5px;color:var(--ink-2);margin-bottom:5px}
+.critrow .fix{font-size:14.5px;color:#085041;background:var(--moss-soft);padding:9px 12px;border-radius:8px;margin-top:7px}
+.issue{border-left:3px solid var(--gold);background:var(--gold-soft);padding:13px 15px;border-radius:0 8px 8px 0;margin-bottom:10px}
+.issue .qt{font-style:italic;color:#412402;margin-bottom:6px;font-size:14.5px}
+.issue .pb{font-size:14px;color:#5A3A08;margin-bottom:6px}
+.issue .rw{font-size:14.5px;color:#085041;background:rgba(255,255,255,.55);padding:8px 11px;border-radius:6px}
+.prio{counter-reset:p;list-style:none;margin-top:10px}
+.prio li{counter-increment:p;position:relative;padding-left:30px;margin-bottom:9px;font-size:15px}
+.prio li:before{content:counter(p);position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:var(--rust);color:#fff;font-size:12px;display:grid;place-items:center;font-family:'JetBrains Mono',monospace}
+.disclaim{font-size:13px;color:var(--ink-3);line-height:1.55;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.err{background:var(--rust-soft);color:#5A2410;padding:12px 15px;border-radius:var(--radius);font-size:14.5px;margin-top:14px}
+.spin{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;margin-right:7px;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
 .plink{display:flex;align-items:center;gap:12px;margin-top:20px;padding:15px 18px;border:1px solid var(--rust);border-radius:var(--radius);background:var(--rust-soft);text-decoration:none;color:#5A2410;transition:.2s}
 .plink:hover{background:#EFCEBE;transform:translateX(3px)}
 .plink .pl-t{font-weight:500;font-size:15.5px}
@@ -251,6 +285,35 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
   <div class="grid" id="grid"></div>
 
   <div class="detail" id="detail"></div>
+
+  <section class="res" id="assessSec">
+    <h2>Assessment Check</h2>
+    <p class="sec-lede">Paste a Writing Task 1 or Task 2 response and get it marked against the four official criteria, with the specific sentences that are costing you marks.</p>
+
+    <div class="assess">
+      <div class="arow">
+        <select class="ti sm" id="taskSel">
+          <option value="task2">Task 2 — Essay (250+ words)</option>
+          <option value="task1">Task 1 — Academic report (150+ words)</option>
+        </select>
+        <input class="ti sm" id="aName" maxlength="40" placeholder="Your name" autocomplete="off" style="flex:1">
+      </div>
+      <input class="ti" id="aPrompt" maxlength="600" placeholder="Paste the question you were answering (strongly recommended)" autocomplete="off">
+      <textarea class="ta" id="aEssay" style="margin-top:12px" placeholder="Paste your response here…"></textarea>
+      <div class="wc" id="aWc">0 words</div>
+      <div class="arow" style="margin:16px 0 0">
+        <button class="btn" id="aGo">Assess my writing</button>
+        <button class="btn alt" id="aClear">Clear</button>
+      </div>
+      <div id="aErr"></div>
+      <div class="aout" id="aOut"></div>
+      <div class="disclaim" id="aDisclaim">
+        This is an AI assessment, not an official one. The <b>feedback</b> is the useful part; treat the <b>band number</b> as indicative only.
+        Automated scoring is least reliable exactly at the 6.5 / 7.0 boundary, so it does not replace having a few essays marked by a trained examiner.
+        Your text is sent to Google's Gemini API for assessment and the result is logged to the study group's sheet.
+      </div>
+    </div>
+  </section>
 
   <section class="res">
     <h2>Before you start</h2>
@@ -496,6 +559,13 @@ function renderGrid(){
     </button>`}).join("");
 }
 
+/* ============================================================
+   TRACKING + ASSESSMENT ENDPOINT
+   Paste your Apps Script /exec URL between the quotes.
+   Leave empty and the Assessment Check section hides itself.
+   ============================================================ */
+const ENDPOINT="https://script.google.com/macros/s/AKfycbyFJzG3-pTMHi18uDgeLovJTGAR0DBgNN-UuNFe3m46xy6995G5gzeqVBxogoR2--P7mw/exec";
+
 const PRACTICE={1:["day1-practice.html","Day 1 practice set","22 True/False/Not Given questions with instant feedback"]};
 
 function renderDetail(){
@@ -543,6 +613,94 @@ document.addEventListener("keydown",e=>{
 });
 
 renderAll();
+
+/* ---------- Assessment Check ---------- */
+(function(){
+  const sec=document.getElementById("assessSec");
+  if(!ENDPOINT){sec.style.display="none";return}
+
+  const $=id=>document.getElementById(id);
+  const essay=$("aEssay"), wc=$("aWc"), nameIn=$("aName");
+  nameIn.value=localStorage.getItem("ielts.name")||"";
+
+  const words=t=>{const x=t.trim();return x?x.split(/\s+/).length:0};
+
+  function updateCount(){
+    const n=words(essay.value);
+    const min=$("taskSel").value==="task1"?150:250;
+    wc.textContent=n+" word"+(n===1?"":"s")+"  ·  minimum "+min;
+    wc.className="wc "+(n===0?"":n<min?"under":"ok");
+  }
+  essay.addEventListener("input",updateCount);
+  $("taskSel").addEventListener("change",updateCount);
+  updateCount();
+
+  $("aClear").addEventListener("click",()=>{
+    essay.value="";$("aPrompt").value="";$("aOut").className="aout";$("aErr").innerHTML="";updateCount();
+  });
+
+  $("aGo").addEventListener("click",assess);
+
+  async function assess(){
+    const btn=$("aGo"), err=$("aErr"), out=$("aOut");
+    err.innerHTML="";
+    const n=words(essay.value);
+    if(n<80){err.innerHTML='<div class="err">Write at least 80 words before assessing.</div>';return}
+    if(n>700){err.innerHTML='<div class="err">That is over 700 words — trim it to a realistic exam length.</div>';return}
+    const name=(nameIn.value||"").trim();
+    if(!name){err.innerHTML='<div class="err">Enter a name so your result can be tracked.</div>';nameIn.focus();return}
+    localStorage.setItem("ielts.name",name);
+
+    btn.disabled=true;btn.innerHTML='<span class="spin"></span>Assessing…';
+    out.className="aout";
+    try{
+      const res=await fetch(ENDPOINT,{
+        method:"POST",
+        headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body:JSON.stringify({action:"assess",name,task:$("taskSel").value,
+                             prompt:$("aPrompt").value,essay:essay.value})
+      });
+      const data=await res.json();
+      if(!data.ok)throw new Error(data.error||"Assessment failed.");
+      render(data.result);
+    }catch(e){
+      err.innerHTML='<div class="err">'+esc(e.message||"Could not reach the assessor.")+'</div>';
+    }finally{
+      btn.disabled=false;btn.textContent="Assess my writing";
+    }
+  }
+
+  function render(r){
+    const out=$("aOut");
+    const pct=b=>Math.max(0,Math.min(100,((b-4)/5)*100));
+    out.innerHTML=`
+      <div class="bandbig"><b>${r.overall}</b><span class="muted" style="color:var(--ink-3)">estimated overall band</span></div>
+      <p style="color:var(--ink-2);font-size:15px">${esc(r.summary||"")}</p>
+      ${r.onTopic===false?'<div class="err" style="margin-top:12px"><b>Off topic.</b> This response does not answer the question given, which caps the first criterion at band 4 in a real exam.</div>':""}
+      <div class="crit">
+        ${(r.criteria||[]).map(c=>`
+          <div class="critrow">
+            <h4>${esc(c.name)} <span class="critband">${c.band}</span></h4>
+            <div class="critbar"><i style="width:${pct(c.band)}%"></i></div>
+            <p>${esc(c.why)}</p>
+            <div class="fix"><b>To move up:</b> ${esc(c.fix)}</div>
+          </div>`).join("")}
+      </div>
+      ${(r.issues||[]).length?`<h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:24px;margin:24px 0 12px">Sentences costing you marks</h3>
+        ${r.issues.map(i=>`<div class="issue">
+          <div class="qt">&ldquo;${esc(i.quote)}&rdquo;</div>
+          <div class="pb">${esc(i.problem)}</div>
+          <div class="rw"><b>Better:</b> ${esc(i.rewrite)}</div>
+        </div>`).join("")}`:""}
+      ${(r.priorities||[]).length?`<h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:24px;margin:24px 0 8px">Fix these three first</h3>
+        <ol class="prio">${r.priorities.map(p=>`<li>${esc(p)}</li>`).join("")}</ol>`:""}
+      <div class="wc" style="margin-top:16px">${r.wordCount} words submitted</div>`;
+    out.className="aout show";
+    out.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+
+  const esc=t=>String(t==null?"":t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+})();
 
 const fine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
 const calm=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
