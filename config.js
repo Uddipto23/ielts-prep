@@ -7,4 +7,4 @@
    Leave it empty and the site runs fully offline:
    no leaderboard, no submit buttons, no Assessment Check.
    ============================================================ */
-window.IELTS_ENDPOINT = "";
+window.IELTS_ENDPOINT = "https://script.google.com/macros/s/AKfycbzuPZ3yxvNjlCvIN_PwPGvY1XMEz-YOwcbulJyL-iLtncGSMs2SIJTwjECnpoXr_SnRHw/exec";
