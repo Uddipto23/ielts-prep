@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 2 Practice — Skimming &amp; Matching Headings</title>
+<meta name="description" content="Free IELTS Reading practice: four full passages with matching headings, True/False/Not Given and sentence completion. Instant feedback and an explanation on every question.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<script src="day2-tea-times.js"></script>
+<style>
+:root{
+  --paper:#F2EEE5;--paper-2:#EAE4D7;--card:#FBF9F4;
+  --ink:#191813;--ink-2:#55513F;--ink-3:#8A8471;--line:#D9D2C1;
+  --rust:#BE4D26;--rust-soft:#F3DDD2;--moss:#4A6B3A;--moss-soft:#DFE7D5;
+  --sea:#1F5E6B;--gold:#A87518;--gold-soft:#F5E6C8;--plum:#5B3A72;--plum-soft:#E7DCEF;
+  --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.65;
+background-image:radial-gradient(circle at 1px 1px,rgba(25,24,19,.045) 1px,transparent 0);background-size:22px 22px}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--rust)}
+header.hero{padding:46px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:12px}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,7vw,68px);line-height:.98;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--rust)}
+.lede{max-width:600px;margin-top:16px;font-size:17px;color:var(--ink-2)}
+.backlink{display:inline-block;margin-top:18px;font-size:14px}
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(26px,4.5vw,38px);margin-bottom:6px;letter-spacing:-.01em}
+.sec{padding:40px 0 10px;border-top:1px solid var(--line);margin-top:34px;scroll-margin-top:12px}
+.sec-lede{color:var(--ink-2);margin-bottom:8px;max-width:620px}
+.rule{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
+.method{background:var(--gold-soft);border-radius:var(--radius);padding:20px 22px;margin-top:30px}
+.method ol{margin:6px 0 0 18px;font-size:15px;color:#412402}
+.method li{margin-bottom:7px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:12px;transition:border-color .3s ease,box-shadow .3s ease}
+.q.right{border-color:var(--moss);box-shadow:0 0 0 1px var(--moss) inset}
+.q.wrong{border-color:var(--rust);box-shadow:0 0 0 1px var(--rust) inset}
+.qn{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink-3);margin-bottom:9px}
+.stm{font-weight:500;margin-bottom:13px}
+.opts{display:flex;flex-wrap:wrap;gap:7px}
+.opt{font-family:inherit;font-size:13.5px;padding:7px 15px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-2);cursor:pointer;transition:.15s}
+.opt:hover:not(:disabled){border-color:var(--ink-3);color:var(--ink)}
+.opt:disabled{cursor:default;opacity:.55}
+.opt.ok{background:var(--moss);border-color:var(--moss);color:#fff;opacity:1}
+.opt.no{background:var(--rust);border-color:var(--rust);color:#fff;opacity:1}
+.exp{margin-top:13px;padding:13px 15px;background:var(--plum-soft);border-radius:var(--radius);font-size:14.5px;color:#3F2652;display:none}
+.exp.show{display:block}
+.exp b{color:var(--plum)}
+.passage{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin-bottom:24px}
+.passage h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:27px;margin-bottom:14px}
+.passage p{margin-bottom:8px;font-size:15.5px}
+.passage p b{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--rust);margin-right:5px}
+.lab{font-family:'JetBrains Mono',monospace;font-size:12px;padding:5px 10px;border:1px dashed var(--line);border-radius:6px;background:transparent;width:230px;max-width:100%;color:var(--ink-2);margin:0 0 16px}
+.lab:focus{outline:none;border-color:var(--rust);border-style:solid}
+.skimbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.skimbar .tm{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--rust)}
+.skimbar .tm.done{color:var(--moss)}
+.setlive{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-3);float:right;margin-top:6px}
+.ghead{margin:30px 0 14px}
+.ghead h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:24px;margin-bottom:4px}
+.instr{font-size:14.5px;color:var(--ink-2);max-width:640px}
+.tipline{font-size:13.5px;color:#085041;background:var(--moss-soft);border-radius:8px;padding:8px 12px;margin-top:10px;max-width:640px}
+.hlist{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:14px 0 16px}
+.hlist .hi{display:flex;gap:10px;font-size:14.5px;padding:3px 0;color:var(--ink-2)}
+.hlist .hi b{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--rust);min-width:34px;padding-top:2px}
+.q.ex{background:var(--paper-2);border-style:dashed}
+.gap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.gap input,.gap select{font-family:inherit;font-size:15px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.gap input{width:220px}
+.gap select{max-width:100%;min-width:260px;font-size:14.5px}
+.gap input:focus,.gap select:focus{outline:none;border-color:var(--rust)}
+.scorebar{position:sticky;bottom:0;background:var(--ink);color:var(--paper);border-radius:999px;padding:11px 22px;margin:28px auto 0;display:flex;gap:18px;align-items:center;justify-content:center;font-size:14.5px;max-width:420px;box-shadow:0 8px 24px -8px rgba(25,24,19,.4);z-index:5}
+.scorebar b{font-family:'Instrument Serif',serif;font-size:21px}
+.btn{font-family:inherit;font-size:14px;padding:9px 18px;border-radius:999px;background:var(--ink);color:var(--paper);cursor:pointer;border:none}
+.btn.alt{background:transparent;border:1px solid var(--line);color:var(--ink-2)}
+.btn:hover{opacity:.88}
+.btn:disabled{opacity:.55;cursor:default}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin:22px 0 4px}
+.field{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.field input{font-family:inherit;font-size:15px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);min-width:200px}
+.field input:focus{outline:none;border-color:var(--rust)}
+.notice{font-size:13.5px;color:var(--ink-2);margin-top:14px;line-height:1.55}
+.bigscore{font-family:'Instrument Serif',serif;font-size:46px;line-height:1}
+.breakdown{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-2)}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 14px}
+.tabs .opt[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lbt{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+.lbt th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:400;padding:8px 10px 8px 0;border-bottom:1px solid var(--line)}
+.lbt td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line)}
+.lbt tr:last-child td{border-bottom:none}
+.lbt .rank{font-family:'JetBrains Mono',monospace;color:var(--ink-3);width:34px}
+.lbt .me{background:var(--gold-soft)}
+.lbt .sc{font-weight:500}
+.muted{color:var(--ink-3);font-size:14px}
+footer{margin-top:50px;padding:28px 0 46px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-3)}
+@media(max-width:600px){.passage{padding:20px 18px}.scorebar{font-size:13px;gap:12px}.gap select{min-width:0;width:100%}.setlive{float:none;display:block;margin:0 0 8px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Day 2 · Reading · Practice sets</div>
+    <h1>Skim first,<br><em>then hunt.</em></h1>
+    <p class="lede">Four full passages. Map each one in two minutes, then answer matching headings, True / False / Not Given and sentence completion. Instant feedback, and an explanation on every question.</p>
+    <a class="backlink" href="index.html">&larr; Back to the 30-day plan</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="method">
+    <div class="rule" style="color:var(--rust);margin-bottom:8px">The Day 2 routine &middot; for every passage</div>
+    <ol>
+      <li><b>Title, then first sentences.</b> Read only the title and the first sentence of each paragraph. Two minutes, no more.</li>
+      <li><b>Label every paragraph in one word</b> in the dashed boxes between paragraphs. That is your map.</li>
+      <li><b>Headings first.</b> Your labels are already most of the answer to matching headings.</li>
+      <li><b>Then scan.</b> For True / False / Not Given and gap-fill, use the map to jump to the right paragraph, then read that sentence closely. The map tells you <i>where</i>. It never tells you <i>the answer</i>.</li>
+    </ol>
+  </div>
+
+  <div id="sets"></div>
+
+  <section class="sec" id="lbSec" hidden>
+    <h2>Leaderboards</h2>
+    <p class="sec-lede">Best attempt per person for each set. Ties are broken by time taken.</p>
+    <div class="tabs" id="lbTabs"></div>
+    <div class="panel" id="lb" style="margin-top:0"><span class="muted">Loading&hellip;</span></div>
+  </section>
+
+  <footer>
+    <div id="privacyNote">Free IELTS practice. Nothing is uploaded; your answers stay in this browser tab.</div>
+  </footer>
+</main>
+
+<div class="scorebar"><span>Score</span><b id="score">0</b><span id="outof">/ 0</span>
+<button class="btn alt" id="resetBtn" style="margin-left:auto">Reset all</button></div>
+
+<script>
+/* ============================================================
+   SETTINGS
+   ENDPOINT comes from config.js (one place for the whole site).
+
+   Set 1 (Tea Times) lives in its own file, day2-tea-times.js, because
+   that passage comes from a published Cambridge IELTS book. If you do
+   not have the right to republish it, simply do not upload that file:
+   this page detects it is missing and runs with the three original sets.
+   ============================================================ */
+const ENDPOINT=(window.IELTS_ENDPOINT||"");
+
+const HEAD_INSTR="The passage has six paragraphs (A–F). Choose the most suitable heading for each of paragraphs B–F from the list. There are more headings than paragraphs, so you will not use all of them. Paragraph A has been done for you as an example.";
+const HEAD_TIP="A heading matches the <b>main idea of the whole paragraph</b>, never one interesting detail. If a heading fits only a single sentence, it is a distractor.";
+
+const SETS_ALL=[
+...(window.TEA_TIMES_SET?[window.TEA_TIMES_SET]:[]),
+
+/* ---------------------------------------------------------------- SET 2 */
+{key:"s2",title:"The Teenage Body Clock",theme:"Science · mixed question types",
+ lede:"An original passage on adolescent sleep. Headings, True / False / Not Given and completion in one sitting, as in a real test.",
+ time:"20 minutes",types:"headings · T/F/NG · completion",
+ paras:[
+ ["A","Parents have long complained that teenagers are lazy because they struggle to get out of bed in the morning. Sleep researchers now suggest that the explanation lies in biology rather than character. During adolescence the body’s internal clock shifts, so that teenagers feel sleepy later at night, and wake naturally later in the morning, than either children or adults do."],
+ ["B","The shift is driven partly by the timing of melatonin, the hormone that signals to the body that it is time to sleep. In children, melatonin levels rise in the early evening. In teenagers the rise is delayed by an hour or more, which means that a teenager lying in bed at ten o’clock may simply not be ready to fall asleep."],
+ ["C","This biological shift collides with school timetables. In many countries lessons begin at eight o’clock or earlier, forcing teenagers to get up when their bodies are still in the middle of the night. Schools that have moved their start times later report that students are in better spirits and less likely to doze off in class. Some researchers caution, however, that the benefit depends on students actually going to bed at the same time as before, rather than staying up later."],
+ ["D","Technology is often blamed for teenage sleeplessness, and screens do play a part. The light from a phone can suppress melatonin, and the content itself keeps the mind alert. Yet researchers stress that screens are a contributing factor rather than the root cause: teenagers’ body clocks were already running late long before smartphones existed."],
+ ["E","The consequences of chronic sleep shortage go well beyond tiredness. Sleep-deprived teenagers perform worse on memory tasks, are more prone to accidents and are at greater risk of low mood. There is also evidence that the brain consolidates what has been learned during the day while we sleep, so cutting sleep short may undermine study itself."],
+ ["F","Remedies are being trialled. Some schools have moved their start times later, others teach pupils about sleep, and some families keep devices out of bedrooms. No single measure has proved a complete solution, and experts generally agree that a combination of approaches is likely to work best."]
+ ],
+ groups:[
+  {kind:"headings",instr:HEAD_INSTR,tip:HEAD_TIP,
+   headings:[
+    ["i","A clash between biology and the school day"],
+    ["ii","The role of a sleep hormone"],
+    ["iii","Screens: a factor, but not the root cause"],
+    ["iv","Why adults sleep less as they age"],
+    ["v","The wider effects of too little sleep"],
+    ["vi","An old complaint with a new explanation"],
+    ["vii","Efforts to find a remedy"],
+    ["viii","How sleep patterns differ between countries"]
+   ],
+   example:{p:"A",a:"vi"},
+   items:[
+    {p:"B",a:"ii",e:"The whole paragraph is built around <b>melatonin</b>: what it does, when it rises in children, and how that shifts in teenagers. Headings iv and viii are never discussed anywhere in the passage."},
+    {p:"C",a:"i",e:"Lessons start at eight o’clock while teenagers’ bodies are “still in the middle of the night”: the <b>body clock colliding with the timetable</b>."},
+    {p:"D",a:"iii",e:"The paragraph admits screens “do play a part” but calls them “a contributing factor <b>rather than</b> the root cause”. The heading has to carry both halves, which is why it says <i>a factor, but not the root cause</i>."},
+    {p:"E",a:"v",e:"Memory, accidents and low mood: the effects of too little sleep, “<b>beyond tiredness</b>”."},
+    {p:"F",a:"vii",e:"“Remedies are being trialled”: later starts, sleep education, devices out of bedrooms."}
+   ]},
+  {kind:"tfng",instr:"Do the following statements agree with the information in the passage? Choose <b>TRUE</b> if the statement agrees, <b>FALSE</b> if it contradicts, or <b>NOT GIVEN</b> if there is no information.",
+   items:[
+    {s:"Teenagers tend to feel sleepy later at night than children do.",a:"T",e:"Paragraph A: teenagers feel sleepy later at night “than either children or adults do”. The statement keeps one half of that comparison."},
+    {s:"Melatonin levels rise earlier in teenagers than in children.",a:"F",e:"Paragraph B: in teenagers the rise is <b>delayed by an hour or more</b>. Later, not earlier. The statement reverses it."},
+    {s:"Students at later-starting schools achieve higher exam results.",a:"NG",e:"Paragraph C mentions better spirits and less dozing in class. <b>Exam results are never mentioned</b>, and you cannot assume better mood means better marks."},
+    {s:"Researchers believe smartphones are the original cause of teenagers’ late body clocks.",a:"F",e:"Paragraph D: screens are “a contributing factor <b>rather than</b> the root cause”, and clocks were running late “long before smartphones existed”. Named, then rejected."},
+    {s:"Sleep-deprived teenagers are more likely to have accidents.",a:"T",e:"Paragraph E: sleep-deprived teenagers “are <b>more prone to accidents</b>”. <i>More prone</i> and <i>more likely</i> mean the same."},
+    {s:"Moving school start times later has proved to be a complete solution.",a:"F",e:"Paragraph F: “<b>No single measure</b> has proved a complete solution.” The statement claims one has."}
+   ]},
+  {kind:"gap",instr:"Complete the sentences below. Use <b>NO MORE THAN TWO WORDS</b> from the passage for each blank space.",
+   items:[
+    {s:"The hormone that signals that it is time to sleep is called ________.",a:["melatonin"],e:"Paragraph B: “<b>melatonin</b>, the hormone that signals to the body that it is time to sleep”."},
+    {s:"In many countries, lessons begin at ________ o’clock or earlier.",a:["eight","8"],e:"Paragraph C: lessons begin at “<b>eight</b> o’clock or earlier”. Writing the digit 8 is also accepted."},
+    {s:"While we sleep, the brain ________ what has been learned during the day.",a:["consolidates"],e:"Paragraph E: the brain “<b>consolidates</b> what has been learned during the day”. The verb must keep its third-person <i>-s</i>."}
+   ]}
+ ]},
+
+/* ---------------------------------------------------------------- SET 3 */
+{key:"s3",title:"Libraries, Reinvented",theme:"Society · mixed question types",
+ lede:"An original passage on how public libraries are changing. Watch the rejection structures from Day 1 and the quantifiers.",
+ time:"20 minutes",types:"headings · T/F/NG · completion",
+ paras:[
+ ["A","Predictions that the internet would make public libraries obsolete have not come true. Although the number of books borrowed has fallen in many countries, visitor numbers have in several places held steady or even risen, suggesting that people are using libraries for purposes their founders never imagined."],
+ ["B","The first change has been in the use of space. Quiet rows of shelving have been replaced by open areas for group work, rooms equipped for recording, and cafés. Designers argue that the building is now valued less as a store of books than as a place to meet and work."],
+ ["C","The second change concerns what libraries lend. Many now offer items that have nothing to do with reading: tools, musical instruments, board games and even seeds for gardeners. Supporters say these schemes help residents who cannot afford to buy such items for occasional use, while critics question whether they belong in a library’s budget at all."],
+ ["D","Libraries have also taken on a social role. Staff help residents apply for government benefits, learn to use computers and look for work. In neighbourhoods where few other public buildings remain, a library may be the only free indoor space where people can spend time without being expected to buy anything."],
+ ["E","This widening of purpose has brought difficulties. Funding has not kept pace with the growing list of tasks, and in some areas branches have closed or cut their opening hours. Opponents of the new model argue that librarians should concentrate on books, while defenders reply that a library serving only a minority of readers is harder to justify to taxpayers."],
+ ["F","What is not in dispute is that libraries are changing faster than at any point in their history. How far the change can go before the institution loses its identity is a question that will occupy librarians for years to come."]
+ ],
+ groups:[
+  {kind:"headings",instr:HEAD_INSTR,tip:HEAD_TIP,
+   headings:[
+    ["i","A building valued for what happens inside it"],
+    ["ii","Borrowing beyond books"],
+    ["iii","The financial pressures of doing more"],
+    ["iv","A forecast that proved wrong"],
+    ["v","A role in community life"],
+    ["vi","An uncertain future"],
+    ["vii","The decline of the printed book"],
+    ["viii","Libraries in developing countries"]
+   ],
+   example:{p:"A",a:"iv"},
+   items:[
+    {p:"B",a:"i",e:"Open areas, recording rooms, cafés, and the idea that the building is valued “<b>as a place to meet and work</b>”. Heading vii is a trap: books are mentioned only to say they matter <i>less</i>."},
+    {p:"C",a:"ii",e:"Tools, instruments, board games and seeds: <b>things libraries lend that are not books</b>."},
+    {p:"D",a:"v",e:"Helping residents with benefits, computers and jobs, and acting as a free indoor space: a <b>social, community role</b>."},
+    {p:"E",a:"iii",e:"“<b>Funding has not kept pace</b> with the growing list of tasks”, and some branches have closed or cut hours."},
+    {p:"F",a:"vi",e:"The closing paragraph ends on an open question: how far can the change go before the institution loses its identity? <b>Uncertain future.</b>"}
+   ]},
+  {kind:"tfng",instr:"Do the following statements agree with the information in the passage? Choose <b>TRUE</b> if the statement agrees, <b>FALSE</b> if it contradicts, or <b>NOT GIVEN</b> if there is no information.",
+   items:[
+    {s:"The number of books borrowed from libraries has fallen in many countries.",a:"T",e:"Paragraph A: “the number of books borrowed has <b>fallen in many countries</b>”. A direct match."},
+    {s:"Visitor numbers have fallen wherever book borrowing has fallen.",a:"F",e:"Paragraph A: visitor numbers have “in several places <b>held steady or even risen</b>”, even though borrowing fell. <i>Wherever</i> is a quantifier trap."},
+    {s:"Designers believe the main value of a library building is as a store of books.",a:"F",e:"Paragraph B: valued “<b>less as a store of books than</b> as a place to meet and work”. The statement gives the reverse."},
+    {s:"Library staff are paid more than they were a decade ago.",a:"NG",e:"<b>Staff pay is never mentioned</b> anywhere in the passage. Genuine Not Given: the topic is absent."},
+    {s:"All critics agree that lending tools belongs in a library’s budget.",a:"F",e:"Paragraph C: critics “<b>question whether</b> they belong in a library’s budget at all”. <i>All critics agree it belongs</i> contradicts that."},
+    {s:"In some areas, library branches have closed or reduced their opening hours.",a:"T",e:"Paragraph E: “in some areas branches have <b>closed or cut their opening hours</b>”. <i>Cut</i> and <i>reduced</i> match."}
+   ]},
+  {kind:"gap",instr:"Complete the sentences below. Use <b>NO MORE THAN TWO WORDS</b> from the passage for each blank space.",
+   items:[
+    {s:"Rows of quiet shelving have been replaced by open areas for ________ work.",a:["group"],e:"Paragraph B: “open areas for <b>group</b> work”."},
+    {s:"Libraries now lend items such as tools, board games and ________ for gardeners.",a:["seeds"],e:"Paragraph C: “tools, musical instruments, board games and even <b>seeds</b> for gardeners”."},
+    {s:"In some neighbourhoods a library may be the only free indoor space where people are not expected to ________.",a:["buy anything"],e:"Paragraph D: “without being expected to <b>buy anything</b>”. Two words, inside the limit."}
+   ]}
+ ]},
+
+/* ---------------------------------------------------------------- SET 4 */
+{key:"s4",title:"Mapping the Ocean Floor",theme:"Technology · mixed question types",
+ lede:"An original passage on seabed mapping. Question 10 hides a rejection inside a <i>but</i> clause: read the whole sentence.",
+ time:"20 minutes",types:"headings · T/F/NG · completion",
+ paras:[
+ ["A","It is often said that we know more about the surface of the Moon than about the floor of our own oceans. The comparison is not entirely fair, since the Moon has no water to hide its features, but it captures a real gap in knowledge. Only a minority of the seabed has been mapped in the kind of detail that is routine for dry land."],
+ ["B","The difficulty is physical. Light and radio waves, which allow satellites to image land in fine detail, are absorbed by water within a short distance of the surface. Mapping the seabed therefore relies on sound. A ship sends pulses of sound towards the bottom and measures how long the echoes take to return; because the speed of sound in water can be calculated, the delay reveals the depth."],
+ ["C","The method is accurate but slow. A ship surveys only a narrow strip at a time, and crossing open ocean takes days. Mapping the entire seabed this way would need many ships working for many years, which is why progress has been so gradual."],
+ ["D","Newer approaches aim to speed things up. Autonomous vessels that travel without a crew can run surveys for months at a time at a fraction of the cost of a crewed ship. Satellites, meanwhile, cannot see the seabed directly, but they can detect tiny variations in the height of the sea surface caused by the gravitational pull of underwater mountains, which gives a rough picture of large features."],
+ ["E","Why does it matter? Detailed maps help scientists understand ocean currents, which are influenced by the shape of the seabed. They are also essential for laying cables safely, locating shipwrecks and predicting how tsunami waves will travel. Some of the most valuable uses, researchers admit, may be ones nobody has yet thought of."],
+ ["F","An international project has set the goal of producing a complete map by 2030. Whether the target will be met is uncertain. Success depends on ships and organisations sharing the data they collect, and much of that data has traditionally been kept private by the companies and navies that gathered it."]
+ ],
+ groups:[
+  {kind:"headings",instr:HEAD_INSTR,tip:HEAD_TIP,
+   headings:[
+    ["i","The reasons why mapping matters"],
+    ["ii","Sound as a solution to a physical problem"],
+    ["iii","A surprising gap in our knowledge"],
+    ["iv","The dangers faced by deep-sea explorers"],
+    ["v","Technology that could save time and money"],
+    ["vi","A goal that depends on cooperation"],
+    ["vii","Why the standard method is too slow"],
+    ["viii","The history of ship navigation"]
+   ],
+   example:{p:"A",a:"iii"},
+   items:[
+    {p:"B",a:"ii",e:"The paragraph states a physical problem (water absorbs light and radio waves) and then the answer: <b>sound</b>. Heading viii is never discussed."},
+    {p:"C",a:"vii",e:"“Accurate but <b>slow</b>”: one narrow strip at a time, and crossing open ocean takes days."},
+    {p:"D",a:"v",e:"Crewless vessels and satellites: newer approaches that <b>aim to speed things up</b> at a fraction of the cost."},
+    {p:"E",a:"i",e:"The first sentence is the question <b>“Why does it matter?”</b> and the rest lists reasons: currents, cables, shipwrecks, tsunamis."},
+    {p:"F",a:"vi",e:"A complete map by 2030 is the goal, and success <b>depends on organisations sharing data</b>."}
+   ]},
+  {kind:"tfng",instr:"Do the following statements agree with the information in the passage? Choose <b>TRUE</b> if the statement agrees, <b>FALSE</b> if it contradicts, or <b>NOT GIVEN</b> if there is no information.",
+   items:[
+    {s:"Light and radio waves are absorbed by water close to the surface.",a:"T",e:"Paragraph B: they “are absorbed by water <b>within a short distance of the surface</b>”. <i>Close to</i> paraphrases <i>within a short distance of</i>."},
+    {s:"Most of the equipment used to measure ocean depth is made in Europe.",a:"NG",e:"The passage <b>never says where equipment is made</b>. Genuine Not Given."},
+    {s:"A single ship can survey a wide area of seabed quickly.",a:"F",e:"Paragraph C: a ship surveys “<b>only a narrow strip at a time</b>” and crossing open ocean takes days. Narrow and slow, not wide and quick."},
+    {s:"Autonomous vessels can carry out surveys for months without a crew.",a:"T",e:"Paragraph D: vessels that travel without a crew “can run surveys <b>for months at a time</b>”."},
+    {s:"Satellites can see the seabed directly.",a:"F",e:"Paragraph D: satellites “<b>cannot see the seabed directly</b>, but they can detect…” The rejection sits before the <i>but</i>."},
+    {s:"The success of the 2030 project depends partly on the sharing of data.",a:"T",e:"Paragraph F: “Success <b>depends on</b> ships and organisations sharing the data they collect.” <i>Partly</i> is safe wording for something that depends on it."}
+   ]},
+  {kind:"gap",instr:"Complete the sentences below. Use <b>NO MORE THAN TWO WORDS</b> from the passage for each blank space.",
+   items:[
+    {s:"Seabed mapping relies on pulses of ________ sent towards the bottom.",a:["sound"],e:"Paragraph B: “A ship sends pulses of <b>sound</b> towards the bottom”."},
+    {s:"Satellites can detect small variations in the ________ of the sea surface.",a:["height"],e:"Paragraph D: “tiny variations in the <b>height</b> of the sea surface”."},
+    {s:"Detailed maps are essential for laying ________ safely.",a:["cables"],e:"Paragraph E: “essential for laying <b>cables</b> safely”."}
+   ]}
+ ]}
+];
+
+const SETS=SETS_ALL;
+
+/* ---------- helpers ---------- */
+const $=id=>document.getElementById(id);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm=s=>String(s).toLowerCase().replace(/[\u2018\u2019]/g,"'").replace(/[.,;:!?"\u201c\u201d]/g,"").replace(/\s+/g," ").trim();
+const hms=s=>Math.floor(s/60)+"m "+String(s%60).padStart(2,"0")+"s";
+const LBL={T:"True",F:"False",NG:"Not Given"};
+const KIND={headings:"Matching headings",tfng:"True / False / Not Given",gap:"Sentence completion"};
+
+/* ---------- flatten questions ---------- */
+const QS=[],ST={};
+const fresh=()=>({score:0,done:0,log:[],res:{},t0:null,iv:null,skimIv:null,submitted:false,answered:{}});
+SETS.forEach((st,si)=>{
+  st.si=si;st.qs=[];let no=0;
+  st.groups.forEach(g=>{
+    g.from=no+1;
+    g.items.forEach(it=>{no++;const q={gi:QS.length,st,no,kind:g.kind,g,it};QS.push(q);st.qs.push(q);it.q=q});
+    g.to=no;
+  });
+  st.nQ=no;
+  ST[st.key]=fresh();
+});
+const TOTAL=QS.length;
+
+/* ---------- render ---------- */
+function renderQ(q){
+  const {gi,no,kind,it,g}=q;
+  let stm,body;
+  if(kind==="headings"){
+    stm="Paragraph "+it.p;
+    body=`<div class="gap"><select id="in-${gi}" aria-label="Heading for paragraph ${it.p}"><option value="">Choose a heading…</option>${g.headings.map(h=>`<option value="${h[0]}">${h[0]} · ${esc(h[1])}</option>`).join("")}</select><button class="opt" data-gi="${gi}" data-check="1">Check</button></div>`;
+  }else if(kind==="tfng"){
+    stm=it.s;
+    body=`<div class="opts">${["T","F","NG"].map(v=>`<button class="opt" data-gi="${gi}" data-v="${v}">${LBL[v]}</button>`).join("")}</div>`;
+  }else{
+    stm=it.s;
+    body=`<div class="gap"><input id="in-${gi}" placeholder="your answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Answer for question ${no}"><button class="opt" data-gi="${gi}" data-check="1">Check</button></div>`;
+  }
+  return `<div class="q" id="q-${gi}"><div class="qn">QUESTION ${no} · ${KIND[kind].toUpperCase()}</div><div class="stm">${stm}</div>${body}<div class="exp" id="e-${gi}"></div></div>`;
+}
+
+function renderSet(st){
+  const key=st.key;
+  let h=`<section class="sec" id="set-${key}">
+    <span class="setlive" id="live-${key}">0 / ${st.nQ} · 0m 00s</span>
+    <div class="rule" style="margin-bottom:6px">Set ${st.si+1} of ${SETS.length} · ${esc(st.theme)}</div>
+    <h2>${esc(st.title)}</h2>
+    <p class="sec-lede">${st.lede}</p>
+    <div class="rule">${st.time} · ${st.nQ} questions · ${st.types}</div>
+    <div class="skimbar"><button class="btn alt" data-skim="${key}">Start 2-minute skim</button><span class="tm" id="skim-${key}"></span></div>
+    <div class="passage"><h3>${esc(st.title)}</h3>
+      ${st.paras.map(p=>`<p><b>${p[0]}</b> ${p[1]}</p><input class="lab" maxlength="24" placeholder="label ${p[0]} in one word" aria-label="Your one-word label for paragraph ${p[0]}" autocomplete="off">`).join("")}
+    </div>`;
+  st.groups.forEach(g=>{
+    h+=`<div class="ghead"><h3>Questions ${g.from}–${g.to}</h3><p class="instr">${g.instr}</p>${g.tip?`<div class="tipline">${g.tip}</div>`:""}</div>`;
+    if(g.kind==="headings"){
+      h+=`<div class="hlist"><div class="rule" style="margin-bottom:8px">List of headings</div>${g.headings.map(x=>`<div class="hi"><b>${x[0]}</b><span>${esc(x[1])}</span></div>`).join("")}</div>`;
+      if(g.example){
+        const ex=g.headings.find(x=>x[0]===g.example.a);
+        h+=`<div class="q ex"><div class="qn">EXAMPLE</div><div class="stm">Paragraph ${g.example.p}</div><div class="muted"><b>${ex[0]}</b> · ${esc(ex[1])}</div></div>`;
+      }
+    }
+    g.items.forEach(it=>{h+=renderQ(it.q)});
+  });
+  h+=`<div class="panel" id="res-${key}" hidden></div></section>`;
+  return h;
+}
+
+function renderAll(){
+  $("sets").innerHTML=SETS.map(renderSet).join("");
+  $("outof").textContent="/ "+TOTAL;
+  bump();
+}
+function bump(){$("score").textContent=SETS.reduce((a,s)=>a+ST[s.key].score,0)}
+
+/* ---------- timing ---------- */
+const elapsed=S=>S.t0?Math.round((Date.now()-S.t0)/1000):0;
+function updateLive(st){
+  const S=ST[st.key],el=$("live-"+st.key);
+  if(el)el.textContent=S.done+" / "+st.nQ+" · "+hms(elapsed(S));
+}
+function startSet(st){
+  const S=ST[st.key];
+  if(S.t0)return;
+  S.t0=Date.now();
+  S.iv=setInterval(()=>updateLive(st),1000);
+}
+function toggleSkim(key){
+  const st=SETS.find(s=>s.key===key),S=ST[key],out=$("skim-"+key);
+  if(S.skimIv){clearInterval(S.skimIv);S.skimIv=null}
+  startSet(st);
+  out.classList.remove("done");
+  let left=120;
+  const fmt=n=>Math.floor(n/60)+":"+String(n%60).padStart(2,"0");
+  out.textContent=fmt(left);
+  S.skimIv=setInterval(()=>{
+    left--;
+    if(left<=0){
+      clearInterval(S.skimIv);S.skimIv=null;
+      out.textContent="Time. Now answer from your labels.";
+      out.classList.add("done");
+    }else out.textContent=fmt(left);
+  },1000);
+}
+
+/* ---------- grading ---------- */
+function grade(q,val){
+  if(q.kind==="gap")return q.it.a.map(norm).includes(norm(val));
+  return val===q.it.a;
+}
+function correctText(q){
+  if(q.kind==="headings"){const h=q.g.headings.find(x=>x[0]===q.it.a);return h[0]+" · "+h[1]}
+  if(q.kind==="tfng")return LBL[q.it.a];
+  return q.it.a[0];
+}
+
+function submitAnswer(q,val,btn){
+  const st=q.st,S=ST[st.key];
+  if(S.answered[q.no])return;
+  startSet(st);
+  S.answered[q.no]=1;S.done++;
+  const ok=grade(q,val);
+  S.res[q.no]=ok;
+  if(ok)S.score++;
+  const card=$("q-"+q.gi);
+  card.classList.add(ok?"right":"wrong");
+  card.querySelectorAll("button.opt").forEach(x=>x.disabled=true);
+  card.querySelectorAll("input,select").forEach(x=>x.disabled=true);
+  if(q.kind==="tfng"){
+    btn.classList.add(ok?"ok":"no");
+    if(!ok){const c=card.querySelector(`.opt[data-v="${q.it.a}"]`);if(c)c.classList.add("ok")}
+  }
+  const exp=$("e-"+q.gi);
+  exp.innerHTML=(ok?"<b>Correct.</b> ":"<b>Not quite.</b> ")+((!ok&&q.kind!=="tfng")?`<b>Answer: ${esc(correctText(q))}.</b> `:"")+q.it.e;
+  exp.classList.add("show");
+  S.log.push({
+    id:st.key.toUpperCase()+"Q"+q.no,
+    type:q.kind,
+    mine:q.kind==="tfng"?val:String(val),
+    correct:q.kind==="gap"?q.it.a[0]:q.it.a,
+    ok:!!ok,
+    t:elapsed(S)
+  });
+  bump();updateLive(st);
+  if(S.done===st.nQ)finishSet(st);
+}
+
+/* ---------- finishing a set ---------- */
+function finishSet(st){
+  const S=ST[st.key];
+  if(S.iv){clearInterval(S.iv);S.iv=null}
+  if(S.skimIv){clearInterval(S.skimIv);S.skimIv=null}
+  const sec=elapsed(S),pct=Math.round(S.score/st.nQ*100);
+  S.fixedSec=sec;
+  const wrong=S.log.filter(x=>!x.ok).map(x=>x.id);
+  const kinds={};
+  st.qs.forEach(q=>{const k=kinds[q.kind]||(kinds[q.kind]={n:0,ok:0});k.n++;if(S.res[q.no])k.ok++});
+  const saved=localStorage.getItem("ielts.name")||"";
+  const box=$("res-"+st.key);
+  box.hidden=false;
+  box.innerHTML=`
+    <div class="rule" style="margin-bottom:10px">Set ${st.si+1} result</div>
+    <div class="bigscore">${S.score} <span style="font-size:22px;color:var(--ink-3)">/ ${st.nQ}</span></div>
+    <div class="muted" style="margin-top:6px">${pct}% · completed in ${hms(sec)} · target 20m 00s</div>
+    <div class="breakdown">${Object.keys(kinds).map(k=>`<span class="chip">${KIND[k]} ${kinds[k].ok}/${kinds[k].n}</span>`).join("")}</div>
+    ${wrong.length?`<div class="notice"><b>Missed:</b> ${wrong.join(", ")}. Log each one in your error sheet with the reason, not just the number.</div>`:`<div class="notice"><b>Clean sweep.</b> Redo it and beat your time.</div>`}
+    ${ENDPOINT?`
+      <div class="field">
+        <input id="name-${st.key}" maxlength="40" placeholder="Your name" value="${esc(saved)}" autocomplete="off">
+        <button class="btn" data-send="${st.key}">Submit to leaderboard</button>
+      </div>
+      <div class="notice" id="msg-${st.key}">Submitting sends your name, score, time and which questions you answered to the study group’s shared sheet. Optional: skip it and nothing is sent.</div>`:""}
+    <div class="actions"><button class="btn alt" data-redo="${st.key}">Redo this set</button></div>`;
+  box.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+async function sendResult(key){
+  const st=SETS.find(s=>s.key===key),S=ST[key];
+  const nameEl=$("name-"+key),msg=$("msg-"+key);
+  const name=(nameEl.value||"").trim();
+  if(!name){msg.innerHTML="<b>Enter a name first.</b>";nameEl.focus();return}
+  if(S.submitted){msg.innerHTML="<b>Already submitted.</b>";return}
+  localStorage.setItem("ielts.name",name);
+  const btn=document.querySelector(`[data-send="${key}"]`);
+  btn.disabled=true;btn.textContent="Sending…";
+  try{
+    const res=await fetch(ENDPOINT,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({name,set:"day2-"+key,score:S.score,total:st.nQ,seconds:S.fixedSec??elapsed(S),answers:S.log})
+    });
+    const data=await res.json();
+    if(!data.ok)throw new Error(data.error||"rejected");
+    S.submitted=true;
+    btn.textContent="Submitted";
+    msg.innerHTML="<b>Saved.</b> Your result is on the leaderboard below.";
+    loadBoard(key,name);
+  }catch(err){
+    btn.disabled=false;btn.textContent="Try again";
+    msg.innerHTML="<b>Could not send.</b> Check your connection, or that the tracking URL is deployed with access set to <i>Anyone</i>.";
+  }
+}
+
+/* ---------- leaderboard ---------- */
+let lbKey=SETS.length?SETS[0].key:null;
+function renderTabs(){
+  $("lbTabs").innerHTML=SETS.map(s=>`<button class="opt" data-lb="${s.key}" aria-pressed="${s.key===lbKey}">Set ${s.si+1} · ${esc(s.title)}</button>`).join("");
+}
+async function loadBoard(key,highlight){
+  if(!ENDPOINT)return;
+  lbKey=key||lbKey;
+  $("lbSec").hidden=false;
+  renderTabs();
+  const box=$("lb");
+  box.innerHTML='<span class="muted">Loading…</span>';
+  try{
+    const res=await fetch(ENDPOINT+"?action=leaderboard&set="+encodeURIComponent("day2-"+lbKey));
+    const data=await res.json();
+    const rows=data.rows||[];
+    if(!rows.length){box.innerHTML='<span class="muted">No results yet for this set. Be the first.</span>';return}
+    const me=(highlight||localStorage.getItem("ielts.name")||"").toLowerCase();
+    box.innerHTML=`<table class="lbt">
+      <tr><th class="rank">#</th><th>Name</th><th>Score</th><th>Time</th><th>Date</th></tr>
+      ${rows.map((r,i)=>`<tr class="${r.name.toLowerCase()===me?"me":""}"><td class="rank">${i+1}</td><td>${esc(r.name)}</td><td class="sc">${r.score}/${r.total}</td><td>${hms(r.seconds)}</td><td class="muted">${esc(r.date)}</td></tr>`).join("")}
+    </table>`;
+  }catch(err){
+    box.innerHTML='<span class="muted">Leaderboard unavailable right now.</span>';
+  }
+}
+
+/* ---------- resets ---------- */
+function clearTimers(S){if(S.iv)clearInterval(S.iv);if(S.skimIv)clearInterval(S.skimIv)}
+function redoSet(key){
+  const st=SETS.find(s=>s.key===key);
+  clearTimers(ST[key]);
+  ST[key]=fresh();
+  $("set-"+key).outerHTML=renderSet(st);
+  bump();
+  $("set-"+key).scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* ---------- events ---------- */
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");
+  if(!b)return;
+  if(b.dataset.gi!==undefined){
+    const q=QS[+b.dataset.gi];
+    if(b.dataset.v){submitAnswer(q,b.dataset.v,b)}
+    else if(b.dataset.check){
+      const inp=$("in-"+q.gi);
+      const v=(inp.value||"").trim();
+      if(!v)return;
+      submitAnswer(q,v,b);
+    }
+    return;
+  }
+  if(b.dataset.skim){toggleSkim(b.dataset.skim);return}
+  if(b.dataset.send){sendResult(b.dataset.send);return}
+  if(b.dataset.redo){redoSet(b.dataset.redo);return}
+  if(b.dataset.lb){loadBoard(b.dataset.lb);return}
+  if(b.id==="resetBtn"){
+    if(!confirm("Reset all four sets? Your answers on this page will be cleared."))return;
+    SETS.forEach(s=>{clearTimers(ST[s.key]);ST[s.key]=fresh()});
+    $("lbSec").hidden=!ENDPOINT;
+    renderAll();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&e.target.matches(".gap input")){
+    const btn=e.target.parentElement.querySelector("button[data-check]");
+    if(btn)btn.click();
+  }
+});
+
+/* ---------- boot ---------- */
+renderAll();
+if(ENDPOINT){
+  $("privacyNote").innerHTML="Free IELTS practice. Your answers stay in this browser unless you choose to submit at the end of a set \u2014 submitting shares your name, score, time and answers with the study group.";
+  loadBoard(lbKey);
+}
+</script>
+</body>
+</html>
