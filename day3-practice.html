@@ -574,17 +574,16 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
 <script>
 /* ── AUDIO — 3 sections, auto-load from GitHub repo ── */
 (function(){
-  const REPO = 'https://raw.githubusercontent.com/Uddipto23/ielts-prep/main/';
   const TRACKS = [
-    { id: 'a1', file: 'listening test day 3 (section 1).mp3' },
-    { id: 'a2', file: 'listening test day 3 (section 2).mp3' },
-    { id: 'a3', file: 'listening test day 3 (section 3).mp3' },
+    { id: 'a1', url: 'https://raw.githubusercontent.com/Uddipto23/ielts-prep/main/listening%20test%20day%203%20(section%201).mp3' },
+    { id: 'a2', url: 'https://raw.githubusercontent.com/Uddipto23/ielts-prep/main/listening%20test%20day%203%20(section%202).mp3' },
+    { id: 'a3', url: 'https://raw.githubusercontent.com/Uddipto23/ielts-prep/main/listening%20test%20day%203%20(section%203).mp3' },
   ];
 
-  TRACKS.forEach(({ id, file }) => {
+  TRACKS.forEach(({ id, url }) => {
     const audio = document.getElementById(id);
     const status = document.getElementById('status-' + id);
-    audio.src = REPO + encodeURIComponent(file);
+    audio.src = url;
 
     audio.addEventListener('canplay', () => {
       status.textContent = '✓ Ready';
