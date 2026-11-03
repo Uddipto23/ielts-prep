@@ -541,6 +541,7 @@ function togglePlay(id) {
 const ENDPOINT=(window.IELTS_ENDPOINT||"");
 
 const multiSelections={};
+const singleSelections={};
 function toggleMulti(btn){
   const g=btn.dataset.group;
   if(!multiSelections[g])multiSelections[g]=new Set();
