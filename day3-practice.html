@@ -154,6 +154,7 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
   .audio-box{gap:12px}
 }
 </style>
+<script src="config.js"></script>
 </head>
 <body>
 
@@ -222,25 +223,25 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
     <tbody>
       <tr>
         <td>Name:</td>
-        <td>Martyn <span class="q-tag">1</span><input class="fill-input" id="q1" data-ans="Lewis" placeholder="__________"></td>
+        <td>Martyn <span class="q-tag">1</span><input class="fill-input" id="q1" placeholder="__________"></td>
       </tr>
       <tr>
         <td>Today's journey to Broadbeach town centre:</td>
-        <td>used his <span class="q-tag">2</span><input class="fill-input" id="q2" data-ans="bicycle" placeholder="__________"></td>
+        <td>used his <span class="q-tag">2</span><input class="fill-input" id="q2" placeholder="__________"></td>
       </tr>
       <tr>
         <td rowspan="3">Purpose of today's trip:</td>
-        <td>has visited the <span class="q-tag">3</span><input class="fill-input" id="q3" data-ans="library" placeholder="__________"></td>
+        <td>has visited the <span class="q-tag">3</span><input class="fill-input" id="q3" placeholder="__________"></td>
       </tr>
       <tr>
-        <td>looking for a new <span class="q-tag">4</span><input class="fill-input" id="q4" data-ans="jacket" placeholder="__________"></td>
+        <td>looking for a new <span class="q-tag">4</span><input class="fill-input" id="q4" placeholder="__________"></td>
       </tr>
       <tr>
-        <td>collecting <span class="q-tag">5</span><input class="fill-input" id="q5" data-ans="watch" placeholder="__________"> (after repair)</td>
+        <td>collecting <span class="q-tag">5</span><input class="fill-input" id="q5" placeholder="__________"> (after repair)</td>
       </tr>
       <tr>
         <td>Preferred day for shopping:</td>
-        <td><span class="q-tag">6</span><input class="fill-input" id="q6" data-ans="Saturday" placeholder="__________"></td>
+        <td><span class="q-tag">6</span><input class="fill-input" id="q6" placeholder="__________"></td>
       </tr>
       <tr>
         <td colspan="2" style="background:var(--paper-2);font-weight:600;font-size:14px">Opinions about shopping in the town centre</td>
@@ -250,48 +251,27 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
         <td style="font-size:13.5px;color:var(--ink-2)">(no blank)</td>
       </tr>
       <tr>
-        <td>Thinks there are too many places selling <span class="q-tag">7</span><input class="fill-input" id="q7" data-ans="jewellery" placeholder="__________"></td>
+        <td>Thinks there are too many places selling <span class="q-tag">7</span><input class="fill-input" id="q7" placeholder="__________"></td>
         <td></td>
       </tr>
       <tr>
-        <td>Would like more places to buy <span class="q-tag">8</span><input class="fill-input" id="q8" data-ans="furniture" placeholder="__________"></td>
+        <td>Would like more places to buy <span class="q-tag">8</span><input class="fill-input" id="q8" placeholder="__________"></td>
         <td></td>
       </tr>
       <tr>
         <td colspan="2" style="background:var(--paper-2);font-weight:600;font-size:14px">Opinions about new out-of-town Shopping Centre</td>
       </tr>
       <tr>
-        <td>Likes the <span class="q-tag">9</span><input class="fill-input" id="q9" data-ans="parking" placeholder="__________"> best</td>
+        <td>Likes the <span class="q-tag">9</span><input class="fill-input" id="q9" placeholder="__________"> best</td>
         <td></td>
       </tr>
       <tr>
-        <td>Believes the <span class="q-tag">10</span><input class="fill-input" id="q10" data-ans="cinema" placeholder="__________"> is unnecessary</td>
+        <td>Believes the <span class="q-tag">10</span><input class="fill-input" id="q10" placeholder="__________"> is unnecessary</td>
         <td></td>
       </tr>
     </tbody>
   </table>
 
-  <div class="check-bar">
-    <button class="btn" onclick="checkSection1()">Check answers</button>
-    <button class="btn alt" onclick="resetSection1()">Reset</button>
-    <span class="score-pill" id="sec1Score"></span>
-  </div>
-  <div class="ans-panel" id="sec1Ans">
-    <div class="ak-title">Answer Key — Questions 1–10</div>
-    <div class="ans-grid">
-      <div class="ak"><span>1.</span><b>Lewis</b></div>
-      <div class="ak"><span>2.</span><b>bicycle</b></div>
-      <div class="ak"><span>3.</span><b>library</b></div>
-      <div class="ak"><span>4.</span><b>jacket</b></div>
-      <div class="ak"><span>5.</span><b>watch</b></div>
-      <div class="ak"><span>6.</span><b>Saturday</b></div>
-      <div class="ak"><span>7.</span><b>jewellery</b></div>
-      <div class="ak"><span>8.</span><b>furniture</b></div>
-      <div class="ak"><span>9.</span><b>parking</b></div>
-      <div class="ak"><span>10.</span><b>cinema</b></div>
-    </div>
-    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers shown are placeholders — update them once you upload your actual audio.</p>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════
@@ -348,19 +328,6 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
     </div>
   </div>
 
-  <div class="check-bar">
-    <button class="btn" onclick="checkSection2()">Check answers</button>
-    <button class="btn alt" onclick="resetSection2()">Reset</button>
-    <span class="score-pill" id="sec2Score"></span>
-  </div>
-  <div class="ans-panel" id="sec2Ans">
-    <div class="ak-title">Answer Key — Questions 11–14</div>
-    <div class="ans-grid">
-      <div class="ak"><span>11–12.</span><b>A, C</b></div>
-      <div class="ak"><span>13–14.</span><b>A, D</b></div>
-    </div>
-    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers are placeholders — update once audio is confirmed.</p>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════
@@ -378,17 +345,17 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
       <div class="match-col-label">Speakers</div>
       <div class="match-items" id="matchSpeakers">
         <div class="match-row"><div class="ml"><span class="q-tag">15</span> <strong>Jim Clowie</strong></div>
-          <select class="match-select" id="m15" data-ans="A"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <select class="match-select" id="m15"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">16</span> <strong>David France</strong></div>
-          <select class="match-select" id="m16" data-ans="C"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <select class="match-select" id="m16"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">17</span> <strong>Oliver Stanton</strong></div>
-          <select class="match-select" id="m17" data-ans="F"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <select class="match-select" id="m17"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">18</span> <strong>Francesca Heptonstall</strong></div>
-          <select class="match-select" id="m18" data-ans="E"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <select class="match-select" id="m18"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">19</span> <strong>Salman Khan</strong></div>
-          <select class="match-select" id="m19" data-ans="G"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <select class="match-select" id="m19"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">20</span> <strong>Annie Craven</strong></div>
-          <select class="match-select" id="m20" data-ans="B"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <select class="match-select" id="m20"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
       </div>
     </div>
     <div>
@@ -405,23 +372,6 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
     </div>
   </div>
 
-  <div class="check-bar">
-    <button class="btn" onclick="checkSection3()">Check answers</button>
-    <button class="btn alt" onclick="resetSection3()">Reset</button>
-    <span class="score-pill" id="sec3Score"></span>
-  </div>
-  <div class="ans-panel" id="sec3Ans">
-    <div class="ak-title">Answer Key — Questions 15–20</div>
-    <div class="ans-grid">
-      <div class="ak"><span>15.</span><b>A</b></div>
-      <div class="ak"><span>16.</span><b>C</b></div>
-      <div class="ak"><span>17.</span><b>F</b></div>
-      <div class="ak"><span>18.</span><b>E</b></div>
-      <div class="ak"><span>19.</span><b>G</b></div>
-      <div class="ak"><span>20.</span><b>B</b></div>
-    </div>
-    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers are placeholders — update once audio is confirmed.</p>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════
@@ -472,20 +422,6 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
     <button class="opt" data-group="23" data-val="C" onclick="toggleSingle(this)"><span class="ol">C</span> developing creative ideas for smaller homes.</button>
   </div>
 
-  <div class="check-bar">
-    <button class="btn" onclick="checkSection4()">Check answers</button>
-    <button class="btn alt" onclick="resetSection4()">Reset</button>
-    <span class="score-pill" id="sec4Score"></span>
-  </div>
-  <div class="ans-panel" id="sec4Ans">
-    <div class="ak-title">Answer Key — Questions 21–23</div>
-    <div class="ans-grid">
-      <div class="ak"><span>21.</span><b>B</b></div>
-      <div class="ak"><span>22.</span><b>C</b></div>
-      <div class="ak"><span>23.</span><b>A</b></div>
-    </div>
-    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers are placeholders — update once audio is confirmed.</p>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════
@@ -503,19 +439,19 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
       <div class="match-col-label">Developments</div>
       <div class="match-items" id="matchDev">
         <div class="match-row"><div class="ml"><span class="q-tag">24</span> use of roof space for gardens</div>
-          <select class="match-select" id="m24" data-ans="D"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+          <select class="match-select" id="m24"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">25</span> shared working spaces</div>
-          <select class="match-select" id="m25" data-ans="B"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+          <select class="match-select" id="m25"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">26</span> moveable internal walls</div>
-          <select class="match-select" id="m26" data-ans="I"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+          <select class="match-select" id="m26"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">27</span> smart mirrors in bathrooms</div>
-          <select class="match-select" id="m27" data-ans="A"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+          <select class="match-select" id="m27"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">28</span> bike sheds with charging points</div>
-          <select class="match-select" id="m28" data-ans="H"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+          <select class="match-select" id="m28"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">29</span> restriction of cars to certain areas</div>
-          <select class="match-select" id="m29" data-ans="F"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+          <select class="match-select" id="m29"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
         <div class="match-row"><div class="ml"><span class="q-tag">30</span> communal vegetable plots</div>
-          <select class="match-select" id="m30" data-ans="G"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+          <select class="match-select" id="m30"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
       </div>
     </div>
     <div>
@@ -534,35 +470,17 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
     </div>
   </div>
 
-  <div class="check-bar">
-    <button class="btn" onclick="checkSection5()">Check answers</button>
-    <button class="btn alt" onclick="resetSection5()">Reset</button>
-    <span class="score-pill" id="sec5Score"></span>
-  </div>
-  <div class="ans-panel" id="sec5Ans">
-    <div class="ak-title">Answer Key — Questions 24–30</div>
-    <div class="ans-grid">
-      <div class="ak"><span>24.</span><b>D</b></div>
-      <div class="ak"><span>25.</span><b>B</b></div>
-      <div class="ak"><span>26.</span><b>I</b></div>
-      <div class="ak"><span>27.</span><b>A</b></div>
-      <div class="ak"><span>28.</span><b>H</b></div>
-      <div class="ak"><span>29.</span><b>F</b></div>
-      <div class="ak"><span>30.</span><b>G</b></div>
-    </div>
-    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers are placeholders — update once audio is confirmed.</p>
-  </div>
 </div>
 
-<!-- TOTAL SCORE -->
-<div class="section" id="totalSec" style="margin-top:22px;margin-bottom:8px">
-  <div class="section-label">Overall Score</div>
-  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-    <button class="btn" onclick="checkAll()">Check all sections</button>
-    <span class="score-pill" id="totalScore"></span>
+<!-- SUBMIT -->
+<div class="section" id="submitSec" style="margin-top:22px;margin-bottom:8px">
+  <div class="section-label">Submit</div>
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <input class="fill-input" id="studentName" placeholder="Your name" style="min-width:200px;border-bottom-color:var(--ink-3)">
+    <button class="btn" id="submitBtn" onclick="submitAnswers()">Submit answers</button>
+    <button class="btn alt" onclick="resetAll()">Reset all</button>
   </div>
-  <div class="prog-bar" style="margin-top:16px"><i id="totalBar"></i></div>
-  <p style="font-size:13px;color:var(--ink-3);margin-top:10px">30 questions · Band 7.5 ≈ 28+ correct · Band 8 ≈ 30 correct</p>
+  <p id="submitStatus" style="font-size:13.5px;color:var(--ink-3);margin-top:12px;min-height:20px"></p>
 </div>
 
 <footer>
@@ -579,11 +497,9 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
     { id: 'a2', fileId: '1JGJyXG_vzwPu8lYfgIgHYuVNOsEl_2mm' },
     { id: 'a3', fileId: '1rB5aF2l4blaNFpgrr3SLpJVoxecHAhfN' },
   ];
-
   const directUrl  = fid => 'https://drive.google.com/uc?export=download&id=' + fid;
   const previewUrl = fid => 'https://drive.google.com/file/d/' + fid + '/preview';
 
-  // If direct streaming is blocked by Drive, swap in Drive's own embedded player
   function useDriveEmbed(audio, status, fileId) {
     if (audio.dataset.fallback) return;
     audio.dataset.fallback = '1';
@@ -593,7 +509,7 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
     iframe.style.cssText = 'width:100%;height:150px;border:0;margin-top:8px;border-radius:8px';
     const box = audio.closest('.audio-box');
     const icon = box && box.querySelector('.audio-icon');
-    if (icon) icon.style.display = 'none'; // Drive player has its own play button
+    if (icon) icon.style.display = 'none';
     audio.replaceWith(iframe);
     status.textContent = '✓ Ready (Drive player)';
     status.style.color = 'var(--moss)';
@@ -603,63 +519,27 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
     const audio  = document.getElementById(id);
     const status = document.getElementById('status-' + id);
     let loaded = false;
-
     audio.preload = 'metadata';
     audio.src = directUrl(fileId);
-
     audio.addEventListener('canplay', () => {
       loaded = true;
       status.textContent = '✓ Ready';
       status.style.color = 'var(--moss)';
     });
     audio.addEventListener('error', () => useDriveEmbed(audio, status, fileId));
-
-    // safety net: if nothing loads in 10s, fall back to Drive's player
     setTimeout(() => { if (!loaded) useDriveEmbed(audio, status, fileId); }, 10000);
   });
 })();
 
 function togglePlay(id) {
   const audio = document.getElementById(id);
-  if (!audio || audio.tagName !== 'AUDIO') return; // Drive player in use: use its own controls
+  if (!audio || audio.tagName !== 'AUDIO') return;
   audio.paused ? audio.play() : audio.pause();
 }
 
-/* ── HELPERS ── */
-function showScore(pillId, correct, total){
-  const p=document.getElementById(pillId);
-  p.textContent=correct+'/'+total;
-  p.className='score-pill show '+(correct===total?'great':correct>=total*0.7?'ok':'low');
-}
+/* ── GOOGLE SHEET SUBMISSION — uses the same endpoint as index.html (config.js) ── */
+const ENDPOINT=(window.IELTS_ENDPOINT||"");
 
-/* ── SECTION 1: Form fill ── */
-function checkSection1(){
-  const ids=['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'];
-  let ok=0;
-  ids.forEach(id=>{
-    const el=document.getElementById(id);
-    const ans=el.dataset.ans.toLowerCase().trim();
-    const val=el.value.toLowerCase().trim();
-    el.classList.remove('correct','wrong');
-    if(val===''){ return; }
-    if(val===ans){el.classList.add('correct');ok++;}
-    else{el.classList.add('wrong');}
-  });
-  const filled=ids.filter(id=>document.getElementById(id).value.trim()!=='').length;
-  showScore('sec1Score',ok,10);
-  document.getElementById('sec1Ans').classList.add('show');
-  updateTotal();
-}
-function resetSection1(){
-  ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'].forEach(id=>{
-    const el=document.getElementById(id);el.value='';el.className='fill-input';
-  });
-  document.getElementById('sec1Score').className='score-pill';
-  document.getElementById('sec1Ans').classList.remove('show');
-  updateTotal();
-}
-
-/* ── MULTI SELECT (Q11–14) ── */
 const multiSelections={};
 function toggleMulti(btn){
   const g=btn.dataset.group;
@@ -678,67 +558,6 @@ function toggleMulti(btn){
   }
 }
 
-function checkSection2(){
-  // Q11-12: correct = A, C  (placeholder)
-  const correct1112=new Set(['A','C']);
-  const sel1112=multiSelections['1112']||new Set();
-  let ok2=0;
-  document.querySelectorAll('.opt[data-group="1112"]').forEach(btn=>{
-    btn.classList.remove('correct-ans','wrong-ans');
-    const v=btn.dataset.val;
-    if(correct1112.has(v)&&sel1112.has(v)){btn.classList.add('correct-ans');ok2++;}
-    else if(sel1112.has(v)&&!correct1112.has(v)){btn.classList.add('wrong-ans');}
-    else if(correct1112.has(v)&&!sel1112.has(v)){btn.classList.add('correct-ans');}
-  });
-  // Q13-14: correct = A, D  (placeholder)
-  const correct1314=new Set(['A','D']);
-  const sel1314=multiSelections['1314']||new Set();
-  document.querySelectorAll('.opt[data-group="1314"]').forEach(btn=>{
-    btn.classList.remove('correct-ans','wrong-ans');
-    const v=btn.dataset.val;
-    if(correct1314.has(v)&&sel1314.has(v)){btn.classList.add('correct-ans');ok2++;}
-    else if(sel1314.has(v)&&!correct1314.has(v)){btn.classList.add('wrong-ans');}
-    else if(correct1314.has(v)&&!sel1314.has(v)){btn.classList.add('correct-ans');}
-  });
-  showScore('sec2Score',ok2,4);
-  document.getElementById('sec2Ans').classList.add('show');
-  updateTotal();
-}
-function resetSection2(){
-  ['1112','1314'].forEach(g=>{
-    multiSelections[g]=new Set();
-    document.querySelectorAll(`.opt[data-group="${g}"]`).forEach(b=>b.className='opt');
-  });
-  document.getElementById('sec2Score').className='score-pill';
-  document.getElementById('sec2Ans').classList.remove('show');
-  updateTotal();
-}
-
-/* ── MATCHING Q15-20 ── */
-function checkSection3(){
-  const ids=['m15','m16','m17','m18','m19','m20'];
-  let ok=0;
-  ids.forEach(id=>{
-    const el=document.getElementById(id);
-    el.classList.remove('correct','wrong');
-    if(el.value===el.dataset.ans){el.classList.add('correct');ok++;}
-    else if(el.value!==''){el.classList.add('wrong');}
-  });
-  showScore('sec3Score',ok,6);
-  document.getElementById('sec3Ans').classList.add('show');
-  updateTotal();
-}
-function resetSection3(){
-  ['m15','m16','m17','m18','m19','m20'].forEach(id=>{
-    const el=document.getElementById(id);el.value='';el.className='match-select';
-  });
-  document.getElementById('sec3Score').className='score-pill';
-  document.getElementById('sec3Ans').classList.remove('show');
-  updateTotal();
-}
-
-/* ── SINGLE MCQ Q21-23 ── */
-const singleSelections={};
 function toggleSingle(btn){
   const g=btn.dataset.group;
   document.querySelectorAll(`.opt[data-group="${g}"]`).forEach(b=>b.classList.remove('selected'));
@@ -746,86 +565,59 @@ function toggleSingle(btn){
   btn.classList.add('selected');
 }
 
-function checkSection4(){
-  const correct={21:'B',22:'C',23:'A'};
-  let ok=0;
+
+function collectAnswers(){
+  const a={};
+  for(let i=1;i<=10;i++) a['Q'+i]=(document.getElementById('q'+i).value||'').trim();
+  a['Q11-12']=[...(multiSelections['1112']||[])].sort().join(',');
+  a['Q13-14']=[...(multiSelections['1314']||[])].sort().join(',');
+  for(let i=15;i<=20;i++) a['Q'+i]=document.getElementById('m'+i).value;
   [21,22,23].forEach(n=>{
-    const sel=singleSelections[String(n)];
-    document.querySelectorAll(`.opt[data-group="${n}"]`).forEach(btn=>{
-      btn.classList.remove('correct-ans','wrong-ans');
-      if(btn.dataset.val===correct[n]){btn.classList.add('correct-ans');}
-      else if(btn.dataset.val===sel){btn.classList.add('wrong-ans');}
+    const sel=document.querySelector(`.opt[data-group="${n}"].selected`);
+    a['Q'+n]=sel?sel.dataset.val:'';
+  });
+  for(let i=24;i<=30;i++) a['Q'+i]=document.getElementById('m'+i).value;
+  return a;
+}
+
+async function submitAnswers(){
+  const status=document.getElementById('submitStatus');
+  const btn=document.getElementById('submitBtn');
+  const name=document.getElementById('studentName').value.trim();
+  const fail=m=>{status.textContent=m;status.style.color='var(--rust)';};
+  if(!name){fail('Please enter your name first.');return;}
+  if(!ENDPOINT){fail('Sheet endpoint not found — make sure config.js is in the same folder as this page.');return;}
+  try{localStorage.setItem('ielts.name',name);}catch(e){}
+  const answers=collectAnswers();
+  const blank=Object.values(answers).filter(v=>v==='').length;
+  if(blank && !confirm(blank+' question(s) are still blank. Submit anyway?')) return;
+  btn.disabled=true;status.style.color='var(--ink-3)';status.textContent='Submitting…';
+  try{
+    const res=await fetch(ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({action:'listening',name,set:'Day 3 Listening',submittedAt:new Date().toISOString(),answers})
     });
-    if(sel===correct[n])ok++;
-  });
-  showScore('sec4Score',ok,3);
-  document.getElementById('sec4Ans').classList.add('show');
-  updateTotal();
-}
-function resetSection4(){
-  [21,22,23].forEach(n=>{
-    singleSelections[String(n)]=null;
-    document.querySelectorAll(`.opt[data-group="${n}"]`).forEach(b=>b.className='opt');
-  });
-  document.getElementById('sec4Score').className='score-pill';
-  document.getElementById('sec4Ans').classList.remove('show');
-  updateTotal();
-}
-
-/* ── MATCHING Q24-30 ── */
-function checkSection5(){
-  const ids=['m24','m25','m26','m27','m28','m29','m30'];
-  let ok=0;
-  ids.forEach(id=>{
-    const el=document.getElementById(id);
-    el.classList.remove('correct','wrong');
-    if(el.value===el.dataset.ans){el.classList.add('correct');ok++;}
-    else if(el.value!==''){el.classList.add('wrong');}
-  });
-  showScore('sec5Score',ok,7);
-  document.getElementById('sec5Ans').classList.add('show');
-  updateTotal();
-}
-function resetSection5(){
-  ['m24','m25','m26','m27','m28','m29','m30'].forEach(id=>{
-    const el=document.getElementById(id);el.value='';el.className='match-select';
-  });
-  document.getElementById('sec5Score').className='score-pill';
-  document.getElementById('sec5Ans').classList.remove('show');
-  updateTotal();
-}
-
-/* ── TOTAL ── */
-function getScore(pillId){
-  const p=document.getElementById(pillId);
-  if(!p.classList.contains('show'))return null;
-  const t=p.textContent.split('/');
-  return{got:parseInt(t[0]),total:parseInt(t[1])};
-}
-function updateTotal(){
-  const scores=[
-    getScore('sec1Score'),
-    getScore('sec2Score'),
-    getScore('sec3Score'),
-    getScore('sec4Score'),
-    getScore('sec5Score')
-  ].filter(Boolean);
-  if(!scores.length){
-    document.getElementById('totalScore').className='score-pill';
-    document.getElementById('totalBar').style.width='0%';
-    return;
+    const data=await res.json();
+    if(!data.ok) throw new Error(data.error||'The sheet rejected the submission.');
+    status.textContent='✓ Submitted — your answers were saved to the sheet.';
+    status.style.color='var(--moss)';
+  }catch(err){
+    fail('⚠ '+(err.message||'Could not submit.')+' Try again.');
   }
-  let got=0,total=30;
-  scores.forEach(s=>{got+=s.got});
-  const pct=Math.round((got/total)*100);
-  const pill=document.getElementById('totalScore');
-  pill.textContent=got+'/30 ('+pct+'%)';
-  pill.className='score-pill show '+(got>=28?'great':got>=21?'ok':'low');
-  document.getElementById('totalBar').style.width=pct+'%';
+  btn.disabled=false;
 }
-function checkAll(){
-  checkSection1();checkSection2();checkSection3();checkSection4();checkSection5();
+
+function resetAll(){
+  if(!confirm('Clear all your answers?')) return;
+  document.querySelectorAll('.fill-input:not(#studentName)').forEach(el=>el.value='');
+  document.querySelectorAll('.match-select').forEach(el=>el.value='');
+  document.querySelectorAll('.opt.selected').forEach(el=>el.classList.remove('selected'));
+  Object.keys(multiSelections).forEach(k=>delete multiSelections[k]);
+  document.getElementById('submitStatus').textContent='';
 }
+
+try{const n=localStorage.getItem('ielts.name');if(n)document.getElementById('studentName').value=n;}catch(e){}
 </script>
 </body>
 </html>
