@@ -572,32 +572,56 @@ footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font
 </main>
 
 <script>
-/* ── AUDIO — 3 sections, auto-load from GitHub repo ── */
+/* ── AUDIO — 3 sections, loaded from Google Drive ── */
 (function(){
   const TRACKS = [
-    { id: 'a1', url: 'https://github.com/Uddipto23/ielts-prep/raw/main/day3-sec1.mp3' },
-    { id: 'a2', url: 'https://github.com/Uddipto23/ielts-prep/raw/main/day3-sec2.mp3' },
-    { id: 'a3', url: 'https://github.com/Uddipto23/ielts-prep/raw/main/day3-sec3.mp3' },
+    { id: 'a1', fileId: '1G58rxNn0Lyyw8Z_FTW_PDaRqoXjvvEat' },
+    { id: 'a2', fileId: '1JGJyXG_vzwPu8lYfgIgHYuVNOsEl_2mm' },
+    { id: 'a3', fileId: '1rB5aF2l4blaNFpgrr3SLpJVoxecHAhfN' },
   ];
 
-  TRACKS.forEach(({ id, url }) => {
-    const audio = document.getElementById(id);
+  const directUrl  = fid => 'https://drive.google.com/uc?export=download&id=' + fid;
+  const previewUrl = fid => 'https://drive.google.com/file/d/' + fid + '/preview';
+
+  // If direct streaming is blocked by Drive, swap in Drive's own embedded player
+  function useDriveEmbed(audio, status, fileId) {
+    if (audio.dataset.fallback) return;
+    audio.dataset.fallback = '1';
+    const iframe = document.createElement('iframe');
+    iframe.src = previewUrl(fileId);
+    iframe.allow = 'autoplay';
+    iframe.style.cssText = 'width:100%;height:150px;border:0;margin-top:8px;border-radius:8px';
+    const box = audio.closest('.audio-box');
+    const icon = box && box.querySelector('.audio-icon');
+    if (icon) icon.style.display = 'none'; // Drive player has its own play button
+    audio.replaceWith(iframe);
+    status.textContent = '✓ Ready (Drive player)';
+    status.style.color = 'var(--moss)';
+  }
+
+  TRACKS.forEach(({ id, fileId }) => {
+    const audio  = document.getElementById(id);
     const status = document.getElementById('status-' + id);
-    audio.src = url;
+    let loaded = false;
+
+    audio.preload = 'metadata';
+    audio.src = directUrl(fileId);
 
     audio.addEventListener('canplay', () => {
+      loaded = true;
       status.textContent = '✓ Ready';
       status.style.color = 'var(--moss)';
     });
-    audio.addEventListener('error', () => {
-      status.textContent = '⚠ Not found in repo';
-      status.style.color = 'var(--rust)';
-    });
+    audio.addEventListener('error', () => useDriveEmbed(audio, status, fileId));
+
+    // safety net: if nothing loads in 10s, fall back to Drive's player
+    setTimeout(() => { if (!loaded) useDriveEmbed(audio, status, fileId); }, 10000);
   });
 })();
 
 function togglePlay(id) {
   const audio = document.getElementById(id);
+  if (!audio || audio.tagName !== 'AUDIO') return; // Drive player in use: use its own controls
   audio.paused ? audio.play() : audio.pause();
 }
 
