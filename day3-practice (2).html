@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 3 — Listening Practice Set | IELTS 30</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EEE5;
+  --paper-2:#EAE4D7;
+  --card:#FBF9F4;
+  --ink:#191813;
+  --ink-2:#55513F;
+  --ink-3:#8A8471;
+  --line:#D9D2C1;
+  --rust:#BE4D26;
+  --rust-soft:#F3DDD2;
+  --moss:#4A6B3A;
+  --moss-soft:#DFE7D5;
+  --sea:#1F5E6B;
+  --sea-soft:#D6E6E8;
+  --gold:#A87518;
+  --gold-soft:#F5E6C8;
+  --plum:#5B3A72;
+  --plum-soft:#E7DCEF;
+  --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;
+  font-size:16px;line-height:1.65;
+  background-image:radial-gradient(circle at 1px 1px, rgba(25,24,19,.045) 1px, transparent 0);
+  background-size:22px 22px;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+
+/* HEADER */
+.topbar{padding:18px 0;border-bottom:1px solid var(--line);margin-bottom:0}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.back-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--ink-2);text-decoration:none;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+.back-link:hover{color:var(--rust)}
+.back-link svg{width:15px;height:15px}
+
+.page-hero{padding:38px 0 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:12px}
+.page-title{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(34px,6vw,58px);line-height:.96;letter-spacing:-.02em;margin-bottom:14px}
+.page-title em{font-style:italic;color:var(--rust)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink-2)}
+
+/* AUDIO PLAYER */
+.audio-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:28px 0 0;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.audio-icon{width:44px;height:44px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:0 0 44px;cursor:pointer;transition:.18s}
+.audio-icon:hover{background:var(--rust)}
+.audio-icon svg{width:18px;height:18px;fill:#fff}
+.audio-info{flex:1;min-width:180px}
+.audio-info .a-title{font-weight:500;font-size:15px;margin-bottom:2px}
+.audio-info .a-sub{font-size:13px;color:var(--ink-3);font-family:'JetBrains Mono',monospace}
+.audio-note{font-size:13px;color:var(--ink-3);background:var(--gold-soft);border:1px solid #DCC090;border-radius:8px;padding:9px 13px;width:100%;line-height:1.5}
+audio{width:100%;margin-top:10px;accent-color:var(--rust)}
+
+/* SECTIONS */
+.section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin-top:22px;position:relative}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.section-q{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;margin-bottom:4px}
+.section-inst{font-size:14px;color:var(--ink-2);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.section-inst strong{color:var(--ink)}
+
+/* FORM COMPLETION */
+.form-table{width:100%;border-collapse:collapse;font-size:14.5px}
+.form-table td{padding:9px 12px;border:1px solid var(--line);vertical-align:top;line-height:1.55}
+.form-table td:first-child{background:var(--paper-2);font-weight:500;width:45%;color:var(--ink)}
+.form-table td:last-child{background:#fff}
+.q-tag{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;margin-right:6px;flex:0 0 22px}
+.fill-input{display:inline-block;border:none;border-bottom:2px solid var(--rust);background:transparent;font-family:'DM Sans',sans-serif;font-size:14.5px;color:var(--ink);padding:2px 6px;min-width:110px;outline:none;transition:.15s}
+.fill-input:focus{border-bottom-color:var(--ink);background:var(--rust-soft);border-radius:4px 4px 0 0}
+.fill-input.correct{border-bottom-color:var(--moss);background:var(--moss-soft);border-radius:4px 4px 0 0}
+.fill-input.wrong{border-bottom-color:var(--rust);background:var(--rust-soft);border-radius:4px 4px 0 0}
+
+/* MCQ */
+.mcq-prompt{font-size:15px;font-weight:500;margin-bottom:13px;line-height:1.5;padding-left:28px;position:relative}
+.mcq-prompt .qn{position:absolute;left:0;top:1px}
+.options{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.opt{display:flex;align-items:flex-start;gap:11px;padding:11px 14px;border:1.5px solid var(--line);border-radius:var(--radius);background:var(--paper);cursor:pointer;text-align:left;font-size:14.5px;transition:.15s;line-height:1.5;width:100%}
+.opt:hover{border-color:var(--ink-3);background:var(--paper-2)}
+.opt .ol{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;width:20px;flex:0 0 20px;padding-top:1px;color:var(--ink-3)}
+.opt.selected{border-color:var(--sea);background:var(--sea-soft)}
+.opt.selected .ol{color:var(--sea)}
+.opt.correct-ans{border-color:var(--moss)!important;background:var(--moss-soft)!important}
+.opt.correct-ans .ol{color:var(--moss)!important}
+.opt.wrong-ans{border-color:var(--rust)!important;background:var(--rust-soft)!important}
+.opt.wrong-ans .ol{color:var(--rust)!important}
+
+/* MATCHING */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:580px){.match-grid{grid-template-columns:1fr}}
+.match-col-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.option-bank{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.bank-item{padding:10px 13px;border-bottom:1px solid var(--line);font-size:14px;line-height:1.45;display:flex;gap:10px;align-items:flex-start}
+.bank-item:last-child{border-bottom:none}
+.bank-item .bl{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--rust);flex:0 0 16px;padding-top:2px}
+.match-items{display:flex;flex-direction:column;gap:8px}
+.match-row{display:flex;align-items:center;gap:10px;font-size:14.5px;flex-wrap:wrap}
+.match-row .ml{font-size:13.5px;flex:1;min-width:140px;line-height:1.45;color:var(--ink-2)}
+.match-row .ml strong{color:var(--ink)}
+.match-select{font-family:'JetBrains Mono',monospace;font-size:12px;padding:7px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);cursor:pointer;min-width:64px;transition:.15s;outline:none}
+.match-select:focus{border-color:var(--rust)}
+.match-select.correct{border-color:var(--moss);background:var(--moss-soft);color:var(--moss)}
+.match-select.wrong{border-color:var(--rust);background:var(--rust-soft);color:var(--rust)}
+
+/* ANSWERS BAR */
+.check-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.btn{font-family:inherit;font-size:14px;padding:10px 22px;border-radius:999px;background:var(--ink);color:var(--paper);cursor:pointer;border:none;transition:.18s}
+.btn:hover:not(:disabled){background:var(--rust)}
+.btn.alt{background:transparent;border:1px solid var(--line);color:var(--ink-2)}
+.btn.alt:hover{background:var(--paper-2);color:var(--ink)}
+.score-pill{font-family:'JetBrains Mono',monospace;font-size:12px;padding:8px 16px;border-radius:999px;background:var(--paper-2);border:1px solid var(--line);color:var(--ink-2);display:none}
+.score-pill.show{display:inline-block}
+.score-pill.great{background:var(--moss-soft);border-color:var(--moss);color:var(--moss)}
+.score-pill.ok{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
+.score-pill.low{background:var(--rust-soft);border-color:var(--rust);color:var(--rust)}
+
+/* ANSWER KEY PANEL */
+.ans-panel{margin-top:16px;padding:16px 18px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);display:none;font-size:14px;line-height:1.7}
+.ans-panel.show{display:block}
+.ans-panel .ak-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.ans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px 16px}
+.ak{font-size:13.5px;display:flex;gap:8px}
+.ak span{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-3);min-width:24px}
+.ak b{color:var(--moss)}
+
+/* TRICK BOX */
+.trick{margin-top:22px;padding:18px 20px;border-left:3px solid var(--rust);background:var(--rust-soft);border-radius:0 var(--radius) var(--radius) 0}
+.trick .tl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:6px}
+.trick p{font-family:'Instrument Serif',serif;font-size:19px;line-height:1.45;color:#5A2410}
+
+/* PROGRESS */
+.prog-bar{height:5px;background:var(--paper-2);border-radius:99px;margin-top:18px;overflow:hidden}
+.prog-bar i{display:block;height:100%;background:var(--gold);border-radius:99px;width:0%;transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+.section-divider{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);text-align:center;padding:18px 0 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:"";flex:1;height:1px;background:var(--line)}
+
+footer{margin-top:54px;padding:28px 0 44px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+@media(max-width:600px){
+  .section{padding:20px 16px}
+  .audio-box{gap:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3L5 7.5L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to plan
+    </a>
+    <span class="chip">Day 3 · Listening</span>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Day 3 — Listening Practice Set</div>
+    <h1 class="page-title">Listing <em>test</em></h1>
+    <div class="hero-chips">
+      <span class="chip">30 questions</span>
+      <span class="chip">~30 min</span>
+      <span class="chip">Sections 1–3</span>
+      <span class="chip">No replay</span>
+    </div>
+
+
+
+    <div class="trick" style="margin-top:22px">
+      <div class="tl">Examiner Trick — Day 3</div>
+      <p>In Section 2 matching, the speaker will mention ALL the options, but only SEVEN will match. They often describe something positively, then use "however" to shift — the final opinion is the one that counts.</p>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" style="padding-top:10px;padding-bottom:20px">
+
+<!-- ══════════════════════════════════════
+     SECTION 1 — Questions 1–10
+     Form Completion: Survey about shopping
+══════════════════════════════════════ -->
+<div class="section-divider">Section 1</div>
+
+<div class="audio-box">
+  <div class="audio-icon" onclick="togglePlay('a1')" title="Play / Pause">
+    <svg viewBox="0 0 20 20"><path d="M5 3.5L16 10L5 16.5V3.5Z"/></svg>
+  </div>
+  <div class="audio-info">
+    <div class="a-title">Section 1 Audio — Questions 1–10</div>
+    <div class="a-sub" id="status-a1">Loading…</div>
+  </div>
+  <audio id="a1" controls style="width:100%;margin-top:8px"></audio>
+</div>
+
+<div class="section" id="sec1">
+  <div class="section-label">Questions 1–10</div>
+  <div class="section-q">Form Completion</div>
+  <div class="section-inst">Complete the form below. Write <strong>ONE WORD ONLY</strong> for each answer.<br>
+    <em style="color:var(--gold);font-size:13px">📍 Survey about shopping in Broadbeach</em>
+  </div>
+
+  <table class="form-table" id="formTable">
+    <thead>
+      <tr>
+        <td colspan="2" style="background:var(--ink);color:var(--paper);font-family:'Instrument Serif',serif;font-size:17px;font-weight:400;padding:12px 14px">Survey about shopping in Broadbeach</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name:</td>
+        <td>Martyn <span class="q-tag">1</span><input class="fill-input" id="q1" data-ans="Lewis" placeholder="__________"></td>
+      </tr>
+      <tr>
+        <td>Today's journey to Broadbeach town centre:</td>
+        <td>used his <span class="q-tag">2</span><input class="fill-input" id="q2" data-ans="bicycle" placeholder="__________"></td>
+      </tr>
+      <tr>
+        <td rowspan="3">Purpose of today's trip:</td>
+        <td>has visited the <span class="q-tag">3</span><input class="fill-input" id="q3" data-ans="library" placeholder="__________"></td>
+      </tr>
+      <tr>
+        <td>looking for a new <span class="q-tag">4</span><input class="fill-input" id="q4" data-ans="jacket" placeholder="__________"></td>
+      </tr>
+      <tr>
+        <td>collecting <span class="q-tag">5</span><input class="fill-input" id="q5" data-ans="watch" placeholder="__________"> (after repair)</td>
+      </tr>
+      <tr>
+        <td>Preferred day for shopping:</td>
+        <td><span class="q-tag">6</span><input class="fill-input" id="q6" data-ans="Saturday" placeholder="__________"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background:var(--paper-2);font-weight:600;font-size:14px">Opinions about shopping in the town centre</td>
+      </tr>
+      <tr>
+        <td>Finds the service in shops is excellent</td>
+        <td style="font-size:13.5px;color:var(--ink-2)">(no blank)</td>
+      </tr>
+      <tr>
+        <td>Thinks there are too many places selling <span class="q-tag">7</span><input class="fill-input" id="q7" data-ans="jewellery" placeholder="__________"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Would like more places to buy <span class="q-tag">8</span><input class="fill-input" id="q8" data-ans="furniture" placeholder="__________"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="background:var(--paper-2);font-weight:600;font-size:14px">Opinions about new out-of-town Shopping Centre</td>
+      </tr>
+      <tr>
+        <td>Likes the <span class="q-tag">9</span><input class="fill-input" id="q9" data-ans="parking" placeholder="__________"> best</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Believes the <span class="q-tag">10</span><input class="fill-input" id="q10" data-ans="cinema" placeholder="__________"> is unnecessary</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="check-bar">
+    <button class="btn" onclick="checkSection1()">Check answers</button>
+    <button class="btn alt" onclick="resetSection1()">Reset</button>
+    <span class="score-pill" id="sec1Score"></span>
+  </div>
+  <div class="ans-panel" id="sec1Ans">
+    <div class="ak-title">Answer Key — Questions 1–10</div>
+    <div class="ans-grid">
+      <div class="ak"><span>1.</span><b>Lewis</b></div>
+      <div class="ak"><span>2.</span><b>bicycle</b></div>
+      <div class="ak"><span>3.</span><b>library</b></div>
+      <div class="ak"><span>4.</span><b>jacket</b></div>
+      <div class="ak"><span>5.</span><b>watch</b></div>
+      <div class="ak"><span>6.</span><b>Saturday</b></div>
+      <div class="ak"><span>7.</span><b>jewellery</b></div>
+      <div class="ak"><span>8.</span><b>furniture</b></div>
+      <div class="ak"><span>9.</span><b>parking</b></div>
+      <div class="ak"><span>10.</span><b>cinema</b></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers shown are placeholders — update them once you upload your actual audio.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 2 — Questions 11–14
+     Multiple Choice: Business Exhibition
+══════════════════════════════════════ -->
+<div class="section-divider">Section 2</div>
+
+<div class="audio-box">
+  <div class="audio-icon" onclick="togglePlay('a2')" title="Play / Pause">
+    <svg viewBox="0 0 20 20"><path d="M5 3.5L16 10L5 16.5V3.5Z"/></svg>
+  </div>
+  <div class="audio-info">
+    <div class="a-title">Section 2 Audio — Questions 11–20</div>
+    <div class="a-sub" id="status-a2">Loading…</div>
+  </div>
+  <audio id="a2" controls style="width:100%;margin-top:8px"></audio>
+</div>
+
+<div class="section" id="sec2">
+  <div class="section-label">Questions 11–14</div>
+  <div class="section-q">Multiple Choice</div>
+  <div class="section-inst">Choose the correct letter, <strong>A, B, C, D</strong> or <strong>E</strong>. For Questions 11–12 and 13–14, choose <strong>TWO</strong> letters each.</div>
+
+  <!-- Q11–12 -->
+  <div style="margin-bottom:22px">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Questions 11–12 — Choose TWO letters, A–E</p>
+    <div class="mcq-prompt">
+      <span class="qn"><span class="q-tag" style="width:auto;padding:0 7px">11–12</span></span>
+      In which TWO areas of the business exhibition did James Craig promote his company last year?
+    </div>
+    <div class="options" id="opts1112">
+      <button class="opt" data-group="1112" data-val="A" onclick="toggleMulti(this)"><span class="ol">A</span> the Digital Marketing Centre</button>
+      <button class="opt" data-group="1112" data-val="B" onclick="toggleMulti(this)"><span class="ol">B</span> the TalkCon Zone</button>
+      <button class="opt" data-group="1112" data-val="C" onclick="toggleMulti(this)"><span class="ol">C</span> the Breakout area</button>
+      <button class="opt" data-group="1112" data-val="D" onclick="toggleMulti(this)"><span class="ol">D</span> the Business Village</button>
+      <button class="opt" data-group="1112" data-val="E" onclick="toggleMulti(this)"><span class="ol">E</span> the Business Connections Zone</button>
+    </div>
+  </div>
+
+  <!-- Q13–14 -->
+  <div style="margin-bottom:10px">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Questions 13–14 — Choose TWO letters, A–E</p>
+    <div class="mcq-prompt">
+      <span class="qn"><span class="q-tag" style="width:auto;padding:0 7px">13–14</span></span>
+      Which TWO facts are given about discounts on popular brands available to exhibitors?
+    </div>
+    <div class="options" id="opts1314">
+      <button class="opt" data-group="1314" data-val="A" onclick="toggleMulti(this)"><span class="ol">A</span> They are available to all members of exhibiting companies.</button>
+      <button class="opt" data-group="1314" data-val="B" onclick="toggleMulti(this)"><span class="ol">B</span> They can be used for both food and clothing.</button>
+      <button class="opt" data-group="1314" data-val="C" onclick="toggleMulti(this)"><span class="ol">C</span> They only apply if people spend at least £400.</button>
+      <button class="opt" data-group="1314" data-val="D" onclick="toggleMulti(this)"><span class="ol">D</span> They can be used by family members.</button>
+      <button class="opt" data-group="1314" data-val="E" onclick="toggleMulti(this)"><span class="ol">E</span> The percentage saved is always the same.</button>
+    </div>
+  </div>
+
+  <div class="check-bar">
+    <button class="btn" onclick="checkSection2()">Check answers</button>
+    <button class="btn alt" onclick="resetSection2()">Reset</button>
+    <span class="score-pill" id="sec2Score"></span>
+  </div>
+  <div class="ans-panel" id="sec2Ans">
+    <div class="ak-title">Answer Key — Questions 11–14</div>
+    <div class="ans-grid">
+      <div class="ak"><span>11–12.</span><b>A, C</b></div>
+      <div class="ak"><span>13–14.</span><b>A, D</b></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers are placeholders — update once audio is confirmed.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 2 cont. — Questions 15–20
+     Matching: Speakers → Topics
+══════════════════════════════════════ -->
+<div class="section" id="sec3" style="margin-top:14px">
+  <div class="section-label">Questions 15–20</div>
+  <div class="section-q">Matching — Speakers to Topics</div>
+  <div class="section-inst">Which topic will each of the following speakers focus on?<br>
+    Choose <strong>SIX</strong> answers from the box and write the correct letter, <strong>A–G</strong>.</div>
+
+  <div class="match-grid">
+    <div>
+      <div class="match-col-label">Speakers</div>
+      <div class="match-items" id="matchSpeakers">
+        <div class="match-row"><div class="ml"><span class="q-tag">15</span> <strong>Jim Clowie</strong></div>
+          <select class="match-select" id="m15" data-ans="A"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">16</span> <strong>David France</strong></div>
+          <select class="match-select" id="m16" data-ans="C"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">17</span> <strong>Oliver Stanton</strong></div>
+          <select class="match-select" id="m17" data-ans="F"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">18</span> <strong>Francesca Heptonstall</strong></div>
+          <select class="match-select" id="m18" data-ans="E"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">19</span> <strong>Salman Khan</strong></div>
+          <select class="match-select" id="m19" data-ans="G"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">20</span> <strong>Annie Craven</strong></div>
+          <select class="match-select" id="m20" data-ans="B"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+      </div>
+    </div>
+    <div>
+      <div class="match-col-label">Topics</div>
+      <div class="option-bank">
+        <div class="bank-item"><span class="bl">A</span> Supporting job seekers</div>
+        <div class="bank-item"><span class="bl">B</span> Dealing with personal problems</div>
+        <div class="bank-item"><span class="bl">C</span> Effects of an unexpectedly rapid expansion</div>
+        <div class="bank-item"><span class="bl">D</span> A global range of business experiences</div>
+        <div class="bank-item"><span class="bl">E</span> Coping with financial set-backs</div>
+        <div class="bank-item"><span class="bl">F</span> Developing a company in response to changing markets</div>
+        <div class="bank-item"><span class="bl">G</span> Combining business success with contributions to charities</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="check-bar">
+    <button class="btn" onclick="checkSection3()">Check answers</button>
+    <button class="btn alt" onclick="resetSection3()">Reset</button>
+    <span class="score-pill" id="sec3Score"></span>
+  </div>
+  <div class="ans-panel" id="sec3Ans">
+    <div class="ak-title">Answer Key — Questions 15–20</div>
+    <div class="ans-grid">
+      <div class="ak"><span>15.</span><b>A</b></div>
+      <div class="ak"><span>16.</span><b>C</b></div>
+      <div class="ak"><span>17.</span><b>F</b></div>
+      <div class="ak"><span>18.</span><b>E</b></div>
+      <div class="ak"><span>19.</span><b>G</b></div>
+      <div class="ak"><span>20.</span><b>B</b></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers are placeholders — update once audio is confirmed.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 3 — Questions 21–23
+     Multiple Choice: Houses of the Future
+══════════════════════════════════════ -->
+<div class="section-divider">Section 3</div>
+
+<div class="audio-box">
+  <div class="audio-icon" onclick="togglePlay('a3')" title="Play / Pause">
+    <svg viewBox="0 0 20 20"><path d="M5 3.5L16 10L5 16.5V3.5Z"/></svg>
+  </div>
+  <div class="audio-info">
+    <div class="a-title">Section 3 Audio — Questions 21–30</div>
+    <div class="a-sub" id="status-a3">Loading…</div>
+  </div>
+  <audio id="a3" controls style="width:100%;margin-top:8px"></audio>
+</div>
+
+<div class="section" id="sec4">
+  <div class="section-label">Questions 21–23</div>
+  <div class="section-q">Multiple Choice</div>
+  <div class="section-inst">Choose the correct letter, <strong>A, B</strong> or <strong>C</strong>.<br>
+    <em style="color:var(--gold);font-size:13px">📍 Presentation on houses of the future</em>
+  </div>
+
+  <!-- Q21 -->
+  <div class="mcq-prompt"><span class="qn"><span class="q-tag">21</span></span>Which aspect of their presentation are Mia and Leo both concerned about?</div>
+  <div class="options" id="opts21">
+    <button class="opt" data-group="21" data-val="A" onclick="toggleSingle(this)"><span class="ol">A</span> meeting the deadline</button>
+    <button class="opt" data-group="21" data-val="B" onclick="toggleSingle(this)"><span class="ol">B</span> finding suitable examples</button>
+    <button class="opt" data-group="21" data-val="C" onclick="toggleSingle(this)"><span class="ol">C</span> including original ideas</button>
+  </div>
+
+  <!-- Q22 -->
+  <div class="mcq-prompt"><span class="qn"><span class="q-tag">22</span></span>The students decide to focus their assignment on housing for</div>
+  <div class="options" id="opts22">
+    <button class="opt" data-group="22" data-val="A" onclick="toggleSingle(this)"><span class="ol">A</span> family groups.</button>
+    <button class="opt" data-group="22" data-val="B" onclick="toggleSingle(this)"><span class="ol">B</span> old people.</button>
+    <button class="opt" data-group="22" data-val="C" onclick="toggleSingle(this)"><span class="ol">C</span> single people.</button>
+  </div>
+
+  <!-- Q23 -->
+  <div class="mcq-prompt"><span class="qn"><span class="q-tag">23</span></span>The students agree that demand for accommodation in urban areas should be met by</div>
+  <div class="options" id="opts23">
+    <button class="opt" data-group="23" data-val="A" onclick="toggleSingle(this)"><span class="ol">A</span> repurposing offices and factories.</button>
+    <button class="opt" data-group="23" data-val="B" onclick="toggleSingle(this)"><span class="ol">B</span> constructing tall buildings.</button>
+    <button class="opt" data-group="23" data-val="C" onclick="toggleSingle(this)"><span class="ol">C</span> developing creative ideas for smaller homes.</button>
+  </div>
+
+  <div class="check-bar">
+    <button class="btn" onclick="checkSection4()">Check answers</button>
+    <button class="btn alt" onclick="resetSection4()">Reset</button>
+    <span class="score-pill" id="sec4Score"></span>
+  </div>
+  <div class="ans-panel" id="sec4Ans">
+    <div class="ak-title">Answer Key — Questions 21–23</div>
+    <div class="ans-grid">
+      <div class="ak"><span>21.</span><b>B</b></div>
+      <div class="ak"><span>22.</span><b>C</b></div>
+      <div class="ak"><span>23.</span><b>A</b></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers are placeholders — update once audio is confirmed.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 3 cont. — Questions 24–30
+     Matching: Developments → Opinions A–I
+══════════════════════════════════════ -->
+<div class="section" id="sec5" style="margin-top:14px">
+  <div class="section-label">Questions 24–30</div>
+  <div class="section-q">Matching — Developments to Opinions</div>
+  <div class="section-inst">What opinion is given about each of the following developments?<br>
+    Choose <strong>SEVEN</strong> answers from the box and write the correct letter, <strong>A–I</strong>.</div>
+
+  <div class="match-grid">
+    <div>
+      <div class="match-col-label">Developments</div>
+      <div class="match-items" id="matchDev">
+        <div class="match-row"><div class="ml"><span class="q-tag">24</span> use of roof space for gardens</div>
+          <select class="match-select" id="m24" data-ans="D"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">25</span> shared working spaces</div>
+          <select class="match-select" id="m25" data-ans="B"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">26</span> moveable internal walls</div>
+          <select class="match-select" id="m26" data-ans="I"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">27</span> smart mirrors in bathrooms</div>
+          <select class="match-select" id="m27" data-ans="A"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">28</span> bike sheds with charging points</div>
+          <select class="match-select" id="m28" data-ans="H"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">29</span> restriction of cars to certain areas</div>
+          <select class="match-select" id="m29" data-ans="F"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+        <div class="match-row"><div class="ml"><span class="q-tag">30</span> communal vegetable plots</div>
+          <select class="match-select" id="m30" data-ans="G"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></div>
+      </div>
+    </div>
+    <div>
+      <div class="match-col-label">Opinions</div>
+      <div class="option-bank">
+        <div class="bank-item"><span class="bl">A</span> This could cause unnecessary anxiety.</div>
+        <div class="bank-item"><span class="bl">B</span> This would be especially beneficial for city residents.</div>
+        <div class="bank-item"><span class="bl">C</span> This would be challenging for young people.</div>
+        <div class="bank-item"><span class="bl">D</span> This would have environmental benefits.</div>
+        <div class="bank-item"><span class="bl">E</span> This could encourage creativity.</div>
+        <div class="bank-item"><span class="bl">F</span> This could lead to social problems.</div>
+        <div class="bank-item"><span class="bl">G</span> This could enable retired people to share a project.</div>
+        <div class="bank-item"><span class="bl">H</span> This would help some people but cause problems for others.</div>
+        <div class="bank-item"><span class="bl">I</span> This would suit both existing and new members of a household.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="check-bar">
+    <button class="btn" onclick="checkSection5()">Check answers</button>
+    <button class="btn alt" onclick="resetSection5()">Reset</button>
+    <span class="score-pill" id="sec5Score"></span>
+  </div>
+  <div class="ans-panel" id="sec5Ans">
+    <div class="ak-title">Answer Key — Questions 24–30</div>
+    <div class="ans-grid">
+      <div class="ak"><span>24.</span><b>D</b></div>
+      <div class="ak"><span>25.</span><b>B</b></div>
+      <div class="ak"><span>26.</span><b>I</b></div>
+      <div class="ak"><span>27.</span><b>A</b></div>
+      <div class="ak"><span>28.</span><b>H</b></div>
+      <div class="ak"><span>29.</span><b>F</b></div>
+      <div class="ak"><span>30.</span><b>G</b></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">⚠ Answers are placeholders — update once audio is confirmed.</p>
+  </div>
+</div>
+
+<!-- TOTAL SCORE -->
+<div class="section" id="totalSec" style="margin-top:22px;margin-bottom:8px">
+  <div class="section-label">Overall Score</div>
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <button class="btn" onclick="checkAll()">Check all sections</button>
+    <span class="score-pill" id="totalScore"></span>
+  </div>
+  <div class="prog-bar" style="margin-top:16px"><i id="totalBar"></i></div>
+  <p style="font-size:13px;color:var(--ink-3);margin-top:10px">30 questions · Band 7.5 ≈ 28+ correct · Band 8 ≈ 30 correct</p>
+</div>
+
+<footer>
+  <span>← <a href="index.html" style="color:var(--ink-3)">Back to plan</a></span>
+  <span>Day 3 — Listening Practice Set</span>
+</footer>
+</main>
+
+<script>
+/* ── AUDIO — 3 sections, auto-load from GitHub repo ── */
+(function(){
+  const REPO = 'https://raw.githubusercontent.com/Uddipto23/ielts-prep/main/';
+  const TRACKS = [
+    { id: 'a1', file: 'listening test day 3 (section 1).mp3' },
+    { id: 'a2', file: 'listening test day 3 (section 2).mp3' },
+    { id: 'a3', file: 'listening test day 3 (section 3).mp3' },
+  ];
+
+  TRACKS.forEach(({ id, file }) => {
+    const audio = document.getElementById(id);
+    const status = document.getElementById('status-' + id);
+    audio.src = REPO + encodeURIComponent(file);
+
+    audio.addEventListener('canplay', () => {
+      status.textContent = '✓ Ready';
+      status.style.color = 'var(--moss)';
+    });
+    audio.addEventListener('error', () => {
+      status.textContent = '⚠ Not found in repo';
+      status.style.color = 'var(--rust)';
+    });
+  });
+})();
+
+function togglePlay(id) {
+  const audio = document.getElementById(id);
+  audio.paused ? audio.play() : audio.pause();
+}
+
+/* ── HELPERS ── */
+function showScore(pillId, correct, total){
+  const p=document.getElementById(pillId);
+  p.textContent=correct+'/'+total;
+  p.className='score-pill show '+(correct===total?'great':correct>=total*0.7?'ok':'low');
+}
+
+/* ── SECTION 1: Form fill ── */
+function checkSection1(){
+  const ids=['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'];
+  let ok=0;
+  ids.forEach(id=>{
+    const el=document.getElementById(id);
+    const ans=el.dataset.ans.toLowerCase().trim();
+    const val=el.value.toLowerCase().trim();
+    el.classList.remove('correct','wrong');
+    if(val===''){ return; }
+    if(val===ans){el.classList.add('correct');ok++;}
+    else{el.classList.add('wrong');}
+  });
+  const filled=ids.filter(id=>document.getElementById(id).value.trim()!=='').length;
+  showScore('sec1Score',ok,10);
+  document.getElementById('sec1Ans').classList.add('show');
+  updateTotal();
+}
+function resetSection1(){
+  ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'].forEach(id=>{
+    const el=document.getElementById(id);el.value='';el.className='fill-input';
+  });
+  document.getElementById('sec1Score').className='score-pill';
+  document.getElementById('sec1Ans').classList.remove('show');
+  updateTotal();
+}
+
+/* ── MULTI SELECT (Q11–14) ── */
+const multiSelections={};
+function toggleMulti(btn){
+  const g=btn.dataset.group;
+  if(!multiSelections[g])multiSelections[g]=new Set();
+  const v=btn.dataset.val;
+  if(multiSelections[g].has(v)){
+    multiSelections[g].delete(v);btn.classList.remove('selected');
+  } else {
+    if(multiSelections[g].size>=2){
+      // deselect oldest
+      const first=[...multiSelections[g]][0];
+      multiSelections[g].delete(first);
+      document.querySelector(`.opt[data-group="${g}"][data-val="${first}"]`).classList.remove('selected');
+    }
+    multiSelections[g].add(v);btn.classList.add('selected');
+  }
+}
+
+function checkSection2(){
+  // Q11-12: correct = A, C  (placeholder)
+  const correct1112=new Set(['A','C']);
+  const sel1112=multiSelections['1112']||new Set();
+  let ok2=0;
+  document.querySelectorAll('.opt[data-group="1112"]').forEach(btn=>{
+    btn.classList.remove('correct-ans','wrong-ans');
+    const v=btn.dataset.val;
+    if(correct1112.has(v)&&sel1112.has(v)){btn.classList.add('correct-ans');ok2++;}
+    else if(sel1112.has(v)&&!correct1112.has(v)){btn.classList.add('wrong-ans');}
+    else if(correct1112.has(v)&&!sel1112.has(v)){btn.classList.add('correct-ans');}
+  });
+  // Q13-14: correct = A, D  (placeholder)
+  const correct1314=new Set(['A','D']);
+  const sel1314=multiSelections['1314']||new Set();
+  document.querySelectorAll('.opt[data-group="1314"]').forEach(btn=>{
+    btn.classList.remove('correct-ans','wrong-ans');
+    const v=btn.dataset.val;
+    if(correct1314.has(v)&&sel1314.has(v)){btn.classList.add('correct-ans');ok2++;}
+    else if(sel1314.has(v)&&!correct1314.has(v)){btn.classList.add('wrong-ans');}
+    else if(correct1314.has(v)&&!sel1314.has(v)){btn.classList.add('correct-ans');}
+  });
+  showScore('sec2Score',ok2,4);
+  document.getElementById('sec2Ans').classList.add('show');
+  updateTotal();
+}
+function resetSection2(){
+  ['1112','1314'].forEach(g=>{
+    multiSelections[g]=new Set();
+    document.querySelectorAll(`.opt[data-group="${g}"]`).forEach(b=>b.className='opt');
+  });
+  document.getElementById('sec2Score').className='score-pill';
+  document.getElementById('sec2Ans').classList.remove('show');
+  updateTotal();
+}
+
+/* ── MATCHING Q15-20 ── */
+function checkSection3(){
+  const ids=['m15','m16','m17','m18','m19','m20'];
+  let ok=0;
+  ids.forEach(id=>{
+    const el=document.getElementById(id);
+    el.classList.remove('correct','wrong');
+    if(el.value===el.dataset.ans){el.classList.add('correct');ok++;}
+    else if(el.value!==''){el.classList.add('wrong');}
+  });
+  showScore('sec3Score',ok,6);
+  document.getElementById('sec3Ans').classList.add('show');
+  updateTotal();
+}
+function resetSection3(){
+  ['m15','m16','m17','m18','m19','m20'].forEach(id=>{
+    const el=document.getElementById(id);el.value='';el.className='match-select';
+  });
+  document.getElementById('sec3Score').className='score-pill';
+  document.getElementById('sec3Ans').classList.remove('show');
+  updateTotal();
+}
+
+/* ── SINGLE MCQ Q21-23 ── */
+const singleSelections={};
+function toggleSingle(btn){
+  const g=btn.dataset.group;
+  document.querySelectorAll(`.opt[data-group="${g}"]`).forEach(b=>b.classList.remove('selected'));
+  singleSelections[g]=btn.dataset.val;
+  btn.classList.add('selected');
+}
+
+function checkSection4(){
+  const correct={21:'B',22:'C',23:'A'};
+  let ok=0;
+  [21,22,23].forEach(n=>{
+    const sel=singleSelections[String(n)];
+    document.querySelectorAll(`.opt[data-group="${n}"]`).forEach(btn=>{
+      btn.classList.remove('correct-ans','wrong-ans');
+      if(btn.dataset.val===correct[n]){btn.classList.add('correct-ans');}
+      else if(btn.dataset.val===sel){btn.classList.add('wrong-ans');}
+    });
+    if(sel===correct[n])ok++;
+  });
+  showScore('sec4Score',ok,3);
+  document.getElementById('sec4Ans').classList.add('show');
+  updateTotal();
+}
+function resetSection4(){
+  [21,22,23].forEach(n=>{
+    singleSelections[String(n)]=null;
+    document.querySelectorAll(`.opt[data-group="${n}"]`).forEach(b=>b.className='opt');
+  });
+  document.getElementById('sec4Score').className='score-pill';
+  document.getElementById('sec4Ans').classList.remove('show');
+  updateTotal();
+}
+
+/* ── MATCHING Q24-30 ── */
+function checkSection5(){
+  const ids=['m24','m25','m26','m27','m28','m29','m30'];
+  let ok=0;
+  ids.forEach(id=>{
+    const el=document.getElementById(id);
+    el.classList.remove('correct','wrong');
+    if(el.value===el.dataset.ans){el.classList.add('correct');ok++;}
+    else if(el.value!==''){el.classList.add('wrong');}
+  });
+  showScore('sec5Score',ok,7);
+  document.getElementById('sec5Ans').classList.add('show');
+  updateTotal();
+}
+function resetSection5(){
+  ['m24','m25','m26','m27','m28','m29','m30'].forEach(id=>{
+    const el=document.getElementById(id);el.value='';el.className='match-select';
+  });
+  document.getElementById('sec5Score').className='score-pill';
+  document.getElementById('sec5Ans').classList.remove('show');
+  updateTotal();
+}
+
+/* ── TOTAL ── */
+function getScore(pillId){
+  const p=document.getElementById(pillId);
+  if(!p.classList.contains('show'))return null;
+  const t=p.textContent.split('/');
+  return{got:parseInt(t[0]),total:parseInt(t[1])};
+}
+function updateTotal(){
+  const scores=[
+    getScore('sec1Score'),
+    getScore('sec2Score'),
+    getScore('sec3Score'),
+    getScore('sec4Score'),
+    getScore('sec5Score')
+  ].filter(Boolean);
+  if(!scores.length){
+    document.getElementById('totalScore').className='score-pill';
+    document.getElementById('totalBar').style.width='0%';
+    return;
+  }
+  let got=0,total=30;
+  scores.forEach(s=>{got+=s.got});
+  const pct=Math.round((got/total)*100);
+  const pill=document.getElementById('totalScore');
+  pill.textContent=got+'/30 ('+pct+'%)';
+  pill.className='score-pill show '+(got>=28?'great':got>=21?'ok':'low');
+  document.getElementById('totalBar').style.width=pct+'%';
+}
+function checkAll(){
+  checkSection1();checkSection2();checkSection3();checkSection4();checkSection5();
+}
+</script>
+</body>
+</html>
