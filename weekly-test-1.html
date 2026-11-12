@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Test 1 — IELTS Academic Reading</title>
+<meta name="description" content="A free full-length IELTS Academic Reading practice test: three original passages, 40 questions, a 60-minute timer, a band estimate and an explanation for every answer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<script src="weekly-test-1.js"></script>
+<style>
+:root{
+  --paper:#F2EEE5;--paper-2:#EAE4D7;--card:#FBF9F4;
+  --ink:#191813;--ink-2:#55513F;--ink-3:#8A8471;--line:#D9D2C1;
+  --rust:#BE4D26;--rust-soft:#F3DDD2;--moss:#4A6B3A;--moss-soft:#DFE7D5;
+  --sea:#1F5E6B;--gold:#A87518;--gold-soft:#F5E6C8;--plum:#5B3A72;--plum-soft:#E7DCEF;
+  --radius:10px;--nav-h:54px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--paper);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.65;
+background-image:radial-gradient(circle at 1px 1px,rgba(25,24,19,.045) 1px,transparent 0);background-size:22px 22px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.narrow{max-width:820px}
+a{color:var(--rust)}
+header.hero{padding:46px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:12px}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,7vw,68px);line-height:.98;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--rust)}
+.lede{max-width:620px;margin-top:16px;font-size:17px;color:var(--ink-2)}
+.backlink{display:inline-block;margin-top:18px;font-size:14px}
+h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(26px,4.5vw,36px);margin-bottom:6px;letter-spacing:-.01em}
+.rule{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.muted{color:var(--ink-3);font-size:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin:22px 0 4px}
+.method{background:var(--gold-soft);border-radius:var(--radius);padding:20px 22px;margin-top:26px}
+.method ol,.method ul{margin:6px 0 0 18px;font-size:15px;color:#412402}
+.method li{margin-bottom:7px}
+.btn{font-family:inherit;font-size:14px;padding:10px 20px;border-radius:999px;background:var(--ink);color:var(--paper);cursor:pointer;border:none}
+.btn.alt{background:transparent;border:1px solid var(--line);color:var(--ink-2)}
+.btn.go{background:var(--rust)}
+.btn:hover{opacity:.88}
+.btn:disabled{opacity:.55;cursor:default}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.field{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.field input,.field select{font-family:inherit;font-size:15px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);min-width:200px}
+.field input:focus,.field select:focus{outline:none;border-color:var(--rust)}
+.notice{font-size:13.5px;color:var(--ink-2);margin-top:14px;line-height:1.55}
+
+/* ---- exam bar ---- */
+.bar{position:sticky;top:var(--nav-h);z-index:20;background:var(--ink);color:var(--paper);padding:10px 0;box-shadow:0 6px 18px -10px rgba(25,24,19,.5)}
+.bar .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.clock{font-family:'JetBrains Mono',monospace;font-size:20px;letter-spacing:.04em;min-width:78px}
+.clock.warn{color:#F1B64A}
+.clock.crit{color:#FF8A66}
+.bar .cnt{font-size:13.5px;color:#CFC8B5}
+.bar .sp{flex:1}
+.ptabs{display:flex;gap:6px;flex-wrap:wrap}
+.ptab{font-family:inherit;font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid #55513F;background:transparent;color:#EAE4D7;cursor:pointer}
+.ptab[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.bar .btn{background:var(--rust)}
+
+/* ---- split layout ---- */
+.split{display:grid;grid-template-columns:1fr;gap:22px;margin-top:22px}
+@media(min-width:960px){
+  .split{grid-template-columns:1fr 1fr;align-items:start}
+  .pcol,.qcol{max-height:calc(100vh - 150px - var(--nav-h));overflow:auto;padding-right:6px;position:sticky;top:calc(78px + var(--nav-h))}
+}
+.passage{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px}
+.passage h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:28px;margin-bottom:4px}
+.passage .pm{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.passage p{margin-bottom:10px;font-size:15.5px}
+.passage p b{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--rust);margin-right:6px}
+.ghead{margin:4px 0 12px}
+.ghead h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:23px;margin-bottom:4px}
+.instr{font-size:14.5px;color:var(--ink-2)}
+.hlist{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin:12px 0 14px}
+.hlist .hi{display:flex;gap:10px;font-size:14.5px;padding:3px 0;color:var(--ink-2)}
+.hlist .hi b{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--rust);min-width:26px;padding-top:2px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin-bottom:11px;scroll-margin-top:150px;transition:border-color .3s ease,box-shadow .3s ease}
+.q.right{border-color:var(--moss);box-shadow:0 0 0 1px var(--moss) inset}
+.q.wrong{border-color:var(--rust);box-shadow:0 0 0 1px var(--rust) inset}
+.q.flash{box-shadow:0 0 0 2px var(--gold) inset}
+.qn{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink-3);margin-bottom:8px}
+.stm{font-weight:500;margin-bottom:12px}
+.opts{display:flex;flex-wrap:wrap;gap:7px}
+.opt{font-family:inherit;font-size:13.5px;padding:7px 15px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-2);cursor:pointer;transition:.15s}
+.opt:hover:not(:disabled){border-color:var(--ink-3);color:var(--ink)}
+.opt:disabled{cursor:default}
+.opt.sel{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.opt.ok{background:var(--moss);border-color:var(--moss);color:#fff}
+.opt.no{background:var(--rust);border-color:var(--rust);color:#fff}
+.mc{display:flex;flex-direction:column;gap:7px}
+.mc .opt{border-radius:10px;text-align:left;display:flex;gap:10px;padding:9px 13px}
+.mc .opt b{font-family:'JetBrains Mono',monospace;font-size:12px;min-width:16px;padding-top:2px}
+.gap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.gap input,.gap select{font-family:inherit;font-size:15px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.gap input{width:230px;max-width:100%}
+.gap select{max-width:100%;min-width:240px;font-size:14.5px}
+.gap input:focus,.gap select:focus{outline:none;border-color:var(--rust)}
+.exp{margin-top:12px;padding:12px 14px;background:var(--plum-soft);border-radius:var(--radius);font-size:14.5px;color:#3F2652}
+.exp b{color:var(--plum)}
+.pal{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.pn{font-family:'JetBrains Mono',monospace;font-size:12px;width:34px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer}
+.pn.done{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pn.right{background:var(--moss);color:#fff;border-color:var(--moss)}
+.pn.wrong{background:var(--rust);color:#fff;border-color:var(--rust)}
+.bigscore{font-family:'Instrument Serif',serif;font-size:52px;line-height:1}
+.band{font-family:'Instrument Serif',serif;font-size:52px;line-height:1;color:var(--rust)}
+.res-grid{display:flex;gap:34px;flex-wrap:wrap;align-items:flex-end}
+.breakdown{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-2)}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 14px}
+.lbt{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:6px}
+.lbt th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:400;padding:8px 10px 8px 0;border-bottom:1px solid var(--line)}
+.lbt td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line)}
+.lbt tr:last-child td{border-bottom:none}
+.lbt .rank{font-family:'JetBrains Mono',monospace;color:var(--ink-3);width:34px}
+.lbt .me{background:var(--gold-soft)}
+.lbt .sc{font-weight:500}
+footer{margin-top:50px;padding:28px 0 46px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-3)}
+/* ---- section switcher ---- */
+.secnav{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);height:var(--nav-h)}
+.secnav .wrap{display:flex;gap:8px;align-items:center;height:100%;overflow-x:auto;scrollbar-width:none}
+.secnav .wrap::-webkit-scrollbar{display:none}
+.stab{font-family:inherit;font-size:14px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer;white-space:nowrap;display:flex;gap:8px;align-items:center;flex:0 0 auto}
+.stab:hover{border-color:var(--ink-3);color:var(--ink)}
+.stab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.stab .tm{font-family:'JetBrains Mono',monospace;font-size:11.5px;opacity:.85}
+.stab .tm.live{color:var(--rust);opacity:1}
+.stab[aria-selected="true"] .tm.live{color:#F1B64A}
+.soon{margin:30px auto 10px}
+.soon h2{margin-bottom:10px}
+.soon ul{margin:10px 0 0 18px;color:var(--ink-2);font-size:15px}
+.soon li{margin-bottom:6px}
+.soon .tagsoon{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold);margin-bottom:12px}
+[hidden]{display:none!important}
+@media(max-width:600px){.passage{padding:20px 18px}.gap select{min-width:0;width:100%}.bar .cnt{display:none}
+  .bar{padding:8px 0}.bar .wrap{gap:8px}.clock{font-size:17px;min-width:64px}.ptab{font-size:12px;padding:6px 10px}.bar .btn{padding:7px 14px;font-size:13px}.ptabs{order:3;width:100%}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Weekly Test 1 · Academic</div>
+    <h1>Weekly <em>Test 1.</em></h1>
+    <p class="lede">One mock test, four sections: Reading, Writing, Listening and Speaking. Each section has its own timer and its own score, and you can switch between them whenever you like. Do them in one sitting for a full exam day, or one a day across the week.</p>
+    <a class="backlink" href="index.html">&larr; Back to the 30-day plan</a>
+  </div>
+</header>
+
+<nav class="secnav" aria-label="Test sections">
+  <div class="wrap" role="tablist">
+    <button class="stab" role="tab" data-sec="reading" id="tab-reading" aria-selected="true">Reading <span class="tm" id="tm-reading"></span></button>
+    <button class="stab" role="tab" data-sec="writing" id="tab-writing" aria-selected="false">Writing <span class="tm" id="tm-writing"></span></button>
+    <button class="stab" role="tab" data-sec="listening" id="tab-listening" aria-selected="false">Listening <span class="tm" id="tm-listening"></span></button>
+    <button class="stab" role="tab" data-sec="speaking" id="tab-speaking" aria-selected="false">Speaking <span class="tm" id="tm-speaking"></span></button>
+  </div>
+</nav>
+
+<div id="sec-reading" role="tabpanel">
+<!-- ============ INTRO ============ -->
+<main class="wrap narrow" id="intro">
+  <div class="eyebrow" style="margin-top:26px">Section 1 · Reading</div>
+  <h2>Sixty minutes. Forty questions.</h2>
+  <p class="muted" style="max-width:640px">Three original passages that get harder as you go, a 60-minute countdown, and no feedback until you submit. Then your band estimate and an explanation for every answer.</p>
+  <div class="method">
+    <div class="rule" style="color:var(--rust);margin-bottom:8px">Exam rules</div>
+    <ul>
+      <li><b>60 minutes in total</b> for all three passages. There is no extra time to copy answers, so write straight into the answer boxes as you go.</li>
+      <li><b>Suggested split:</b> about 17 minutes on Passage 1, 20 on Passage 2 and 23 on Passage 3. Passage 3 is the hardest, so protect its time.</li>
+      <li><b>Answers stay hidden</b> until you press Submit. You can change any answer before then.</li>
+      <li><b>Spelling counts</b> in gap-fill questions. Stay within the word limit given in the instructions, or the answer is wrong.</li>
+      <li><b>Never leave a blank.</b> There is no penalty for a wrong answer, so guess.</li>
+      <li>Your place and answers are saved in this browser, so an accidental refresh will not lose the test.</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <div class="rule" style="margin-bottom:6px">This week’s test</div>
+    <h2 id="testTitle"></h2>
+    <p class="muted" id="testBlurb"></p>
+    <div class="field" id="testPick" hidden><select id="testSel" aria-label="Choose a test"></select></div>
+    <div class="actions"><button class="btn go" id="startBtn">Start the 60-minute test</button></div>
+    <div class="notice">The clock starts the moment you press the button.</div>
+  </div>
+</main>
+
+<!-- ============ TEST ============ -->
+<div id="testArea" hidden>
+  <div class="bar">
+    <div class="wrap">
+      <span class="clock" id="clock">60:00</span>
+      <div class="ptabs" id="ptabs"></div>
+      <span class="sp"></span>
+      <span class="cnt" id="cnt">0 / 40 answered</span>
+      <button class="btn" id="submitBtn">Submit test</button>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="panel" id="resBox" hidden></div>
+    <div class="pal" id="pal" aria-label="Question navigator"></div>
+    <div class="split">
+      <div class="pcol" id="pcol"></div>
+      <div class="qcol" id="qcol"></div>
+    </div>
+
+    <section id="lbSec" hidden style="margin-top:44px;border-top:1px solid var(--line);padding-top:34px">
+      <h2>Leaderboard</h2>
+      <p class="muted">Best attempt per person. Ties are broken by time taken.</p>
+      <div class="panel" id="lb" style="margin-top:12px"><span class="muted">Loading&hellip;</span></div>
+    </section>
+
+    <footer>
+      <div id="privacyNote">Free IELTS practice. Nothing is uploaded; your answers stay in this browser.</div>
+    </footer>
+  </main>
+</div>
+</div><!-- /sec-reading -->
+
+<div id="sec-writing" role="tabpanel" hidden>
+  <main class="wrap narrow soon">
+    <span class="tagsoon">Being built next</span>
+    <h2>Writing · 60 minutes</h2>
+    <p class="muted">Not available yet. This section will have:</p>
+    <ul>
+      <li>Task 1 (20 min): an original chart or table to describe, 150+ words</li>
+      <li>Task 2 (40 min): an essay question, 250+ words</li>
+      <li>Typed on screen with a live word count, then marked against the four official criteria</li>
+    </ul>
+  </main>
+</div>
+<div id="sec-listening" role="tabpanel" hidden>
+  <main class="wrap narrow soon">
+    <span class="tagsoon">Coming soon</span>
+    <h2>Listening · about 30 minutes</h2>
+    <p class="muted">Not available yet. This section will have:</p>
+    <ul>
+      <li>Four parts of ten questions each, getting harder from Part 1 to Part 4</li>
+      <li>An announcer introduction and a 30-second preview before each part</li>
+      <li>Audio that plays once, with no pause and no replay</li>
+    </ul>
+  </main>
+</div>
+<div id="sec-speaking" role="tabpanel" hidden>
+  <main class="wrap narrow soon">
+    <span class="tagsoon">Coming soon</span>
+    <h2>Speaking · 11–14 minutes</h2>
+    <p class="muted">Not available yet. This section will have:</p>
+    <ul>
+      <li>Part 1 questions, a Part 2 cue card with a one-minute prep timer and a two-minute talk timer, and Part 3 discussion questions</li>
+      <li>In-browser recording that you play back yourself; the audio stays on your device</li>
+      <li>A checklist against the four speaking criteria</li>
+    </ul>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   ENDPOINT comes from config.js (one place for the whole site).
+   If it is empty the page works fully offline: no submit, no leaderboard.
+   ============================================================ */
+const ENDPOINT=(window.IELTS_ENDPOINT||"");
+const EXAM_SECONDS=60*60;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s==null?"":s).toLowerCase().replace(/[‘’]/g,"'").replace(/\s+/g," ").trim().replace(/[.,;:!?]+$/,"").trim();
+const hms=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+"m "+String(s%60).padStart(2,"0")+"s"};
+const mmss=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")};
+
+const LBL={T:"True",F:"False",NG:"Not Given",Y:"Yes",N:"No"};
+const KIND={tfng:"True / False / Not Given",yng:"Yes / No / Not Given",gap:"Completion",select:"Matching",mcq:"Multiple choice"};
+
+/* Academic Reading raw score -> band (indicative; official tables vary a little by test version) */
+function bandFor(n){
+  const T=[[39,9],[37,8.5],[35,8],[33,7.5],[30,7],[27,6.5],[23,6],[19,5.5],[15,5],[13,4.5],[10,4],[8,3.5],[6,3],[4,2.5]];
+  for(const [min,b] of T)if(n>=min)return b;
+  return n>=1?2:0;
+}
+
+/* ---------- tests ---------- */
+const TESTS=(window.READING_TESTS||[]);
+let TEST=null,QS=[],PASS=[];
+
+function prepare(test){
+  TEST=test;QS=[];PASS=[];
+  let no=0;
+  test.passages.forEach((p,pi)=>{
+    const info={pi,from:no+1,to:0,title:p.title,level:p.level,paras:p.paras,groups:[]};
+    p.groups.forEach((g,gi)=>{
+      const gnode={g,from:no+1,to:0,qs:[]};
+      g.items.forEach(it=>{
+        no++;
+        const q={no,pi,gi,kind:g.kind,it,g};
+        QS.push(q);gnode.qs.push(q);
+      });
+      gnode.to=no;info.groups.push(gnode);
+    });
+    info.to=no;PASS.push(info);
+  });
+}
+
+/* ---------- state ---------- */
+let ANS={},t0=0,submitted=false,curP=0,tick=null,RES=null,submittedOnline=false;
+const DRAFT=()=>"ielts.weekly.draft."+TEST.id;
+function saveDraft(){
+  try{localStorage.setItem(DRAFT(),JSON.stringify({t0,ANS}))}catch(e){}
+}
+function loadDraft(){
+  try{const d=JSON.parse(localStorage.getItem(DRAFT())||"null");return d&&d.t0?d:null}catch(e){return null}
+}
+function clearDraft(){try{localStorage.removeItem(DRAFT())}catch(e){}}
+
+/* ---------- rendering ---------- */
+function qHTML(q){
+  const {no,kind,it,g}=q;
+  let body="";
+  const val=ANS[no]==null?"":ANS[no];
+  if(kind==="tfng"||kind==="yng"){
+    const vs=kind==="tfng"?["T","F","NG"]:["Y","N","NG"];
+    body=`<div class="opts">${vs.map(v=>`<button class="opt${val===v?" sel":""}" data-q="${no}" data-v="${v}">${LBL[v]}</button>`).join("")}</div>`;
+  }else if(kind==="mcq"){
+    body=`<div class="mc">${it.opts.map((t,i)=>{const L="ABCD"[i];return `<button class="opt${val===L?" sel":""}" data-q="${no}" data-v="${L}"><b>${L}</b><span>${esc(t)}</span></button>`}).join("")}</div>`;
+  }else if(kind==="select"){
+    body=`<div class="gap"><select id="in-${no}" data-q="${no}" aria-label="Answer for question ${no}"><option value="">Choose&hellip;</option>${g.list.items.map(x=>`<option value="${esc(x[0])}"${val===x[0]?" selected":""}>${esc(x[0])} · ${esc(x[1])}</option>`).join("")}</select></div>`;
+  }else{
+    body=`<div class="gap"><input id="in-${no}" data-q="${no}" value="${esc(val)}" placeholder="your answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Answer for question ${no}"></div>`;
+  }
+  const stm=kind==="select"&&/^Paragraph /.test(it.s)?it.s:esc(it.s).replace(/_{3,}/g,"<span style=\"letter-spacing:.1em\">________</span>");
+  return `<div class="q" id="q-${no}"><div class="qn">QUESTION ${no}</div><div class="stm">${kind==="select"&&/^Paragraph /.test(it.s)?esc(it.s):stm}</div>${body}<div id="e-${no}"></div></div>`;
+}
+
+function renderPassage(pi){
+  const P=PASS[pi];
+  $("pcol").innerHTML=`<div class="passage">
+    <div class="pm">Passage ${pi+1} · ${esc(P.level)} · Questions ${P.from}–${P.to}</div>
+    <h3>${esc(P.title)}</h3>
+    ${P.paras.map(p=>`<p><b>${p[0]}</b>${esc(p[1])}</p>`).join("")}
+  </div>`;
+  let h="";
+  P.groups.forEach(gn=>{
+    const g=gn.g;
+    h+=`<div class="ghead"><h3>Questions ${gn.from}–${gn.to}</h3><p class="instr">${g.instr}</p></div>`;
+    if(g.list)h+=`<div class="hlist"><div class="rule" style="margin-bottom:8px">${esc(g.list.title)}</div>${g.list.items.map(x=>`<div class="hi"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join("")}</div>`;
+    gn.qs.forEach(q=>{h+=qHTML(q)});
+  });
+  $("qcol").innerHTML=h;
+  if(submitted)paintReview(pi);
+  $("pcol").scrollTop=0;$("qcol").scrollTop=0;
+}
+
+function renderTabs(){
+  $("ptabs").innerHTML=PASS.map(P=>{
+    const n=QS.filter(q=>q.pi===P.pi&&hasAns(q.no)).length;
+    return `<button class="ptab" data-p="${P.pi}" aria-pressed="${P.pi===curP}">Passage ${P.pi+1} · ${n}/${P.to-P.from+1}</button>`;
+  }).join("");
+}
+function renderPalette(){
+  $("pal").innerHTML=QS.map(q=>{
+    let c="pn";
+    if(submitted)c+=RES.ok[q.no]?" right":" wrong";
+    else if(hasAns(q.no))c+=" done";
+    return `<button class="${c}" data-jump="${q.no}" aria-label="Question ${q.no}">${q.no}</button>`;
+  }).join("");
+}
+const hasAns=no=>ANS[no]!=null&&String(ANS[no]).trim()!=="";
+function refreshMeta(){
+  const n=QS.filter(q=>hasAns(q.no)).length;
+  $("cnt").textContent=n+" / "+QS.length+" answered";
+  renderTabs();renderPalette();
+}
+
+function showPassage(pi,scrollNo){
+  curP=pi;renderPassage(pi);refreshMeta();
+  if(scrollNo){
+    const el=$("q-"+scrollNo);
+    if(el){
+      el.scrollIntoView({behavior:"smooth",block:"center"});
+      el.classList.add("flash");setTimeout(()=>el.classList.remove("flash"),1200);
+      const inp=el.querySelector("input,select");if(inp&&!submitted)inp.focus({preventScroll:true});
+    }
+  }
+}
+
+/* ---------- answering ---------- */
+function setAns(no,v){
+  if(submitted)return;
+  ANS[no]=v;saveDraft();refreshMeta();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");
+  if(!b)return;
+  if(b.dataset.q&&b.dataset.v!==undefined){
+    if(submitted)return;
+    const no=+b.dataset.q;
+    const same=ANS[no]===b.dataset.v;
+    setAns(no,same?"":b.dataset.v);   // tap again to clear
+    b.closest(".q").querySelectorAll("button.opt").forEach(x=>x.classList.toggle("sel",!same&&x.dataset.v===b.dataset.v));
+    return;
+  }
+  if(b.dataset.p!==undefined){showPassage(+b.dataset.p);return}
+  if(b.dataset.jump){
+    const no=+b.dataset.jump,q=QS[no-1];
+    if(q.pi!==curP)showPassage(q.pi,no);
+    else{
+      const el=$("q-"+no);
+      el.scrollIntoView({behavior:"smooth",block:"center"});
+      el.classList.add("flash");setTimeout(()=>el.classList.remove("flash"),1200);
+      const inp=el.querySelector("input,select");if(inp&&!submitted)inp.focus({preventScroll:true});
+    }
+    return;
+  }
+  if(b.id==="submitBtn"){submitTest(false);return}
+  if(b.id==="startBtn"){startTest();return}
+  if(b.dataset.send){sendResult();return}
+  if(b.id==="retakeBtn"){retake();return}
+  if(b.id==="reviewBtn"){window.scrollTo({top:$("pal").offsetTop-70,behavior:"smooth"});return}
+});
+document.addEventListener("input",e=>{
+  const t=e.target;
+  if(t.dataset&&t.dataset.q&&(t.tagName==="INPUT"||t.tagName==="SELECT")&&!submitted)setAns(+t.dataset.q,t.value);
+});
+document.addEventListener("change",e=>{
+  const t=e.target;
+  if(t.dataset&&t.dataset.q&&t.tagName==="SELECT"&&!submitted)setAns(+t.dataset.q,t.value);
+});
+
+/* ---------- clock ---------- */
+function remaining(){return EXAM_SECONDS-Math.floor((Date.now()-t0)/1000)}
+function onTick(){
+  const r=remaining();
+  const c=$("clock");
+  c.textContent=mmss(r);
+  c.classList.toggle("warn",r<=600&&r>300);
+  c.classList.toggle("crit",r<=300);
+  readingBadge();
+  if(r<=0){submitTest(true)}
+}
+
+/* ---------- start / resume ---------- */
+function startTest(){
+  t0=Date.now();ANS={};submitted=false;RES=null;submittedOnline=false;
+  saveDraft();
+  openTest();
+}
+function openTest(){
+  $("intro").hidden=true;$("testArea").hidden=false;
+  $("resBox").hidden=true;$("lbSec").hidden=true;
+  $("submitBtn").hidden=false;
+  curP=0;renderPassage(0);refreshMeta();
+  if(tick)clearInterval(tick);
+  tick=setInterval(onTick,1000);onTick();
+  window.scrollTo({top:0});
+  if(ENDPOINT){
+    $("privacyNote").innerHTML="Free IELTS practice. Your answers stay in this browser unless you choose to submit at the end — submitting shares your name, score, time and answers with the study group.";
+  }
+}
+function retake(){
+  if(!confirm("Start again? Your current answers and review will be cleared."))return;
+  clearDraft();
+  if(tick){clearInterval(tick);tick=null}
+  $("testArea").hidden=true;$("intro").hidden=false;
+  ANS={};submitted=false;RES=null;
+  $("clock").textContent="60:00";$("clock").className="clock";readingBadge();
+  window.scrollTo({top:0});
+}
+
+/* ---------- grading ---------- */
+function grade(q,val){
+  if(!hasAnsVal(val))return false;
+  if(q.kind==="gap")return q.it.a.map(norm).includes(norm(val));
+  return val===q.it.a;
+}
+const hasAnsVal=v=>v!=null&&String(v).trim()!=="";
+function correctText(q){
+  if(q.kind==="gap")return q.it.a[0];
+  if(q.kind==="tfng"||q.kind==="yng")return LBL[q.it.a];
+  if(q.kind==="mcq"){const i="ABCD".indexOf(q.it.a);return q.it.a+" · "+q.it.opts[i]}
+  const x=q.g.list.items.find(y=>y[0]===q.it.a);return x?x[0]+" · "+x[1]:q.it.a;
+}
+function mineText(q,v){
+  if(!hasAnsVal(v))return "no answer";
+  if(q.kind==="tfng"||q.kind==="yng")return LBL[v]||v;
+  return String(v);
+}
+
+function submitTest(auto){
+  if(submitted)return;
+  const blanks=QS.filter(q=>!hasAns(q.no)).length;
+  if(!auto){
+    const msg=(blanks?blanks+" question"+(blanks>1?"s are":" is")+" still blank (no penalty for guessing). ":"")+"Submit the test now? You will not be able to change answers.";
+    if(!confirm(msg))return;
+  }
+  submitted=true;
+  if(tick){clearInterval(tick);tick=null}
+  const used=Math.min(EXAM_SECONDS,Math.floor((Date.now()-t0)/1000));
+  const ok={},log=[];
+  let score=0;
+  QS.forEach(q=>{
+    const v=ANS[q.no],g=grade(q,v);
+    ok[q.no]=g;if(g)score++;
+    log.push({id:"RQ"+q.no,type:q.kind,mine:mineText(q,v),correct:q.kind==="gap"?q.it.a[0]:q.it.a,ok:g,t:0});
+  });
+  RES={ok,score,used,log,band:bandFor(score)};
+  clearDraft();
+  $("submitBtn").hidden=true;
+  $("clock").textContent=auto?"00:00":mmss(EXAM_SECONDS-used);
+  showResult(auto);
+  readingBadge();
+  showPassage(0);
+  renderPalette();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showResult(auto){
+  const per=PASS.map(P=>{
+    const qs=QS.filter(q=>q.pi===P.pi);
+    return {t:"Passage "+(P.pi+1),ok:qs.filter(q=>RES.ok[q.no]).length,n:qs.length};
+  });
+  const kinds={};
+  QS.forEach(q=>{const k=kinds[q.kind]||(kinds[q.kind]={n:0,ok:0});k.n++;if(RES.ok[q.no])k.ok++});
+  const wrong=QS.filter(q=>!RES.ok[q.no]).map(q=>q.no);
+  const saved=(()=>{try{return localStorage.getItem("ielts.name")||""}catch(e){return ""}})();
+  const box=$("resBox");
+  box.hidden=false;
+  box.innerHTML=`
+    <div class="rule" style="margin-bottom:10px">Your result${auto?" · time ran out":""}</div>
+    <div class="res-grid">
+      <div><div class="bigscore">${RES.score}<span style="font-size:24px;color:var(--ink-3)"> / ${QS.length}</span></div><div class="muted">raw score</div></div>
+      <div><div class="band">${RES.band.toFixed(1)}</div><div class="muted">estimated band (indicative)</div></div>
+      <div><div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1.1">${hms(RES.used)}</div><div class="muted">of 60m 00s used</div></div>
+    </div>
+    <div class="breakdown">${per.map(p=>`<span class="chip">${p.t} ${p.ok}/${p.n}</span>`).join("")}${Object.keys(kinds).map(k=>`<span class="chip">${KIND[k]} ${kinds[k].ok}/${kinds[k].n}</span>`).join("")}</div>
+    <div class="notice">${wrong.length?`<b>Missed:</b> ${wrong.join(", ")}. For each one, write in your error log <i>why</i> you missed it (misread, ran out of time, spelling, word limit, trap) and not only the number.`:`<b>Clean sweep.</b> Take another test under the same conditions.`}
+    <br>The band is an estimate from the usual raw-score table. The real exam's table shifts slightly between versions, and these original passages are not calibrated to a real test, so treat it as a guide to your level, not a prediction.</div>
+    ${ENDPOINT?`
+      <div class="field">
+        <input id="nameIn" maxlength="40" placeholder="Your name" value="${esc(saved)}" autocomplete="off">
+        <button class="btn" data-send="1" id="sendBtn">Submit to leaderboard</button>
+      </div>
+      <div class="notice" id="sendMsg">Submitting sends your name, score, time and which questions you answered to the study group’s shared sheet. Optional: skip it and nothing is sent.</div>`:""}
+    <div class="actions"><button class="btn alt" id="reviewBtn">Review answers below</button><button class="btn alt" id="retakeBtn">Take it again</button></div>`;
+  if(ENDPOINT){$("lbSec").hidden=false;loadBoard()}
+}
+
+function paintReview(pi){
+  QS.filter(q=>q.pi===pi).forEach(q=>{
+    const card=$("q-"+q.no);if(!card)return;
+    const ok=RES.ok[q.no],v=ANS[q.no];
+    card.classList.add(ok?"right":"wrong");
+    card.querySelectorAll("button.opt").forEach(x=>{
+      x.disabled=true;
+      if(x.dataset.v===q.it.a)x.classList.add("ok");
+      else if(x.classList.contains("sel")){x.classList.remove("sel");x.classList.add("no")}
+    });
+    card.querySelectorAll("input,select").forEach(x=>x.disabled=true);
+    $("e-"+q.no).innerHTML=`<div class="exp">${ok?"<b>Correct.</b> ":`<b>${hasAnsVal(v)?"Not quite":"No answer"}.</b> `}${(!ok&&(q.kind==="gap"||q.kind==="select"))?`<b>Answer: ${esc(correctText(q))}.</b> `:""}${(!ok&&q.kind==="mcq")?`<b>Answer: ${esc(correctText(q))}.</b> `:""}${q.it.e}</div>`;
+  });
+}
+
+/* ---------- leaderboard ---------- */
+async function sendResult(){
+  const nameEl=$("nameIn"),msg=$("sendMsg"),btn=$("sendBtn");
+  const name=(nameEl.value||"").trim();
+  if(!name){msg.innerHTML="<b>Enter a name first.</b>";nameEl.focus();return}
+  if(submittedOnline){msg.innerHTML="<b>Already submitted.</b>";return}
+  try{localStorage.setItem("ielts.name",name)}catch(e){}
+  btn.disabled=true;btn.textContent="Sending…";
+  try{
+    const res=await fetch(ENDPOINT,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({name,set:TEST.set,score:RES.score,total:QS.length,seconds:RES.used,answers:RES.log})
+    });
+    const data=await res.json();
+    if(!data.ok)throw new Error(data.error||"rejected");
+    submittedOnline=true;
+    btn.textContent="Submitted";
+    msg.innerHTML="<b>Saved.</b> Your result is on the leaderboard below.";
+    loadBoard(name);
+  }catch(err){
+    btn.disabled=false;btn.textContent="Try again";
+    msg.innerHTML="<b>Could not send.</b> Check your connection, or that the tracking URL is deployed with access set to <i>Anyone</i>.";
+  }
+}
+async function loadBoard(highlight){
+  if(!ENDPOINT)return;
+  $("lbSec").hidden=false;
+  const box=$("lb");
+  box.innerHTML='<span class="muted">Loading…</span>';
+  try{
+    const res=await fetch(ENDPOINT+"?action=leaderboard&set="+encodeURIComponent(TEST.set));
+    const data=await res.json();
+    const rows=data.rows||[];
+    if(!rows.length){box.innerHTML='<span class="muted">No results yet for this test. Be the first.</span>';return}
+    let me="";try{me=(highlight||localStorage.getItem("ielts.name")||"").toLowerCase()}catch(e){me=(highlight||"").toLowerCase()}
+    box.innerHTML=`<table class="lbt">
+      <tr><th class="rank">#</th><th>Name</th><th>Score</th><th>Band</th><th>Time</th><th>Date</th></tr>
+      ${rows.map((r,i)=>`<tr class="${r.name.toLowerCase()===me?"me":""}"><td class="rank">${i+1}</td><td>${esc(r.name)}</td><td class="sc">${r.score}/${r.total}</td><td>${bandFor(r.score).toFixed(1)}</td><td>${hms(r.seconds)}</td><td class="muted">${esc(r.date)}</td></tr>`).join("")}
+    </table>`;
+  }catch(err){
+    box.innerHTML='<span class="muted">Leaderboard unavailable right now.</span>';
+  }
+}
+
+/* ---------- section switcher ---------- */
+const SECS=["reading","writing","listening","speaking"];
+function showSection(name,pushHash){
+  if(!SECS.includes(name))name="reading";
+  SECS.forEach(s=>{
+    $("sec-"+s).hidden=(s!==name);
+    $("tab-"+s).setAttribute("aria-selected",String(s===name));
+  });
+  if(pushHash){try{history.replaceState(null,"","#"+name)}catch(e){location.hash=name}}
+  window.scrollTo({top:0});
+}
+document.querySelector(".secnav").addEventListener("click",e=>{
+  const b=e.target.closest("[data-sec]");if(b)showSection(b.dataset.sec,true);
+});
+window.addEventListener("hashchange",()=>showSection(location.hash.slice(1),false));
+function readingBadge(){
+  const el=$("tm-reading");if(!el)return;
+  if(submitted&&RES){el.textContent=RES.score+"/"+QS.length;el.className="tm";return}
+  if(tick){el.textContent=mmss(remaining());el.className="tm live";return}
+  el.textContent="";el.className="tm";
+}
+
+/* ---------- boot ---------- */
+(function boot(){
+  if(!TESTS.length){
+    $("testTitle").textContent="No test found";
+    $("testBlurb").textContent="weekly-test-1.js did not load. Make sure it is uploaded next to this page.";
+    $("startBtn").disabled=true;
+    return;
+  }
+  let pick=0;
+  const wanted=new URLSearchParams(location.search).get("t");
+  if(wanted){const i=TESTS.findIndex(t=>t.id===wanted);if(i>=0)pick=i}
+  prepare(TESTS[pick]);
+  const show=()=>{$("testTitle").textContent=TEST.title+" · "+QS.length+" questions";$("testBlurb").textContent=TEST.blurb||""};
+  show();
+  if(TESTS.length>1){
+    $("testPick").hidden=false;
+    $("testSel").innerHTML=TESTS.map((t,i)=>`<option value="${i}"${i===pick?" selected":""}>${esc(t.title)}</option>`).join("");
+    $("testSel").addEventListener("change",e=>{prepare(TESTS[+e.target.value]);show()});
+  }
+  const d=loadDraft();
+  if(d){
+    t0=d.t0;ANS=d.ANS||{};
+    if(remaining()<=0){openTest();submitTest(true)}
+    else{openTest()}
+  }
+})();
+showSection(location.hash.slice(1),false);
+</script>
+</body>
+</html>
