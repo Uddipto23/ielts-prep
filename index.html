@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="config.js"></script>
+<script src="weekly-test-1-writing.js"></script>
 <style>
 :root{
   --paper:#F2EEE5;
@@ -199,6 +200,20 @@ h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,4.5
 .prio li:before{content:counter(p);position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:var(--rust);color:#fff;font-size:12px;display:grid;place-items:center;font-family:'JetBrains Mono',monospace}
 .disclaim{font-size:13px;color:var(--ink-3);line-height:1.55;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
 .err{background:var(--rust-soft);color:#5A2410;padding:12px 15px;border-radius:var(--radius);font-size:14.5px;margin-top:14px}
+.atimer{position:sticky;top:0;z-index:6;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--ink);color:var(--paper);border-radius:var(--radius);padding:10px 16px;margin-bottom:16px;box-shadow:0 8px 20px -14px rgba(25,24,19,.6)}
+.atimer .aclock{font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:.04em;min-width:76px}
+.atimer .aclock.warn{color:#F1B64A}
+.atimer .aclock.crit{color:#FF8A66}
+.atimer .alab{font-size:13.5px;color:#CFC8B5}
+.atimer .sp{flex:1}
+.atimer .btn{background:var(--rust);padding:8px 18px;font-size:13.5px}
+.atimer .btn:hover:not(:disabled){background:#D45A2E}
+.ta[readonly]{background:var(--paper-2);color:var(--ink-2)}
+.wtq{border:1px solid var(--rust);background:var(--rust-soft);border-radius:var(--radius);padding:18px 20px;margin-bottom:16px;color:#3A1A0C}
+.wtq .lab{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.wtq p{font-size:15px;margin-bottom:8px}
+.wtq .fig{margin:10px 0}
+.wtq a{font-size:13.5px;color:var(--rust)}
 .spin{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;margin-right:7px;vertical-align:-2px}
 @keyframes sp{to{transform:rotate(360deg)}}
 .plink{display:flex;align-items:center;gap:12px;margin-top:20px;padding:15px 18px;border:1px solid var(--rust);border-radius:var(--radius);background:var(--rust-soft);text-decoration:none;color:#5A2410;transition:.2s}
@@ -302,9 +317,16 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
 
   <section class="res" id="assessSec">
     <h2>Assessment Check</h2>
-    <p class="sec-lede">Paste a Writing Task 1 or Task 2 response and get it marked against the four official criteria, with the specific sentences that are costing you marks.</p>
+    <p class="sec-lede">Write or paste a Writing Task 1 or Task 2 response and get it marked against the four official criteria, with the specific sentences that are costing you marks. Use the timer to practise under exam conditions, or take the questions from <a style="color:var(--rust)" href="weekly-test-1.html#writing">Weekly Test 1</a>.</p>
 
     <div class="assess">
+      <div class="atimer" id="aTimer">
+        <span class="aclock" id="aClock">40:00</span>
+        <span class="alab" id="aLab">Timer for Task 2 · 40 minutes</span>
+        <span class="sp"></span>
+        <button class="btn" id="aStart" type="button">Start timer</button>
+      </div>
+      <div class="wtq" id="wtCard" hidden></div>
       <div class="arow">
         <select class="ti sm" id="taskSel">
           <option value="task2">Task 2 — Essay (250+ words)</option>
@@ -312,7 +334,7 @@ footer{margin-top:54px;padding:30px 0 50px;border-top:1px solid var(--line);font
         </select>
         <input class="ti sm" id="aName" maxlength="40" placeholder="Your name" autocomplete="off" style="flex:1">
       </div>
-      <input class="ti" id="aPrompt" maxlength="600" placeholder="Paste the question you were answering (strongly recommended)" autocomplete="off">
+      <textarea class="ti" id="aPrompt" rows="2" maxlength="1200" style="resize:vertical" placeholder="Paste the question you were answering (strongly recommended)" autocomplete="off"></textarea>
       <textarea class="ta" id="aEssay" style="margin-top:12px" placeholder="Paste your response here…"></textarea>
       <div class="wc" id="aWc">0 words</div>
       <div class="arow" style="margin:16px 0 0">
@@ -651,9 +673,110 @@ renderAll();
   $("taskSel").addEventListener("change",updateCount);
   updateCount();
 
+  /* ---------- exam timer + Weekly Test question loader ---------- */
+  const DUR={task1:20*60,task2:40*60};
+  const DKEY="ielts.aw.v1";
+  const WW=window.WEEKLY_WRITING||{};
+  const T={t0:0,dur:0,tick:null,wt:"",state:"idle"};   // state: idle | running | ended | done
+  const mmss=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")};
+  const taskName=()=>$("taskSel").value==="task1"?"Task 1 · 20 minutes":"Task 2 · 40 minutes";
+  const rem=()=>T.dur-Math.floor((Date.now()-T.t0)/1000);
+
+  function paintClock(){
+    const c=$("aClock");
+    if(T.state==="idle"){c.textContent=mmss(DUR[$("taskSel").value]);c.className="aclock";$("aLab").textContent="Timer for "+taskName();return}
+    const r=T.state==="running"?rem():(T.state==="ended"?0:T.left);
+    c.textContent=mmss(r);
+    c.className="aclock"+(T.state==="running"?(r<=60?" crit":r<=300?" warn":""):"");
+    $("aLab").textContent=T.state==="running"?"Writing · "+taskName():T.state==="ended"?"Time\u2019s up · the box is locked":"Submitted";
+  }
+  function saveDraft(){
+    if(T.state!=="running"&&T.state!=="ended")return;
+    try{localStorage.setItem(DKEY,JSON.stringify({t0:T.t0,dur:T.dur,task:$("taskSel").value,prompt:$("aPrompt").value,essay:essay.value,wt:T.wt}))}catch(e){}
+  }
+  function clearDraft(){try{localStorage.removeItem(DKEY)}catch(e){}}
+  function setButtons(){
+    const b=$("aStart");
+    b.hidden=(T.state==="running");
+    b.textContent=T.state==="idle"?"Start timer":"Reset timer";
+    $("taskSel").disabled=(T.state==="running");
+    essay.readOnly=!!T.locked;
+  }
+  function runTick(){
+    if(T.tick)clearInterval(T.tick);
+    T.tick=setInterval(()=>{if(rem()<=0)endTimer();else paintClock()},1000);
+  }
+  function startTimer(){
+    if(T.state==="running")return;
+    T.t0=Date.now();T.dur=DUR[$("taskSel").value];T.state="running";T.locked=false;
+    runTick();paintClock();setButtons();saveDraft();
+  }
+  function endTimer(){
+    if(T.tick){clearInterval(T.tick);T.tick=null}
+    T.state="ended";T.locked=true;paintClock();setButtons();saveDraft();
+    const n=words(essay.value),name=(nameIn.value||"").trim();
+    if(n>=80&&name){assess()}
+    else $("aErr").innerHTML='<div class="err"><b>Time\u2019s up.</b> '+(n<80?"You have written fewer than 80 words, which is too short to assess. ":"")+(name?"":"Enter your name, then press <b>Assess my writing</b>.")+'</div>';
+  }
+  function finishTimer(){            // called after a successful assessment
+    if(T.state==="running"){T.left=Math.max(0,rem());T.state="done"}
+    else if(T.state==="ended"){T.state="done";T.left=0}
+    if(T.tick){clearInterval(T.tick);T.tick=null}
+    clearDraft();paintClock();setButtons();
+  }
+  function resetTimer(){
+    if(T.tick){clearInterval(T.tick);T.tick=null}
+    T.state="idle";T.t0=0;T.locked=false;clearDraft();paintClock();setButtons();
+  }
+  $("aStart").addEventListener("click",()=>{ if(T.state==="idle")startTimer(); else resetTimer(); });
+  $("taskSel").addEventListener("change",()=>{ if(T.state==="idle")paintClock(); });
+
+  function showQuestion(wt,key){
+    const W=WW[wt],t=W&&W.tasks.find(x=>x.key===key),card=$("wtCard");
+    const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+    if(!t){card.hidden=true;return false}
+    card.innerHTML=`<div class="lab">${esc(W.title)} · Writing ${esc(t.label)}</div>
+      <p><b>${esc(t.question)}</b></p>
+      ${t.svg?`<div class="fig">${t.svg}</div>`:""}
+      <p>${esc(t.instruction)}${t.extra?" "+esc(t.extra):""} <b>${esc(t.words)}</b></p>
+      <a href="weekly-test-1.html#writing">&larr; Back to Weekly Test 1</a>`;
+    card.hidden=false;return true;
+  }
+
   $("aClear").addEventListener("click",()=>{
-    essay.value="";$("aPrompt").value="";$("aOut").className="aout";$("aErr").innerHTML="";updateCount();
+    essay.value="";$("aPrompt").value="";$("aOut").className="aout";$("aErr").innerHTML="";
+    $("wtCard").hidden=true;T.wt="";resetTimer();updateCount();
   });
+  essay.addEventListener("input",saveDraft);
+  $("aPrompt").addEventListener("input",saveDraft);
+
+  // ---- boot: a Weekly Test link starts a fresh attempt; otherwise restore a draft that was running ----
+  (function boot(){
+    const qs=new URLSearchParams(location.search);
+    const wt=qs.get("wt"),task=qs.get("task");
+    const W=WW[wt],t=W&&W.tasks.find(x=>x.key===task);
+    if(t){
+      $("taskSel").value=t.key;
+      $("aPrompt").value=t.prompt;
+      essay.value="";$("aOut").className="aout";$("aErr").innerHTML="";
+      T.wt=wt;showQuestion(wt,t.key);updateCount();
+      startTimer();
+      try{history.replaceState(null,"",location.pathname+"#assessSec")}catch(e){}
+      setTimeout(()=>sec.scrollIntoView({block:"start"}),60);
+      return;
+    }
+    let d=null;try{d=JSON.parse(localStorage.getItem(DKEY)||"null")}catch(e){}
+    if(d&&d.t0&&d.dur){
+      $("taskSel").value=d.task;$("aPrompt").value=d.prompt||"";essay.value=d.essay||"";
+      T.wt=d.wt||"";T.t0=d.t0;T.dur=d.dur;
+      if(T.wt)showQuestion(T.wt,d.task);
+      updateCount();
+      if(rem()>0){T.state="running";runTick()}else{T.state="ended";T.locked=true}
+      paintClock();setButtons();
+      return;
+    }
+    paintClock();setButtons();
+  })();
 
   $("aGo").addEventListener("click",assess);
 
@@ -679,6 +802,7 @@ renderAll();
       const data=await res.json();
       if(!data.ok)throw new Error(data.error||"Assessment failed.");
       render(data.result);
+      finishTimer();
     }catch(e){
       err.innerHTML='<div class="err">'+esc(e.message||"Could not reach the assessor.")+'</div>';
     }finally{
