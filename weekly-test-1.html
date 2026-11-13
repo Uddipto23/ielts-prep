@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="config.js"></script>
 <script src="weekly-test-1.js"></script>
+<script src="weekly-test-1-writing.js"></script>
 <style>
 :root{
   --paper:#F2EEE5;--paper-2:#EAE4D7;--card:#FBF9F4;
@@ -135,6 +136,18 @@ footer{margin-top:50px;padding:28px 0 46px;border-top:1px solid var(--line);font
 .soon ul{margin:10px 0 0 18px;color:var(--ink-2);font-size:15px}
 .soon li{margin-bottom:6px}
 .soon .tagsoon{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--gold-soft);color:var(--gold);margin-bottom:12px}
+.wtask{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin:18px 0}
+.wtask .wh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;margin-bottom:10px}
+.wtask h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:26px}
+.wtask .mins{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.wtask p{margin-bottom:10px;font-size:15.5px}
+.wtask .wq{font-weight:500}
+.wtask .fig{margin:14px 0 12px}
+.wtask .nt{font-size:13px;color:var(--ink-3)}
+.wtask .go{display:inline-block;margin-top:10px;padding:11px 22px;border-radius:999px;background:var(--rust);color:#fff;text-decoration:none;font-size:14.5px}
+.wtask .go:hover{opacity:.88}
+.steps{margin:10px 0 0 20px;color:var(--ink-2);font-size:15px}
+.steps li{margin-bottom:7px}
 [hidden]{display:none!important}
 @media(max-width:600px){.passage{padding:20px 18px}.gap select{min-width:0;width:100%}.bar .cnt{display:none}
   .bar{padding:8px 0}.bar .wrap{gap:8px}.clock{font-size:17px;min-width:64px}.ptab{font-size:12px;padding:6px 10px}.bar .btn{padding:7px 14px;font-size:13px}.ptabs{order:3;width:100%}}
@@ -222,15 +235,30 @@ footer{margin-top:50px;padding:28px 0 46px;border-top:1px solid var(--line);font
 </div><!-- /sec-reading -->
 
 <div id="sec-writing" role="tabpanel" hidden>
-  <main class="wrap narrow soon">
-    <span class="tagsoon">Being built next</span>
-    <h2>Writing · 60 minutes</h2>
-    <p class="muted">Not available yet. This section will have:</p>
-    <ul>
-      <li>Task 1 (20 min): an original chart or table to describe, 150+ words</li>
-      <li>Task 2 (40 min): an essay question, 250+ words</li>
-      <li>Typed on screen with a live word count, then marked against the four official criteria</li>
-    </ul>
+  <main class="wrap narrow" id="wr-root">
+    <div class="eyebrow" style="margin-top:26px">Section 2 · Writing</div>
+    <h2>Sixty minutes. Two tasks.</h2>
+    <p class="muted" style="max-width:640px">Task 1 is 20 minutes and Task 2 is 40 minutes. Task 2 carries twice the marks of Task 1, so protect its time.</p>
+    <div class="method">
+      <div class="rule" style="color:var(--rust);margin-bottom:8px">How this section works</div>
+      <ol class="steps">
+        <li><b>Read the question here.</b> The timer does not start yet.</li>
+        <li><b>Press the button under the task.</b> It opens the <b>Assessment Check</b> on the homepage with the question loaded and the timer running (20 minutes for Task 1, 40 for Task 2).</li>
+        <li><b>Type your answer there.</b> When time is up the box locks, and your answer is marked against the four official criteria: task achievement or response, coherence, vocabulary and grammar.</li>
+        <li>Come back here for the next task. Do Task 1 first, as in the real exam.</li>
+      </ol>
+      <p class="notice" id="wrNoEp" hidden>The Assessment Check is switched off on this site (no tracking URL is set), so the buttons below are not available.</p>
+    </div>
+    <div id="wrTasks"></div>
+    <div class="panel" style="margin-top:22px">
+      <div class="rule" style="margin-bottom:6px">Before you start</div>
+      <ul class="steps" style="margin-top:4px">
+        <li><b>Task 1:</b> write an overview of the main trends in your second paragraph, and put no figures in it.</li>
+        <li><b>Task 2:</b> answer every part of the question, and make your position in the conclusion match your introduction.</li>
+        <li>Type it, as in the real test. Aim for 150+ and 250+ words, and stay under about 200 and 320.</li>
+        <li>The result is an AI estimate. Treat the feedback as the useful part and the band as a rough guide.</li>
+      </ul>
+    </div>
   </main>
 </div>
 <div id="sec-listening" role="tabpanel" hidden>
@@ -605,6 +633,24 @@ async function loadBoard(highlight){
     box.innerHTML='<span class="muted">Leaderboard unavailable right now.</span>';
   }
 }
+
+/* ---------- writing section (questions come from weekly-test-1-writing.js) ---------- */
+(function renderWriting(){
+  const W=(window.WEEKLY_WRITING||{}).w1;
+  const root=$("wrTasks");
+  if(!W){root.innerHTML='<div class="panel"><span class="muted">Writing questions did not load. Make sure weekly-test-1-writing.js is uploaded next to this page.</span></div>';return}
+  if(!ENDPOINT)$("wrNoEp").hidden=false;
+  root.innerHTML=W.tasks.map(t=>`<section class="wtask">
+    <div class="wh"><h3>Writing ${esc(t.label)}</h3><span class="mins">${t.minutes} minutes · ${t.minWords}+ words</span></div>
+    <p class="nt">${esc(t.intro)}</p>
+    <p class="wq">${esc(t.question)}</p>
+    ${t.svg?`<div class="fig">${t.svg}</div>`:""}
+    <p>${esc(t.instruction)}${t.extra?" "+esc(t.extra):""}</p>
+    <p><b>${esc(t.words)}</b></p>
+    ${t.note?`<p class="nt">${esc(t.note)}</p>`:""}
+    ${ENDPOINT?`<a class="go" href="index.html?wt=${W.id}&task=${t.key}#assessSec">Start ${esc(t.label)} in the Assessment Check &rarr;</a><div class="nt" style="margin-top:8px">The ${t.minutes}-minute timer starts when the Assessment Check opens.</div>`:""}
+  </section>`).join("");
+})();
 
 /* ---------- section switcher ---------- */
 const SECS=["reading","writing","listening","speaking"];
