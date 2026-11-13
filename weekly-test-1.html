@@ -62,6 +62,43 @@ h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(26px,4.5
 .ptab[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .bar .btn{background:var(--rust)}
 
+
+/* ---- listening ---- */
+.laudio iframe{width:100%;height:150px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.lpart{margin-top:24px}
+.lpart h3{font-family:'Instrument Serif',serif;font-weight:400;font-size:28px;margin-bottom:2px}
+.lblk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:16px 0}
+.lblk .qr{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:6px}
+.lblk .ins{font-size:14.5px;color:var(--ink-2);margin-bottom:12px}
+.lblk h4{font-size:16px;font-weight:600;margin:4px 0 10px}
+.lq{margin:0 0 16px}
+.lq .qt{font-weight:500;margin-bottom:8px}
+.lq .qt b{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--rust);margin-right:6px}
+.lopt{display:flex;gap:10px;align-items:flex-start;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);margin-bottom:6px;cursor:pointer;font-size:15px}
+.lopt:hover{border-color:var(--ink-3)}
+.lopt input{margin-top:5px;accent-color:var(--ink)}
+.lopt b{font-family:'JetBrains Mono',monospace;font-size:12px;min-width:14px;padding-top:3px}
+.lopt.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.lopt.off{opacity:.45;cursor:default}
+.li{font-family:inherit;font-size:15px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);width:150px;max-width:100%;margin:2px 4px}
+.li:focus{outline:none;border-color:var(--rust)}
+.li.sm{width:90px}
+.qb{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--rust);font-weight:600}
+.lform p{margin:0 0 10px;line-height:2.1}
+.ltab{width:100%;border-collapse:collapse;margin:8px 0 12px;font-size:14.5px}
+.ltab th,.ltab td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:middle}
+.ltab th{background:var(--paper-2)}
+.lblk ul.nl{margin:0 0 8px 20px;line-height:2.1}
+.lblk .grp{font-weight:600;margin-top:14px}
+.lnav{display:flex;justify-content:space-between;gap:10px;margin:8px 0}
+.lsheet table{width:100%;border-collapse:collapse;font-size:14.5px}
+.lsheet td,.lsheet th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+.lsheet td:first-child{font-family:'JetBrains Mono',monospace;width:56px;color:var(--ink-3)}
+.lsheet td.ok{color:var(--moss);font-weight:700}.lsheet td.no{color:var(--rust);font-weight:700}.lsheet td.part{color:var(--gold);font-weight:700}
+.lsheet .blank{color:var(--ink-3);font-style:italic}
+.lbar .wrap{gap:14px}
+@media(max-width:600px){.ltab{font-size:13.5px}.ltab th,.ltab td{padding:6px}.lblk{padding:16px 16px}.li{width:120px}.lbar .cnt{display:none}}
+
 /* ---- split layout ---- */
 .split{display:grid;grid-template-columns:1fr;gap:22px;margin-top:22px}
 @media(min-width:960px){
@@ -262,15 +299,45 @@ footer{margin-top:50px;padding:28px 0 46px;border-top:1px solid var(--line);font
   </main>
 </div>
 <div id="sec-listening" role="tabpanel" hidden>
-  <main class="wrap narrow soon">
-    <span class="tagsoon">Coming soon</span>
-    <h2>Listening · about 30 minutes</h2>
-    <p class="muted">Not available yet. This section will have:</p>
-    <ul>
-      <li>Four parts of ten questions each, getting harder from Part 1 to Part 4</li>
-      <li>An announcer introduction and a 30-second preview before each part</li>
-      <li>Audio that plays once, with no pause and no replay</li>
-    </ul>
+  <div class="bar lbar">
+    <div class="wrap">
+      <span class="clock" id="lClock">40:00</span>
+      <span class="cnt" id="lCnt">0 / 40 answered</span>
+      <span class="sp"></span>
+      <div class="ptabs" id="lTabs"></div>
+      <button class="btn" id="lStart" type="button">Start timer</button>
+    </div>
+  </div>
+  <main class="wrap narrow">
+    <div class="rule" style="margin-top:26px">Section 3 · Listening</div>
+    <h2>Four parts. Forty questions.</h2>
+    <p class="muted">One recording, four parts, getting harder from Part 1 to Part 4. The timer is 40 minutes: about 30 for the recording and 10 to check your answers.</p>
+
+    <div class="method" id="lHow">
+      <b>How to take this section</b>
+      <ol>
+        <li>Skim the questions for Part 1 before you press play. In the real exam you get about 30 seconds per part.</li>
+        <li>Press <b>Start timer</b>, then press play on the recording below. Play it <b>once</b> and do not pause or rewind.</li>
+        <li>Type as you listen. Switch to the next part when the speaker moves on.</li>
+        <li>When you finish, press <b>Finish &amp; get my score</b>. It marks all 40 answers and gives your raw score and band.</li>
+      </ol>
+    </div>
+
+    <div class="panel laudio">
+      <div class="qn">THE RECORDING</div>
+      <iframe id="lFrame" title="Listening recording" allow="autoplay" loading="lazy"></iframe>
+      <p class="muted" style="margin-top:8px">The player does not load? Check the file is shared as &ldquo;Anyone with the link&rdquo;, or <a id="lOpen" target="_blank" rel="noopener">open it in Google Drive</a>.</p>
+    </div>
+
+    <div id="lBody"></div>
+
+    <div class="lnav">
+      <button class="btn alt" id="lPrev" type="button">&larr; Previous part</button>
+      <button class="btn" id="lNext" type="button">Next part &rarr;</button>
+    </div>
+
+    <div class="panel" id="lSheet" hidden></div>
+    <p class="muted" style="margin:18px 0 40px">Your answers are saved in this browser only, so a refresh will not lose them. Nothing is sent anywhere.</p>
   </main>
 </div>
 <div id="sec-speaking" role="tabpanel" hidden>
@@ -650,6 +717,280 @@ async function loadBoard(highlight){
     ${t.note?`<p class="nt">${esc(t.note)}</p>`:""}
     ${ENDPOINT?`<a class="go" href="index.html?wt=${W.id}&task=${t.key}#assessSec">Start ${esc(t.label)} in the Assessment Check &rarr;</a><div class="nt" style="margin-top:8px">The ${t.minutes}-minute timer starts when the Assessment Check opens.</div>`:""}
   </section>`).join("");
+})();
+
+
+/* ---------- Listening ---------- */
+(function(){
+  const DRIVE_ID="1gR14VQOhhlmZA03ZXvZ2kKDHhgJgNDy4";
+  const DKEY="ielts.weekly.listening.w1";
+  const TOTAL=40, DUR=40*60;
+  const L=i=>"ABCDEFG"[i];
+  // helpers used by the templates: {n} becomes a gap input for question n
+  const G=(n,cls)=>`<span class="qb">${n}</span><input class="li ${cls||""}" data-q="${n}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Question ${n}">`;
+  const fill=t=>t.replace(/\{(\d+)(?::(\w+))?\}/g,(m,n,c)=>G(n,c));
+  const mc=(n,text,opts)=>`<div class="lq"><div class="qt"><b>${n}</b>${text}</div>${opts.map((o,i)=>
+    `<label class="lopt"><input type="radio" name="q${n}" data-mc="${n}" value="${L(i)}"><b>${L(i)}</b><span>${o}</span></label>`).join("")}</div>`;
+  const multi=(key,from,n,opts)=>`<div class="lq">${opts.map((o,i)=>
+    `<label class="lopt"><input type="checkbox" data-mu="${key}" data-max="${n}" value="${L(i)}"><b>${L(i)}</b><span>${o}</span></label>`).join("")}</div>`;
+  const blk=(range,ins,body)=>`<section class="lblk"><div class="qr">Questions ${range}</div><div class="ins">${ins}</div>${body}</section>`;
+
+  const PARTS=[
+   {title:"Part 1",qs:[1,10],html:
+    blk("1 and 2","Choose the correct letter, <b>A</b>, <b>B</b> or <b>C</b>.",
+      mc(1,"In the lobby of the library George saw",["a group playing music","a display of instruments","a video about the festival"])+
+      mc(2,"George wants to sit at the back so they can",["see well","hear clearly","pay less"]))+
+    blk("3&ndash;10","Complete the form below. Write <b>NO MORE THAN TWO WORDS OR A NUMBER</b>.",
+      `<div class="lform"><h4>Summer music festival booking form</h4>
+       <p>Name: George O&rsquo;Neill</p>
+       <p>Address: ${fill("{3}")} Westsea</p>
+       <p>Postcode: ${fill("{4}")}</p>
+       <p>Telephone: ${fill("{5}")}</p>
+       <div style="overflow-x:auto"><table class="ltab"><tr><th>Date</th><th>Event</th><th>Price per ticket</th><th>No. of tickets</th></tr>
+       <tr><td>5 June</td><td>Instrumental Group &ndash; Guitarinni</td><td>&pound;7.50</td><td>2</td></tr>
+       <tr><td>17 June</td><td>Singer (price includes ${fill("{6}")} in the garden)</td><td>&pound;6</td><td>2</td></tr>
+       <tr><td>22 June</td><td>${fill("{7}")} Anna Ventura</td><td>&pound;7</td><td>1</td></tr>
+       <tr><td>23 June</td><td>Spanish dance and guitar concert</td><td>${fill("{8}")}</td><td>${fill("{9}")}</td></tr></table></div>
+       <p><b>NB:</b> Children / students / senior citizens have ${fill("{10}")} discount on all tickets.</p></div>`)},
+   {title:"Part 2",qs:[11,20],html:
+    blk("11&ndash;15","Complete the sentences below. Write <b>NO MORE THAN TWO WORDS OR A NUMBER</b>.",
+      `<div class="lform"><h4>The Dinosaur Museum</h4>
+       <p>11. The museum closes at ${fill("{11}")} p.m. on Mondays.</p>
+       <p>12. The museum is not open on ${fill("{12}")}</p>
+       <p>13. School groups are met by tour guides in the ${fill("{13}")}</p>
+       <p>14. The whole visit takes 90 minutes, including ${fill("{14}")} minutes for the guided tour.</p>
+       <p>15. There are ${fill("{15}")} behind the museum where students can have lunch.</p></div>`)+
+    blk("16&ndash;18","Choose <b>THREE</b> letters, <b>A&ndash;G</b>.",
+      `<div class="qt" style="font-weight:500;margin-bottom:8px">Which <b>THREE</b> things can students have with them in the museum?</div>`+
+      multi("16-18",16,3,["food","water","cameras","books","bags","pens","worksheets"]))+
+    blk("19 and 20","Choose <b>TWO</b> letters, <b>A&ndash;E</b>.",
+      `<div class="qt" style="font-weight:500;margin-bottom:8px">Which <b>TWO</b> activities can students do after the tour at present?</div>`+
+      multi("19-20",19,2,["build model dinosaurs","watch films","draw dinosaurs","find dinosaur eggs","play computer games"]))},
+   {title:"Part 3",qs:[21,30],html:
+    blk("21&ndash;24","Choose the correct letter, <b>A</b>, <b>B</b> or <b>C</b>.",
+      `<h4>Field Trip Proposal</h4>`+
+      mc(21,"The tutor thinks that Sandra&rsquo;s proposal",["should be re-ordered in some parts","needs a contents page","ought to include more information"])+
+      mc(22,"The proposal would be easier to follow if Sandra",["inserted subheadings","used more paragraphs","shortened her sentences"])+
+      mc(23,"What was the problem with the formatting on Sandra&rsquo;s proposal?",["Separate points were not clearly identified","The headings were not always clear","Page numbering was not used in an appropriate way"])+
+      mc(24,"Sandra became interested in visiting the Navajo National Park through",["articles she read","movies she saw as a child","photographs she found on the internet"]))+
+    blk("25&ndash;27","Choose <b>THREE</b> letters, <b>A&ndash;G</b>.",
+      `<div class="qt" style="font-weight:500;margin-bottom:8px">Which <b>THREE</b> topics does Sandra agree to include in the proposal?</div>`+
+      multi("25-27",25,3,["climate change","field trip activities","geographical features","impact of tourism","myths and legends","plant and animal life","social history"]))+
+    blk("28&ndash;30","Complete the sentences below. Write <b>ONE WORD OR A NUMBER</b>.",
+      `<div class="lform"><p>28. The tribal park covers ${fill("{28}")} hectares.</p>
+       <p>29. Sandra suggests that they share the ${fill("{29}")} for transport.</p>
+       <p>30. She says they could also explore the local ${fill("{30}")}</p></div>`)},
+   {title:"Part 4",qs:[31,40],html:
+    blk("31&ndash;40","Complete the notes below. Write <b>ONE WORD ONLY</b>.",
+      `<div class="lform"><h4>GEOGRAPHY</h4>
+       <div class="grp">Studying geography helps us to understand:</div>
+       <ul class="nl"><li>The effects of different processes on the ${fill("{31}")} of the Earth</li>
+       <li>The dynamic between ${fill("{32}")} and population</li></ul>
+       <div class="grp">Two main branches of study:</div>
+       <ul class="nl"><li>Physical features</li><li>Human lifestyles and their ${fill("{33}")}</li></ul>
+       <div class="grp">Specific study areas:</div>
+       <ul class="nl"><li>Biophysical, topographic, political, social, economic, historical and ${fill("{34}")} geography and also cartography</li></ul>
+       <div class="grp">Key point:</div>
+       <ul class="nl"><li>Geography helps us to understand our surroundings and the associated ${fill("{35}")}</li></ul>
+       <div class="grp">What do geographers do?</div>
+       <ul class="nl"><li>Find data, e.g. conduct censuses, collect information in the form of ${fill("{36}")} using computer and satellite technology</li>
+       <li>Analyse data &ndash; identify ${fill("{37}")}, e.g. cause and effect</li>
+       <li>Publish findings in the form of:</li></ul>
+       <div class="grp">Maps</div>
+       <ul class="nl"><li>Can show physical features of large and small areas</li>
+       <li>But a two-dimensional map will always have some ${fill("{38}")}</li></ul>
+       <div class="grp">Aerial photos</div>
+       <ul class="nl"><li>Can show vegetation problems ${fill("{39}")} density, ocean, floor etc.</li></ul>
+       <div class="grp">Landsat pictures sent to receiving stations</div>
+       <ul class="nl"><li>Used for monitoring ${fill("{40}")} conditions etc.</li></ul></div>`)}
+  ];
+  const MULTI={"16-18":[16,17,18],"19-20":[19,20],"25-27":[25,26,27]};
+  /* ---- answer key (accepted forms, lower-case) ---- */
+  const KEY={1:"C",2:"B",
+    3:["48 north avenue","48 north ave"],4:["ws62yh"],5:["01674553242"],
+    6:["drinks","refreshments"],7:["pianist","piano player"],8:["10.50"],9:["4","four"],10:["50%","50 percent","50 per cent"],
+    11:["1.30","1:30","1.30 pm","1:30 pm","1.30pm","1:30pm"],12:["25 december","december 25","25th december","december 25th","25 dec"],
+    13:["car parking"],14:["45","forty five","forty-five"],15:["tables"],
+    21:"A",22:"C",23:"A",24:"B",
+    28:["12000"],29:["horses"],30:["caves"],31:["surface"],32:["environment"],33:["impact","effects"],34:["urban"],35:["problems"],
+    36:["images"],37:["patterns"],38:["distortion"],39:["traffic"],40:["weather"]};
+  const MKEY={"16-18":["C","F","G"],"19-20":["B","E"],"25-27":["B","C","F"]};
+  const SHOW={3:"48 North Avenue",4:"WS62YH",5:"01674553242",6:"drinks / refreshments",7:"pianist / piano player",8:"10.50",10:"50%",11:"1.30",12:"25 December",
+    13:"car parking",14:"45",28:"12,000",33:"impact / effects"};
+  const norm=s=>String(s||"").toLowerCase().trim().replace(/\s+/g," ").replace(/[.!,;]+$/,"").trim();
+  function isRight(q,raw){
+    const a=norm(raw);if(!a)return false;
+    const k=KEY[q];
+    if(typeof k==="string")return a===k.toLowerCase();
+    if(q===4||q===5)return k.includes(a.replace(/[\s\-()]/g,""));
+    if(q===8){const n=parseFloat(a.replace(/[£,\s]/g,""));return n===10.5}
+    if(q===28)return k.includes(a.replace(/[,\s]/g,""));
+    return k.includes(a);
+  }
+  const LBAND=[[39,9],[37,8.5],[35,8],[32,7.5],[30,7],[26,6.5],[23,6],[18,5.5],[16,5],[13,4.5],[10,4],[8,3.5],[6,3],[4,2.5]];
+  const bandOf=n=>{for(const[m,b]of LBAND)if(n>=m)return b;return "below 2.5"};
+  function correctOf(q){
+    const k=Object.keys(MULTI).find(k=>MULTI[k].includes(q));
+    if(k)return MKEY[k].join(", ")+" (any order)";
+    return typeof KEY[q]==="string"?KEY[q]:(SHOW[q]||KEY[q][0]);
+  }
+  function markAll(){
+    const res={};
+    for(const k in MULTI){
+      const mine=(A[k]||[]).slice(),keyset=MKEY[k];
+      MULTI[k].forEach(q=>{res[q]=null});
+      let hit=mine.filter(x=>keyset.includes(x)).length;       // each right letter earns one mark
+      MULTI[k].forEach((q,i)=>{res[q]=i<hit});
+    }
+    for(let q=1;q<=TOTAL;q++){
+      if(res[q]!==undefined)continue;
+      res[q]=isRight(q,A[q]);
+    }
+    return res;
+  }
+
+  const $l=id=>document.getElementById(id);
+  const A={};            // single answers: A[n]="text"; multi: A["16-18"]=["A","C"]
+  let cur=0,t0=0,dur=DUR,tk=null,done=false,LAST=null;
+
+  function load(){try{const d=JSON.parse(localStorage.getItem(DKEY)||"null");if(d){Object.assign(A,d.A||{});t0=d.t0||0;dur=d.dur||DUR;done=!!d.done;cur=d.cur||0}}catch(e){}}
+  function save(){try{localStorage.setItem(DKEY,JSON.stringify({A,t0,dur,done,cur}))}catch(e){}}
+  const rem=()=>dur-Math.floor((Date.now()-t0)/1000);
+
+  function count(){
+    let n=0;
+    for(let q=1;q<=TOTAL;q++){
+      const k=Object.keys(MULTI).find(k=>MULTI[k].includes(q));
+      if(k){const arr=A[k]||[];if(arr.length>MULTI[k].indexOf(q))n++}
+      else if(String(A[q]||"").trim())n++;
+    }
+    return n;
+  }
+  function paintCount(){$l("lCnt").textContent=count()+" / "+TOTAL+" answered";paintTabs()}
+  function paintTabs(){
+    $l("lTabs").innerHTML=PARTS.map((P,i)=>{
+      let n=0;for(let q=P.qs[0];q<=P.qs[1];q++){const k=Object.keys(MULTI).find(k=>MULTI[k].includes(q));
+        if(k){if((A[k]||[]).length>MULTI[k].indexOf(q))n++}else if(String(A[q]||"").trim())n++}
+      return `<button class="ptab" data-lp="${i}" aria-pressed="${i===cur}">${P.title} · ${n}/10</button>`}).join("");
+  }
+  function paintBadge(){
+    const el=$l("tm-listening");if(!el)return;
+    if(done){el.textContent=LAST?LAST.score+"/"+TOTAL:"";el.className="tm";return}
+    if(tk){el.textContent=mmss(rem());el.className="tm live";return}
+    el.textContent="";el.className="tm";
+  }
+  function paintClock(){
+    const c=$l("lClock");
+    if(!t0&&!done){c.textContent=mmss(DUR);c.className="clock"}
+    else if(done){c.textContent=tk||t0?mmss(Math.max(0,rem())):mmss(DUR);c.className="clock"}
+    else{const r=rem();c.textContent=mmss(r);c.className="clock"+(r<=60?" crit":r<=300?" warn":"")}
+    paintBadge();
+  }
+  function paintBtn(){
+    const b=$l("lStart");
+    if(done){b.textContent="Start over";b.hidden=false;b.className="btn alt";return}
+    if(tk){b.textContent="Finish & get my score";b.hidden=false;b.className="btn";return}
+    b.textContent="Start timer";b.hidden=false;b.className="btn";
+  }
+
+  function showPart(i){
+    cur=Math.max(0,Math.min(PARTS.length-1,i));
+    $l("lBody").innerHTML=`<div class="lpart"><h3>${PARTS[cur].title}</h3><div class="muted">Questions ${PARTS[cur].qs[0]}&ndash;${PARTS[cur].qs[1]}</div>${PARTS[cur].html}</div>`;
+    // restore answers
+    $l("lBody").querySelectorAll("input.li").forEach(el=>{el.value=A[el.dataset.q]||"";el.disabled=done});
+    $l("lBody").querySelectorAll("input[data-mc]").forEach(el=>{el.checked=(A[el.dataset.mc]===el.value);el.disabled=done;mark(el)});
+    $l("lBody").querySelectorAll("input[data-mu]").forEach(el=>{el.checked=(A[el.dataset.mu]||[]).includes(el.value);el.disabled=done;mark(el)});
+    capMulti();
+    $l("lPrev").disabled=cur===0;$l("lNext").disabled=cur===PARTS.length-1;
+    paintTabs();save();
+  }
+  function mark(el){const lab=el.closest(".lopt");if(lab)lab.classList.toggle("on",el.checked)}
+  function capMulti(){
+    const groups={};
+    $l("lBody").querySelectorAll("input[data-mu]").forEach(el=>{(groups[el.dataset.mu]=groups[el.dataset.mu]||[]).push(el)});
+    Object.values(groups).forEach(list=>{
+      const max=+list[0].dataset.max,n=list.filter(x=>x.checked).length;
+      list.forEach(x=>{const off=!x.checked&&n>=max;x.disabled=done||off;x.closest(".lopt").classList.toggle("off",off&&!done)});
+    });
+  }
+  $l("lBody").addEventListener("input",e=>{
+    const t=e.target;
+    if(t.matches("input.li")){A[t.dataset.q]=t.value;}
+    else if(t.matches("input[data-mc]")){A[t.dataset.mc]=t.value;
+      $l("lBody").querySelectorAll(`input[data-mc="${t.dataset.mc}"]`).forEach(mark)}
+    else if(t.matches("input[data-mu]")){
+      const k=t.dataset.mu;
+      A[k]=[...$l("lBody").querySelectorAll(`input[data-mu="${k}"]`)].filter(x=>x.checked).map(x=>x.value);
+      $l("lBody").querySelectorAll(`input[data-mu="${k}"]`).forEach(mark);capMulti();
+    }
+    paintCount();save();
+  });
+  $l("lTabs").addEventListener("click",e=>{const b=e.target.closest("[data-lp]");if(b){showPart(+b.dataset.lp);window.scrollTo({top:$l("lBody").offsetTop-120})}});
+  $l("lPrev").addEventListener("click",()=>{showPart(cur-1);window.scrollTo({top:$l("lBody").offsetTop-120})});
+  $l("lNext").addEventListener("click",()=>{showPart(cur+1);window.scrollTo({top:$l("lBody").offsetTop-120})});
+
+  function runTick(){
+    if(tk)clearInterval(tk);
+    tk=setInterval(()=>{if(rem()<=0)finish();else{paintClock()}},1000);
+  }
+  function start(){t0=Date.now();dur=DUR;done=false;runTick();paintClock();paintBtn();save();$l("lSheet").hidden=true}
+  function ansFor(q){
+    const k=Object.keys(MULTI).find(k=>MULTI[k].includes(q));
+    if(k){const arr=(A[k]||[]).slice().sort();return arr[MULTI[k].indexOf(q)]||""}
+    return String(A[q]||"").trim();
+  }
+  function finish(){
+    if(tk){clearInterval(tk);tk=null}
+    done=true;save();paintClock();paintBtn();showPart(cur);paintCount();
+    const R=markAll();let score=0,rows="";
+    const per=PARTS.map(P=>{let n=0;for(let q=P.qs[0];q<=P.qs[1];q++)if(R[q])n++;return n});
+    for(let q=1;q<=TOTAL;q++){
+      if(R[q])score++;
+      const a=ansFor(q),kk=Object.keys(MULTI).find(k=>MULTI[k].includes(q));
+      const shown=kk?((A[kk]||[]).slice().sort().join(", ")||""):a;
+      const first=kk&&MULTI[kk][0]===q, span=kk?MULTI[kk].length:1;
+      if(kk){ // one merged row per "choose" group
+        if(!first)continue;
+        const gOK=MULTI[kk].filter(x=>R[x]).length;
+        rows+=`<tr><td>${MULTI[kk][0]}&ndash;${MULTI[kk][span-1]}</td><td>${shown?esc(shown):'<span class="blank">no answer</span>'}</td><td>${correctOf(q)}</td><td class="${gOK===span?"ok":gOK?"part":"no"}">${gOK}/${span}</td></tr>`;
+        continue;
+      }
+      rows+=`<tr><td>${q}</td><td>${shown?esc(shown):'<span class="blank">no answer</span>'}</td><td>${esc(correctOf(q))}</td><td class="${R[q]?"ok":"no"}">${R[q]?"&#10003;":"&#10007;"}</td></tr>`;
+    }
+    LAST={score,band:bandOf(score),per};
+    const el=$l("tm-listening");if(el){el.textContent=score+"/"+TOTAL;el.className="tm"}
+    const sh=$l("lSheet");sh.className="panel lsheet";sh.hidden=false;
+    sh.innerHTML=`<div class="rule">Your result</div>
+      <h2 style="font-size:34px">${score} / ${TOTAL} &middot; Band ${LAST.band}</h2>
+      <p class="muted" style="margin-bottom:14px">${PARTS.map((P,i)=>P.title+": "+per[i]+"/10").join(" &nbsp;·&nbsp; ")}. Band is the standard Academic Listening conversion. Spelling must be exact, as in the real exam; slashes in the key (e.g. drinks / refreshments) mean either word is accepted.</p>
+      <div style="overflow-x:auto"><table><tr><th>Q</th><th>Your answer</th><th>Correct answer</th><th></th></tr>${rows}</table></div>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn alt" id="lCopy" type="button">Copy my answers</button></div>`;
+    $l("lCopy").addEventListener("click",()=>{
+      const txt=Array.from({length:TOTAL},(_,i)=>(i+1)+". "+ansFor(i+1)).join("\n");
+      const ok=()=>{$l("lCopy").textContent="Copied"};
+      try{navigator.clipboard.writeText(txt).then(ok,()=>{})}catch(e){}
+    });
+    sh.scrollIntoView({block:"start"});
+  }
+  function reset(){
+    if(tk){clearInterval(tk);tk=null}
+    for(const k in A)delete A[k];
+    t0=0;done=false;cur=0;try{localStorage.removeItem(DKEY)}catch(e){}
+    $l("lSheet").hidden=true;paintClock();paintBtn();showPart(0);paintCount();
+  }
+  $l("lStart").addEventListener("click",()=>{
+    if(done)reset();
+    else if(tk)finish();
+    else start();
+  });
+
+  // ---- boot ----
+  $l("lFrame").src="https://drive.google.com/file/d/"+DRIVE_ID+"/preview";
+  $l("lOpen").href="https://drive.google.com/file/d/"+DRIVE_ID+"/view";
+  load();
+  if(t0&&!done){ if(rem()>0)runTick(); else {done=true} }
+  showPart(cur);paintCount();paintClock();paintBtn();
+  if(done&&t0){ /* expired while away: rebuild the sheet */ done=false;finish() }
 })();
 
 /* ---------- section switcher ---------- */
